@@ -1,52 +1,39 @@
-// Mobile Hamburger Menu
-const navbar = document.querySelector('.navbar');
-const navLinks = document.querySelector('.nav-links');
+const SHEET_ID = '1-Vt_sF7jAr9FMV64oxylFB6-XBFbDpM5pE1fu9udutM';  
+const API_KEY = 'AIzaSyDKWbsuM4iUFV7hiFZNddcdBIaMspwP-Ew';  
+const SHEET_NAME = 'Sheet1';  
 
-document.querySelector('.navbar').addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
+async function loadProducts() {  
+  try {  
+    const response = await fetch(  
+      `https://cors-anywhere.herokuapp.com/https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`  
+    );  
+    const data = await response.json();  
+    console.log('Data:', data);  
+    displayProducts(data.values);  
+  } catch (error) {  
+    console.error('Error:', error);  
+  }  
+}  
 
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
+function displayProducts(rows) {  
+  const grid = document.querySelector('.grid');  
+  grid.innerHTML = '';  
 
-// Newsletter Form Submission
-document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.querySelector('input[type="email"]').value;
-    // Integrate with Mailchimp or ConvertKit here
-    alert('Thanks for subscribing!');
-});
-// Intersection Observer for Scroll Animations
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, { threshold: 0.1 });
+  // Skip header row (rows[0])  
+  rows.slice(1).forEach(row => {  
+    const [name, asin, price, link, image, review] = row;  
+    grid.innerHTML += `  
+      <div class="product-card">  
+        <img src="${image}" alt="${name}">  
+        <h3>${name}</h3>  
+        <p class="price">${price}</p>  
+        <p class="review">${review}</p>  
+        <a href="${link}" class="buy-button" target="_blank" rel="sponsored noopener">  
+          Buy on Amazon <i class="fas fa-external-link-alt"></i>  
+        </a>  
+      </div>  
+    `;  
+  });  
+}  
 
-document.querySelectorAll('.product-card, .feature-card').forEach((el) => {
-    el.style.opacity = 0;
-    el.style.transform = 'translateY(20px)';
-    observer.observe(el);
-});
-
-// Product Carousel (Swiper.js - Add CDN to HTML head)
-// Include this in your HTML: <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-const swiper = new Swiper('.swiper', {
-    loop: true,
-    slidesPerView: 1,
-    spaceBetween: 30,
-    breakpoints: {
-        768: { slidesPerView: 3 }
-    },
-    autoplay: { delay: 3000 },
-});
+document.addEventListener('DOMContentLoaded', loadProducts);
