@@ -1,20 +1,80 @@
-<!-- Product Grid -->  
-<section id="products" class="product-grid">  
-  <h2>Featured Products</h2>  
-  <div class="grid">  
-    <!-- Product 1 -->  
-    <div class="product-card">  
-      <img src="assets/images/chair-mat.jpg" alt="Ergonomic Chair Mat">  
-      <h3>BlissTrends Chair Mat</h3>  
-      <p class="price">$53.99</p>  
-      <a  
-        href="https://www.amazon.com/dp/B0BFQX3YFY/?tag=moneyhounds-20"  
-        class="buy-button"  
-        target="_blank"  
-        rel="sponsored noopener"  
-      >  
-        Buy on Amazon <i class="fas fa-external-link-alt"></i>  
-      </a>  
-    </div>  
-  </div>  
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ErgAlign | Ergonomic Workspace Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="ErgAlign Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Optimize Your Workspace</h1>
+            <p>Discover ergonomic office gear curated for productivity and health.</p>
+            <a href="#products" class="cta-button">Shop Now</a>
+            <p class="disclosure">As an Amazon Associate, I earn from qualifying purchases.</p>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section id="products" class="product-grid">
+        <h2>Featured Products</h2>
+        <div class="grid">
+            <!-- BlissTrends Chair Mat -->
+            <div class="product-card">
+                <img src="assets/images/chair-mat.jpg" alt="BlissTrends Chair Mat" class="product-image">
+                <h3>BlissTrends Chair Mat</h3>
+                <p class="price">$53.99</p>
+                <a href="https://www.amazon.com/dp/B0BFQX3YFY/?tag=moneyhounds-20" 
+                   class="buy-button" 
+                   target="_blank" 
+                   rel="sponsored noopener">
+                    Buy on Amazon <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+            <!-- HOMEFUN Chair Mat -->
+            <div class="product-card">
+                <img src="assets/images/homefun-mat.jpg" alt="HOMEFUN Chair Mat" class="product-image">
+                <h3>HOMEFUN Office Chair Mat</h3>
+                <p class="price">$28.99</p>
+                <a href="https://www.amazon.com/dp/B0CFGHJKL/?tag=moneyhounds-20" 
+                   class="buy-button" 
+                   target="_blank" 
+                   rel="sponsored noopener">
+                    Buy on Amazon <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Get Ergonomic Tips & Discounts</h2>
+        <form id="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ErgAlign. Partnered with top ergonomic brands.</p>
+    </footer>
+</body>
+</html>
