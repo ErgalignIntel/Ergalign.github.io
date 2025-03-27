@@ -106,3 +106,9 @@ body {
 .cta-button:hover::after {
     left: 100%;
 }
+/* Disclosure Text */
+.disclosure {
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
+    opacity: 0.8;
+}
