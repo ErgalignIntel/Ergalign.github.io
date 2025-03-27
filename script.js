@@ -5,10 +5,9 @@ const SHEET_NAME = 'Sheet1';
 async function loadProducts() {  
   try {  
     const response = await fetch(  
-      `https://cors-anywhere.herokuapp.com/https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`  
+      `https://proxy.cors.sh/https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`  
     );  
     const data = await response.json();  
-    console.log('Data:', data);  
     displayProducts(data.values);  
   } catch (error) {  
     console.error('Error:', error);  
