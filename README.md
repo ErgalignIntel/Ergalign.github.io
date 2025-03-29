@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project contains the HTML, CSS, and JavaScript code for a simple, mobile-first landing page for "ErgAlign Intel Home Office and Business Solutions". The page presents two core offerings:
+This project contains the HTML, CSS, and JavaScript code for a simple, mobile-first landing page for "ErgAlign Intel Home Office and Business Solutions". The page presents two core offerings and includes a header image:
 
 1.  **Cloudflare Speed Optimization Service:** Details two pricing plans (Basic and Premium) and includes a Call to Action (CTA) button.
 2.  **Upcoming AI-Powered Google Optimization:** Describes a future service and provides a simple form for users to express interest and sign up for early access.
@@ -11,6 +11,7 @@ The design follows principles of simplicity, minimalism, and mobile-first respon
 
 ## Features
 
+* **Header Image:** Includes a relevant visual at the top of the page.
 * **Minimalist Design:** Focuses on essential information to improve clarity and conversion.
 * **Mobile-First Layout:** Designed to look and function well on small screens (like iPhones) using a single-column layout.
 * **Clear Calls to Action (CTAs):** Prominent buttons ("Optimize Your Site Now", "Be the First to Access AI Optimization") encourage user interaction.
@@ -24,13 +25,14 @@ The design follows principles of simplicity, minimalism, and mobile-first respon
 * `index.html`: The main structure and content of the landing page.
 * `style.css`: Contains all the styling rules for the page's appearance and layout.
 * `script.js`: Handles the interactive elements, specifically the logic for the CTA buttons and the interest form submission via `mailto:` links.
+* `image.png`: The header image displayed on the page. **(Must be present in the same folder)**
 
 ## How to Use
 
-1.  Ensure all three files (`index.html`, `style.css`, `script.js`) are in the same directory.
+1.  Ensure all four files (`index.html`, `style.css`, `script.js`, `image.png`) are in the same directory.
 2.  Open the `index.html` file in any modern web browser (like Chrome, Firefox, Safari, Edge).
 
-The landing page will be displayed, and the buttons/form will function as described.
+The landing page will be displayed with the header image, and the buttons/form will function as described.
 
 ## How the CTAs Work
 
@@ -44,6 +46,7 @@ Instead of linking to separate pages or complex backend systems, the CTAs in thi
 ## Customization
 
 * **Recipient Email Address:** To change the email address where the CTA information is sent, modify the `mailto:ergalign@outlook.com` parts within the `script.js` file.
+* **Header Image:** Replace `image.png` with your desired image file (ensure the `src` attribute in `index.html` matches the new filename).
 * **Content & Pricing:** All text, descriptions, benefits, and pricing details can be edited directly within the `index.html` file.
 * **Styling:** Colors, fonts, spacing, and layout can be adjusted by modifying the rules in the `style.css` file.
 
