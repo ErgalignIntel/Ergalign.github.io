@@ -6,255 +6,95 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Modern, clean font */
     line-height: 1.6;
     color: #333;
-    background-color: #f8f9fa; /* Light background */
-    padding: 15px; /* Add padding for small screens */
+    background-color: #f0f4f8; /* Light gray-blue */
+    padding: 15px;
 }
 
 /* Container */
 .container {
-    max-width: 800px; /* Max width for larger screens */
-    margin: 20px auto; /* Center container */
-    background-color: #ffffff; /* White background for content */
-    padding: 20px 30px; /* Padding inside container */
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
 }
 
 /* Header */
 header {
     text-align: center;
-    border-bottom: 1px solid #eee;
     padding-bottom: 20px;
-    padding-top: 10px; /* Added some space above the image */
+    padding-top: 20px;
+    border-bottom: 2px solid #e0e0e0;
 }
 
-/* Header Image Styling */
 .header-image {
-    display: block; /* Makes the image take its own line */
-    max-width: 100%; /* Ensures the image is responsive and doesn't overflow its container */
-    height: auto; /* Maintains aspect ratio when resizing width */
-    margin: 0 auto 20px auto; /* Centers the image horizontally and adds space below it */
-    border-radius: 8px; /* Optional: Adds rounded corners like the container */
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    color: #007aff; /* Apple blue */
-    margin-bottom: 5px;
+    color: #2e86de; /* Electric blue */
+    margin-bottom: 8px;
+    font-size: 2.2em;
 }
 
-header p {
+.tagline {
     color: #555;
-    font-size: 1.1em;
+    font-size: 1.2em;
+    font-weight: 400; /* Regular weight */
 }
 
 /* Sections */
 section {
-    margin-bottom: 40px;
-    padding-bottom: 30px;
+    margin-bottom: 50px; /* Increased bottom margin */
+    padding-bottom: 40px;
 }
 
 section:not(:last-child) {
-     border-bottom: 1px solid #eee; /* Separator line */
+    border-bottom: 2px solid #e0e0e0; /* Thicker separator */
 }
 
 h2 {
     color: #333;
-    margin-bottom: 15px;
-    font-size: 1.8em;
+    margin-bottom: 20px;
+    font-size: 2em; /* Larger heading */
+    font-weight: 700; /* Bold heading */
+    text-align: center; /* Center main heading */
 }
 
-h3 {
-    color: #555;
-    margin-top: 25px;
+/* Speed Service Cards */
+.service-card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* Soft shadow */
+    border: 1px solid #eee; /* Light border */
+}
+
+.more-help {
+    background-color: #fff; /* White background for this section */
+}
+
+.service-card h4 {
+    color: #2e86de; /* Electric blue */
+    font-size: 1.4em;
     margin-bottom: 10px;
-    font-size: 1.3em;
+    font-weight: bold;
 }
 
-h4 {
-    color: #007aff; /* Blue for plan names */
-    margin-bottom: 8px;
-    font-size: 1.15em;
-}
-
-p.description {
-    margin-bottom: 20px;
+.service-card p {
     color: #444;
-}
-
-ul {
-    list-style-position: inside;
-    margin-left: 5px; /* Indent list items slightly */
-    margin-bottom: 20px;
-}
-
-li {
-    margin-bottom: 8px;
-    color: #444;
-}
-
-li strong {
-    color: #333;
-}
-
-/* Pricing Options */
-.pricing-options {
-    margin-top: 20px;
-}
-
-.plan {
-    background-color: #f8f9fa; /* Slightly off-white */
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    padding: 20px;
     margin-bottom: 15px;
 }
 
-.plan p.price {
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #2c7d00; /* Green price */
-    margin-bottom: 15px;
-}
-
-.plan ul {
-    margin-bottom: 0; /* Remove extra space below list in plan box */
-    font-size: 0.95em;
-}
-
-.plan li {
-    margin-bottom: 5px;
-}
-
-/* Call to Action Buttons */
-.cta-button {
-    display: block; /* Full width on mobile */
-    width: 100%;
-    padding: 15px 20px; /* Larger for touch */
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    margin-top: 25px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.cta-button:hover {
-    opacity: 0.9;
-    transform: translateY(-2px); /* Slight lift on hover */
-}
-
-.primary-cta {
-    background-color: #007aff; /* Apple blue */
-}
-
-.secondary-cta {
-    background-color: #5ac8fa; /* Lighter blue */
-}
-
-/* Form Styling */
-#interest-form {
-    margin-top: 20px;
-    background-color: #f0f0f5; /* Light background for form area */
-    padding: 20px;
-    border-radius: 8px;
-}
-
-#interest-form h3 {
-    margin-top: 0; /* Remove top margin for heading inside form */
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
-}
-
-input[type="text"],
-input[type="email"] {
-    width: 100%;
-    padding: 12px; /* Good touch target size */
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1em;
-}
-
-input:focus {
-    border-color: #007aff;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
-}
-
-#ai-optimization .coming-soon {
-    font-weight: bold;
-    color: #e67e22; /* Orange for emphasis */
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 1.1em;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
-
-.privacy-note {
-    font-size: 0.9em;
-    color: #777;
-}
-
-.privacy-note a {
-    color: #007aff;
-    text-decoration: none;
-}
-
-.privacy-note a:hover {
-    text-decoration: underline;
-}
-
-
-/* Responsive Adjustments (Optional - for slightly wider layouts if needed) */
-@media (min-width: 600px) {
-    .cta-button {
-        display: inline-block; /* Allow buttons to not take full width */
-        width: auto;
-        padding: 15px 35px; /* Adjust padding for inline buttons */
-    }
-
-    #cloudflare-service .cta-button,
-    #interest-form .cta-button {
-        display: block; /* Keep form button full width potentially */
-        width: 100%;
-    }
-
-     /* Example: Put pricing plans side-by-side on medium screens */
-    .pricing-options {
-       /* display: flex;
-        gap: 20px; */ /* Uncomment to enable flex layout */
-    }
-    .plan {
-        /* flex: 1; */ /* Uncomment if using flex */
-        margin-bottom: 0; /* Remove bottom margin when side-by-side */
-    }
-     .plan.basic-plan {
-        margin-bottom: 15px; /* Add back margin if they stack */
-    }
-
-    /* Keep single column for simplicity if preferred */
-}
+.service-card ul {
+    list-
