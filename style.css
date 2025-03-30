@@ -1,15 +1,18 @@
 /* === Root Variables (Color Palette & Fonts) === */
 :root {
     --bg-dark: #16161a;          /* Darker Gray */
-    --bg-card: #23232b;          /* Slightly Lighter Dark Gray */
+    /* --bg-card: #23232b; */    /* Slightly Lighter Dark Gray - Made opaque below */
+    --bg-card-opaque: #23232b;   /* Opaque version for cards/sections */
     --text-light: #f1f1f1;       /* Off-white */
     --text-medium: #a0a0a0;      /* Lighter Medium Gray */
-    --text-dark: #111;           /* Near Black */
+    --text-dark: #111;           /* Near Black (For use on light backgrounds) */
+    --text-on-metallic: #282828; /* Default dark text for metallic background */
     --accent-green: #00ffaa;     /* Minty/Neon Green */
     --accent-blue: #00bfff;      /* Deep Sky Blue */
     --accent-purple: #c43dff;    /* Bright Purple */
     --accent-hover: #ffd700;     /* Gold/Yellow for hover */
     --border-color: #3a3a3a;      /* Darker border */
+    --border-metallic-accent: #777; /* Border for metallic container */
     --font-primary: 'Roboto', sans-serif;
     --pill-radius: 50px;
     --glow-opacity: 0.4;
@@ -29,7 +32,7 @@ html {
 body {
     font-family: var(--font-primary);
     line-height: 1.7;
-    color: var(--text-light);
+    color: var(--text-light); /* Default remains light for outside container */
     background-color: var(--bg-dark);
     /* Subtle noise texture */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%232a2a2a' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
@@ -41,13 +44,26 @@ body {
 .container {
     max-width: 1000px;
     margin: 30px auto;
-    background: linear-gradient(145deg, rgba(35, 35, 43, 0.95), rgba(43, 43, 51, 0.90)); /* Gradient bg */
-    backdrop-filter: blur(8px);
-    padding: 30px 40px;
+    /* padding: 30px 40px; */ /* Adjusted padding below */
     border-radius: 20px; /* Smoother radius */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    border: 1px solid var(--border-color);
-    border-top: 6px solid var(--accent-blue);
+
+    /* === MODIFIED: Metallic Background Effect === */
+    background: linear-gradient(160deg,
+        #6a6a6a 0%,  /* Darker top-leftish */
+        #dcdcdc 30%, /* Lighter highlight band */
+        #c0c0c0 50%, /* Silver mid */
+        #a8a8a8 70%, /* Darker shadow band */
+        #5a5a5a 100% /* Darkest bottom-rightish */
+    );
+    border: 1px solid var(--border-metallic-accent); /* Adjusted border color */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), /* Enhanced outer shadow */
+                inset 0 1px 1px rgba(255, 255, 255, 0.3), /* Inner top highlight */
+                inset 0 -1px 1px rgba(0, 0, 0, 0.4); /* Inner bottom shadow */
+    /* border-top: 6px solid var(--accent-blue); */ /* Removed specific top border, rely on main border */
+    padding: 30px 40px 40px; /* Ensure enough bottom padding */
+
+    /* === ADDED: Default text color for inside container (readability) === */
+    color: var(--text-on-metallic); /* Default text is now dark */
 }
 
 /* === Header === */
@@ -55,7 +71,8 @@ header {
     text-align: center;
     padding-bottom: 30px;
     margin-bottom: 40px;
-    border-bottom: 1px solid var(--border-color);
+    /* border-bottom: 1px solid var(--border-color); */ /* Use a lighter border on metallic */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .header-image {
@@ -68,15 +85,18 @@ header {
 }
 
 header h1 {
-    color: var(--text-light); /* Keep text light */
+    /* MODIFIED: Darker color for readability on metallic */
+    color: var(--text-dark);
     margin-bottom: 10px;
     font-size: 3em;
     font-weight: 700;
-    text-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-blue); /* Stronger glow */
+    /* MODIFIED: Adjusted shadow for better visibility */
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6); /* Subtle light edge */
 }
 
 .tagline {
-    color: var(--text-medium);
+    /* MODIFIED: Darker color for readability on metallic */
+    color: #444; /* Darker medium gray */
     font-size: 1.3em;
     font-weight: 400;
 }
@@ -88,11 +108,13 @@ section {
 }
 
 section:not(:last-child) {
-     border-bottom: 1px solid var(--border-color);
+     /* MODIFIED: Use lighter border between sections */
+     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 h2 {
-    color: var(--text-light);
+    /* MODIFIED: Darker color for readability */
+    color: var(--text-dark);
     margin-bottom: 40px;
     font-size: 2.6em;
     font-weight: 700;
@@ -101,11 +123,13 @@ h2 {
     align-items: center;
     justify-content: center;
     gap: 15px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5); /* Subtle light edge */
 }
 
-h2 .icon { display: inline-block; }
-#speed-services h2 { text-shadow: 0 0 8px var(--accent-green); }
-#ai-optimization h2 { text-shadow: 0 0 8px var(--accent-purple); }
+h2 .icon { display: inline-block; filter: brightness(0.9); /* Slightly darken icons */}
+/* Keep accent glows, they might still work */
+#speed-services h2 { text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5), 0 0 8px var(--accent-green); }
+#ai-optimization h2 { text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5), 0 0 8px var(--accent-purple); }
 #speed-services h2 .icon { filter: drop-shadow(0 0 5px var(--accent-green)); }
 #ai-optimization h2 .icon { filter: drop-shadow(0 0 5px var(--accent-purple)); }
 
@@ -118,8 +142,9 @@ h2 .icon { display: inline-block; }
 }
 
 .service-card {
-    background-color: rgba(43, 43, 51, 0.85); /* Card Background */
-    backdrop-filter: blur(10px);
+    /* MODIFIED: Opaque background to keep light text inside readable */
+    background-color: var(--bg-card-opaque);
+    /* backdrop-filter: blur(10px); */ /* Removed backdrop filter as background is opaque */
     border-radius: 18px; /* Match container */
     padding: 35px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
@@ -128,6 +153,7 @@ h2 .icon { display: inline-block; }
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    color: var(--text-light); /* Ensure default text inside card is light */
 }
 
 .service-card:hover {
@@ -135,7 +161,7 @@ h2 .icon { display: inline-block; }
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
 }
 
-/* Assigning accent colors & subtle glow */
+/* Assigning accent colors & subtle glow - Keeping existing glow */
 .service-card.accent-green { border-left-color: var(--accent-green); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 255, 170, 0.1); }
 .service-card.accent-blue { border-left-color: var(--accent-blue); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 204, 255, 0.1); }
 .service-card.accent-purple { border-left-color: var(--accent-purple); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(204, 0, 255, 0.1); }
@@ -149,18 +175,21 @@ h2 .icon { display: inline-block; }
     align-items: center;
     gap: 12px;
     min-height: 50px;
+    /* Color assigned below */
 }
 
-/* Coloring headings based on accent */
+/* Coloring headings based on accent - Kept as is */
 .accent-green h4 { color: var(--accent-green); text-shadow: 0 0 6px var(--accent-green); }
 .accent-blue h4 { color: var(--accent-blue); text-shadow: 0 0 6px var(--accent-blue); }
 .accent-purple h4 { color: var(--accent-purple); text-shadow: 0 0 6px var(--accent-purple); }
 .more-help h4 { color: var(--text-medium); }
 
+/* Kept card text light as background is now opaque dark */
 .service-card p.service-description { color: var(--text-medium); margin-bottom: 20px; font-style: italic; }
 .service-card ul { list-style: none; margin-bottom: 30px; padding-left: 5px; flex-grow: 1; }
 .service-card li { margin-bottom: 12px; position: relative; padding-left: 28px; color: var(--text-light); }
 
+/* List item bullets - Kept as is */
 .service-card li::before {
     content: '';
     position: absolute;
@@ -187,7 +216,7 @@ h2 .icon { display: inline-block; }
 .service-card ul ul li::before{ content: '-'; background-color: transparent; box-shadow: none; width: auto; height: auto; border-radius: 0; opacity: 0.8; top: 0px; left: 5px; }
 .service-card ul ul li:hover::before { transform: none; opacity: 1; }
 
-
+/* Note styling - kept as is, background should contrast okay */
 .note, .note-small {
     padding: 12px 18px;
     background-color: rgba(0, 0, 0, 0.25);
@@ -202,6 +231,7 @@ h2 .icon { display: inline-block; }
 
 
 /* === Payment & CTA Buttons === */
+/* Kept button styles as is - they have their own backgrounds */
 .payment-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: auto; padding-top: 25px; }
 .stripe-basic-steps, .paypal-basic-steps { display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 10px; background-color: rgba(0, 0, 0, 0.1); }
 
@@ -217,7 +247,7 @@ h2 .icon { display: inline-block; }
 }
 .btn-icon { display: inline-block; line-height: 0; filter: brightness(1); }
 
-/* Specific Button Colors (Smoother Gradients) */
+/* Specific Button Colors - Kept as is */
 .stripe-btn { background-image: linear-gradient(to right, var(--accent-blue) 0%, var(--accent-purple) 70%, var(--accent-green) 100%); color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
 .paypal-btn { background-image: linear-gradient(to right, #ffda63 0%, #ffb300 60%, #ffcc00 100%); color: var(--text-dark); }
 .help-cta { background-image: linear-gradient(to right, #555 0%, #777 50%, #555 100%); color: var(--text-light); text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
@@ -232,7 +262,7 @@ h2 .icon { display: inline-block; }
 .cta-button:active { transform: translateY(0px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); filter: brightness(1); }
 
 
-/* PayPal Button Containers */
+/* PayPal Button Containers - Kept as is */
 #paypal-button-container-P-1PJ72593841360548M7ULKEA,
 #paypal-button-container-P-2YC50469N17428923M7ULRGY {
     width: 100%; min-height: 50px; margin-top: 10px;
@@ -242,11 +272,17 @@ h2 .icon { display: inline-block; }
 
 /* === AI Optimization Form Section === */
 #ai-optimization {
-    background: linear-gradient(rgba(51, 51, 51, 0.9), rgba(40, 40, 48, 0.95));
-    padding: 40px; border-radius: 18px; border-top: 5px solid var(--accent-purple); margin-top: 40px;
+    /* MODIFIED: Opaque background for readability */
+    /* background: linear-gradient(rgba(51, 51, 51, 0.9), rgba(40, 40, 48, 0.95)); */
+    background-color: var(--bg-card-opaque);
+    padding: 40px; border-radius: 18px;
+    /* border-top: 5px solid var(--accent-purple); */ /* Use border-left like other cards? */
+    border-left: 8px solid var(--accent-purple); /* Make consistent with cards */
+     margin-top: 40px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(204, 0, 255, 0.1);
+    color: var(--text-light); /* Ensure default text is light here */
 }
-#ai-optimization h2 { color: var(--accent-purple); text-shadow: 0 0 8px var(--accent-purple); }
+#ai-optimization h2 { color: var(--accent-purple); text-shadow: 0 0 8px var(--accent-purple); } /* Kept accent color */
 #ai-optimization .description { text-align: center; color: var(--text-medium); margin-bottom: 30px; }
 #ai-optimization .coming-soon { text-align: center; font-weight: bold; color: var(--accent-green); text-shadow: 0 0 5px var(--accent-green); margin-bottom: 25px; font-size: 1.3em; }
 #interest-form h3 { text-align: center; margin-bottom: 35px; color: var(--text-light); font-weight: 500; font-size: 1.4em; }
@@ -267,10 +303,68 @@ input:focus {
 #ai-optimization .ai-cta { margin-top: 20px; }
 
 
+/* === ADDED: Styling for Automated Call Agent Section === */
+#call-agent {
+    margin-top: 40px; /* Space above this section */
+    padding: 35px; /* Match card padding */
+    text-align: center; /* Center align content */
+    background-color: var(--bg-card-opaque); /* Match card background */
+    border-radius: 18px; /* Match card radius */
+    border: 1px solid var(--border-color); /* Match card border */
+    border-left: 8px solid var(--accent-blue); /* Example: Use Blue accent */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 204, 255, 0.1); /* Match blue card glow */
+    color: var(--text-light); /* Default light text inside */
+}
+
+#call-agent h2 {
+    /* Use accent color consistent with border */
+    color: var(--accent-blue);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2), 0 0 8px var(--accent-blue);
+    /* Ensure icon styling if added */
+}
+#call-agent h2 .icon { filter: drop-shadow(0 0 5px var(--accent-blue)); }
+
+#call-agent h3 {
+    color: var(--text-light); /* Light heading */
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+#call-agent p {
+    color: var(--text-medium); /* Medium gray text */
+    line-height: 1.7;
+    margin-bottom: 15px;
+    max-width: 600px; /* Limit line length */
+    margin-left: auto;
+    margin-right: auto;
+}
+#call-agent p:last-of-type {
+    margin-bottom: 25px; /* More space before button */
+}
+
+/* Style the consultation button using existing button class */
+#call-agent .consultation-button {
+    /* Inherits .cta-button styles */
+    /* Add specific background if needed, or keep default gradient? */
+    background-image: linear-gradient(to right, var(--accent-blue) 0%, var(--accent-green) 70%, var(--accent-purple) 100%);
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    width: auto; /* Allow button to size naturally */
+    padding-left: 30px; padding-right: 30px;
+}
+/* Hover effect is inherited */
+
+
 /* === Footer === */
-footer { text-align: center; margin-top: 70px; padding-top: 35px; border-top: 1px solid var(--border-color); }
-.response-time { font-weight: bold; color: var(--accent-green); margin-bottom: 15px; text-shadow: 0 0 4px var(--accent-green); }
-.privacy-note { font-size: 0.9em; color: var(--text-medium); }
+footer {
+    text-align: center; margin-top: 70px; padding-top: 35px;
+    /* border-top: 1px solid var(--border-color); */ /* Use lighter border */
+     border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+/* MODIFIED: Footer text needs to be darker now */
+.response-time { font-weight: bold; color: #007744; /* Dark Green */ margin-bottom: 15px; text-shadow: none; }
+.privacy-note { font-size: 0.9em; color: #555; /* Dark medium gray */ }
 
 
 /* === Responsive Adjustments (Desktop Layout) === */
@@ -280,7 +374,9 @@ footer { text-align: center; margin-top: 70px; padding-top: 35px; border-top: 1p
         grid-column: 1 / -1; max-width: 650px; margin-left: auto; margin-right: auto;
     }
      /* Allow non-payment CTA buttons to size naturally */
-      .more-help .help-cta, #ai-optimization .ai-cta { width: auto; padding-left: 40px; padding-right: 40px; }
+      .more-help .help-cta, #ai-optimization .ai-cta, #call-agent .consultation-button { /* Added call agent button */
+          width: auto; padding-left: 40px; padding-right: 40px;
+      }
 }
 
 @media (min-width: 1024px) {
@@ -294,4 +390,3 @@ footer { text-align: center; margin-top: 70px; padding-top: 35px; border-top: 1p
     .stripe-basic-steps, .paypal-basic-steps { flex-direction: row; align-items: center; } /* Put basic steps side-by-side */
     .stripe-basic-steps .cta-button, .paypal-basic-steps > div { flex-grow: 1; }
 }
-
