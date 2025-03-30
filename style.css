@@ -1,4 +1,16 @@
-/* Basic Reset & Defaults */
+/* === Root Variables (Color Palette & Fonts) === */
+:root {
+    --bg-dark: #1e1e1e;          /* Dark Gray */
+    --bg-card: #2a2a2a;          /* Lighter Dark Gray */
+    --text-light: #f0f0f0;
+    --text-medium: #b0b0b0;
+    --accent-green: #39FF14;     /* Neon Green */
+    --accent-blue: #00AEFF;      /* Lightning Blue */
+    --accent-purple: #BF00FF;    /* Piercing Purple */
+    --font-primary: 'Roboto', sans-serif;
+}
+
+/* === Basic Reset & Defaults === */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,95 +18,339 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif; /* Modern, clean font */
-    line-height: 1.6;
-    color: #333;
-    background-color: #f0f4f8; /* Light gray-blue */
+    font-family: var(--font-primary);
+    line-height: 1.7;
+    color: var(--text-light);
+    background-color: var(--bg-dark);
     padding: 15px;
 }
 
-/* Container */
+/* === Container === */
 .container {
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+    max-width: 960px; /* Slightly wider */
+    margin: 30px auto;
+    background-color: var(--bg-card);
+    padding: 25px 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border-top: 4px solid var(--accent-blue); /* Accent border */
 }
 
-/* Header */
+/* === Header === */
 header {
     text-align: center;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #555; /* Subtle separator */
 }
 
 .header-image {
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 0 auto 20px;
+    margin: 0 auto 25px;
     border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 header h1 {
-    color: #2e86de; /* Electric blue */
-    margin-bottom: 8px;
-    font-size: 2.2em;
+    color: var(--accent-blue);
+    margin-bottom: 10px;
+    font-size: 2.5em; /* Larger */
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(0, 174, 255, 0.3); /* Subtle glow */
 }
 
 .tagline {
-    color: #555;
-    font-size: 1.2em;
-    font-weight: 400; /* Regular weight */
+    color: var(--text-medium);
+    font-size: 1.25em;
+    font-weight: 400;
 }
 
-/* Sections */
+/* === Sections === */
 section {
-    margin-bottom: 50px; /* Increased bottom margin */
+    margin-bottom: 50px;
     padding-bottom: 40px;
 }
 
 section:not(:last-child) {
-    border-bottom: 2px solid #e0e0e0; /* Thicker separator */
+     border-bottom: 1px solid #555;
 }
 
 h2 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 2em; /* Larger heading */
-    font-weight: 700; /* Bold heading */
-    text-align: center; /* Center main heading */
+    color: var(--text-light);
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 700;
+    text-align: center;
+    display: flex; /* For icon alignment */
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between icon and text */
 }
 
-/* Speed Service Cards */
+h2 .icon {
+    display: inline-block; /* Needed for potential future styling */
+}
+
+/* === Speed Services Grid & Cards === */
+.services-grid {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 1fr; /* Default single column */
+}
+
 .service-card {
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* Soft shadow */
-    border: 1px solid #eee; /* Light border */
+    background-color: #333; /* Slightly different from main card bg */
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-left: 5px solid; /* Accent border on the left */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.more-help {
-    background-color: #fff; /* White background for this section */
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
+
+/* Assigning accent colors */
+.service-card.accent-green { border-left-color: var(--accent-green); }
+.service-card.accent-blue { border-left-color: var(--accent-blue); }
+.service-card.accent-purple { border-left-color: var(--accent-purple); }
+.service-card.more-help { border-left-color: var(--text-medium); } /* Neutral for 'Help' */
 
 .service-card h4 {
-    color: #2e86de; /* Electric blue */
-    font-size: 1.4em;
-    margin-bottom: 10px;
+    font-size: 1.5em;
+    margin-bottom: 12px;
     font-weight: bold;
+    display: flex; /* Align icon and text */
+    align-items: center;
+    gap: 8px;
 }
 
-.service-card p {
-    color: #444;
-    margin-bottom: 15px;
+/* Coloring headings based on accent */
+.accent-green h4 { color: var(--accent-green); }
+.accent-blue h4 { color: var(--accent-blue); }
+.accent-purple h4 { color: var(--accent-purple); }
+.more-help h4 { color: var(--text-medium); }
+
+.service-card p.service-description {
+    color: var(--text-medium);
+    margin-bottom: 18px;
+    font-style: italic;
 }
 
 .service-card ul {
-    list-
+    list-style: none; /* Remove default bullets */
+    margin-bottom: 20px;
+    padding-left: 5px;
+}
+
+.service-card li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px; /* Space for pseudo-element bullet */
+}
+
+.service-card li::before { /* Custom bullet */
+    content: '▹'; /* Or use '▸', '✓' */
+    position: absolute;
+    left: 0;
+    top: 0px; /* Adjust vertical alignment */
+    font-weight: bold;
+}
+.accent-green li::before { color: var(--accent-green); }
+.accent-blue li::before { color: var(--accent-blue); }
+.accent-purple li::before { color: var(--accent-purple); }
+.more-help li::before { color: var(--text-medium); }
+
+
+.service-card ul ul {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding-left: 15px; /* Indent nested lists */
+}
+.service-card ul ul li::before{
+    content: '-'; /* Different bullet for sub-items */
+    top: -2px;
+}
+
+.note {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: rgba(0, 174, 255, 0.1); /* Faint blue background */
+    border-left: 4px solid var(--accent-blue);
+    border-radius: 6px;
+    color: var(--text-medium);
+    font-size: 0.95em;
+}
+.note strong {
+    color: var(--accent-blue);
+}
+
+
+/* === Fancier CTA Buttons === */
+.cta-button {
+    display: inline-flex; /* Use flex for icon alignment */
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between icon and text */
+    width: 100%; /* Full width within card */
+    padding: 14px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    background-size: 200% auto; /* For gradient transition */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-icon {
+    display: inline-block;
+    line-height: 0; /* Prevent extra space */
+}
+
+.btn-icon svg {
+    vertical-align: middle; /* Align icon nicely with text */
+}
+
+/* Specific Button Colors/Gradients */
+.speed-cta { background-image: linear-gradient(to right, var(--accent-green) 0%, #2ecc71 51%, var(--accent-green) 100%);} /* Green gradient */
+.recurring-cta { background-image: linear-gradient(to right, var(--accent-purple) 0%, #a55eea 51%, var(--accent-purple) 100%); } /* Purple gradient */
+.help-cta { background-image: linear-gradient(to right, #555 0%, #777 51%, #555 100%); } /* Gray gradient */
+.ai-cta { background-image: linear-gradient(to right, var(--accent-blue) 0%, #3498db 51%, var(--accent-blue) 100%); } /* Blue gradient */
+
+.cta-button:hover {
+    background-position: right center; /* Change gradient direction */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.cta-button:active {
+     transform: translateY(0px);
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* === AI Optimization Form Section === */
+#ai-optimization {
+    background-color: #333; /* Match card background */
+    padding: 30px;
+    border-radius: 12px;
+    border-top: 4px solid var(--accent-purple);
+}
+
+#ai-optimization h2 {
+    color: var(--accent-purple); /* Match border */
+}
+
+#ai-optimization .description {
+    text-align: center;
+    color: var(--text-medium);
+    margin-bottom: 25px;
+}
+
+#ai-optimization .coming-soon {
+    text-align: center;
+    font-weight: bold;
+    color: var(--accent-green);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+#interest-form h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-medium);
+    font-size: 0.95em;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: #444; /* Dark input background */
+    color: var(--text-light);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder {
+    color: #888; /* Lighter placeholder text */
+}
+
+
+input:focus {
+    border-color: var(--accent-purple); /* Purple border on focus */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(191, 0, 255, 0.2); /* Purple glow */
+}
+
+#ai-optimization .ai-cta { /* Style AI button specifically if needed, otherwise general styles apply */
+    margin-top: 10px; /* Adjust spacing if needed */
+}
+
+
+/* === Footer === */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid #555;
+}
+
+.response-time {
+    font-weight: bold;
+    color: var(--accent-green);
+    margin-bottom: 10px;
+}
+
+.privacy-note {
+    font-size: 0.9em;
+    color: var(--text-medium);
+}
+
+/* === Responsive Adjustments === */
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens and up */
+    }
+
+    .cta-button {
+         width: auto; /* Allow buttons to size naturally on wider screens */
+         padding: 14px 35px; /* Adjust padding */
+    }
+
+    /* Keep form button full width for emphasis */
+     #interest-form .ai-cta {
+        width: 100%;
+     }
+     /* Ensure service buttons are full width within their cards */
+     .service-card .cta-button {
+         width: 100%;
+     }
+}
+
