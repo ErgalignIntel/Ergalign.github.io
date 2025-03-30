@@ -165,23 +165,30 @@
     </div> <script src="https://www.paypal.com/sdk/js?client-id=AeHa1JrgyvBaWmNRnwCt-idgiJwzptHOko0uVXwYQZnUU5b2yZTjh9Gjl6eSm55RJzXZwtmiBpS_UwWD&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
 
     <script>
-      // Render Basic Plan Button ($49+$29/mo)
-      try {
-          paypal.Buttons({
-              style: { shape: 'pill', color: 'blue', layout: 'vertical', label: 'subscribe' },
-              createSubscription: function(data, actions) { return actions.subscription.create({ plan_id: 'P-2YC50469N17428923M7ULRGY' }); },
-              onApprove: function(data, actions) { alert('Basic Plan Subscription Started! ID: ' + data.subscriptionID); }
-          }).render('#paypal-button-container-P-2YC50469N17428923M7ULRGY');
-       } catch (error) { console.error("Failed to render PayPal button for Basic Plan:", error); }
+      function renderPayPalButtons() {
+          // Basic Plan Button ($49+$29/mo)
+          try {
+              if(document.getElementById('paypal-button-container-P-2YC50469N17428923M7ULRGY')) {
+                  paypal.Buttons({
+                      style: { shape: 'pill', color: 'blue', layout: 'vertical', label: 'subscribe' },
+                      createSubscription: function(data, actions) { return actions.subscription.create({ plan_id: 'P-2YC50469N17428923M7ULRGY' }); },
+                      onApprove: function(data, actions) { alert('Basic Plan Subscription Started! ID: ' + data.subscriptionID); }
+                  }).render('#paypal-button-container-P-2YC50469N17428923M7ULRGY');
+              }
+           } catch (error) { console.error("Failed to render PayPal button for Basic Plan:", error); }
 
-      // Render Premium Plan Button ($99/mo)
-      try {
-          paypal.Buttons({
-              style: { shape: 'pill', color: 'blue', layout: 'vertical', label: 'subscribe' },
-              createSubscription: function(data, actions) { return actions.subscription.create({ plan_id: 'P-1PJ72593841360548M7ULKEA' }); },
-              onApprove: function(data, actions) { alert('Premium Plan Subscription Started! ID: ' + data.subscriptionID); }
-          }).render('#paypal-button-container-P-1PJ72593841360548M7ULKEA');
-       } catch (error) { console.error("Failed to render PayPal button for Premium Plan:", error); }
+          // Premium Plan Button ($99/mo)
+          try {
+              if(document.getElementById('paypal-button-container-P-1PJ72593841360548M7ULKEA')) {
+                  paypal.Buttons({
+                      style: { shape: 'pill', color: 'blue', layout: 'vertical', label: 'subscribe' },
+                      createSubscription: function(data, actions) { return actions.subscription.create({ plan_id: 'P-1PJ72593841360548M7ULKEA' }); },
+                      onApprove: function(data, actions) { alert('Premium Plan Subscription Started! ID: ' + data.subscriptionID); }
+                  }).render('#paypal-button-container-P-1PJ72593841360548M7ULKEA');
+              }
+           } catch (error) { console.error("Failed to render PayPal button for Premium Plan:", error); }
+      }
+      renderPayPalButtons(); // Call function to render buttons
     </script>
 
     <script src="script.js"></script> </body>
