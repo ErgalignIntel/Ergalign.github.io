@@ -1,13 +1,16 @@
 /* === Root Variables (Color Palette & Fonts) === */
 :root {
-    --bg-dark: #1e1e1e;          /* Dark Gray */
-    --bg-card: #2a2a2a;          /* Lighter Dark Gray */
+    --bg-dark: #1a1a1a;          /* Darker Gray */
+    --bg-card: #2b2b2b;          /* Lighter Dark Gray */
     --text-light: #f0f0f0;
     --text-medium: #b0b0b0;
-    --accent-green: #39FF14;     /* Neon Green */
-    --accent-blue: #00AEFF;      /* Lightning Blue */
-    --accent-purple: #BF00FF;    /* Piercing Purple */
+    --text-dark: #1a1a1a;
+    --accent-green: #00ffcc;     /* Brighter Neon Green/Teal */
+    --accent-blue: #00ccff;      /* Lightning Blue */
+    --accent-purple: #cc00ff;    /* Piercing Purple */
+    --border-color: #444;
     --font-primary: 'Roboto', sans-serif;
+    --pill-radius: 50px; /* For pill shape */
 }
 
 /* === Basic Reset & Defaults === */
@@ -17,315 +20,343 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-primary);
     line-height: 1.7;
     color: var(--text-light);
     background-color: var(--bg-dark);
     padding: 15px;
+    font-size: 16px; /* Base font size */
 }
 
 /* === Container === */
 .container {
-    max-width: 960px; /* Slightly wider */
+    max-width: 1000px;
     margin: 30px auto;
     background-color: var(--bg-card);
-    padding: 25px 35px;
+    padding: 30px 40px;
     border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    border-top: 4px solid var(--accent-blue); /* Accent border */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    border-top: 5px solid var(--accent-blue);
 }
 
 /* === Header === */
 header {
     text-align: center;
-    padding-bottom: 25px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #555; /* Subtle separator */
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .header-image {
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 0 auto 25px;
+    margin: 0 auto 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
     color: var(--accent-blue);
     margin-bottom: 10px;
-    font-size: 2.5em; /* Larger */
+    font-size: 2.8em;
     font-weight: 700;
-    text-shadow: 0 0 5px rgba(0, 174, 255, 0.3); /* Subtle glow */
+    text-shadow: 0 0 8px rgba(0, 204, 255, 0.4);
 }
 
 .tagline {
     color: var(--text-medium);
-    font-size: 1.25em;
+    font-size: 1.3em;
     font-weight: 400;
 }
 
 /* === Sections === */
 section {
-    margin-bottom: 50px;
-    padding-bottom: 40px;
+    margin-bottom: 60px;
+    padding-bottom: 50px;
 }
 
 section:not(:last-child) {
-     border-bottom: 1px solid #555;
+     border-bottom: 1px solid var(--border-color);
 }
 
 h2 {
     color: var(--text-light);
-    margin-bottom: 30px;
-    font-size: 2.2em;
+    margin-bottom: 35px;
+    font-size: 2.4em;
     font-weight: 700;
     text-align: center;
-    display: flex; /* For icon alignment */
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Space between icon and text */
+    gap: 12px;
 }
 
-h2 .icon {
-    display: inline-block; /* Needed for potential future styling */
-}
+h2 .icon { display: inline-block; }
+#speed-services h2 .icon { filter: drop-shadow(0 0 4px var(--accent-green)); }
+#ai-optimization h2 .icon { filter: drop-shadow(0 0 4px var(--accent-purple)); }
+
 
 /* === Speed Services Grid & Cards === */
 .services-grid {
     display: grid;
-    gap: 25px;
-    grid-template-columns: 1fr; /* Default single column */
+    gap: 30px;
+    grid-template-columns: 1fr; /* Mobile default */
 }
 
 .service-card {
-    background-color: #333; /* Slightly different from main card bg */
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    border-left: 5px solid; /* Accent border on the left */
+    background-color: #333333e0; /* Slightly transparent dark */
+    backdrop-filter: blur(5px); /* Glassmorphism hint */
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
+    border-left: 6px solid; /* Accent border */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Use flexbox for internal layout */
+    flex-direction: column; /* Stack content vertically */
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
 }
 
 /* Assigning accent colors */
 .service-card.accent-green { border-left-color: var(--accent-green); }
 .service-card.accent-blue { border-left-color: var(--accent-blue); }
 .service-card.accent-purple { border-left-color: var(--accent-purple); }
-.service-card.more-help { border-left-color: var(--text-medium); } /* Neutral for 'Help' */
+.service-card.more-help { border-left-color: var(--text-medium); }
 
 .service-card h4 {
-    font-size: 1.5em;
-    margin-bottom: 12px;
+    font-size: 1.6em;
+    margin-bottom: 15px;
     font-weight: bold;
-    display: flex; /* Align icon and text */
+    display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    min-height: 48px; /* Ensure consistent heading height */
 }
 
 /* Coloring headings based on accent */
-.accent-green h4 { color: var(--accent-green); }
-.accent-blue h4 { color: var(--accent-blue); }
-.accent-purple h4 { color: var(--accent-purple); }
+.accent-green h4 { color: var(--accent-green); text-shadow: 0 0 3px var(--accent-green); }
+.accent-blue h4 { color: var(--accent-blue); text-shadow: 0 0 3px var(--accent-blue); }
+.accent-purple h4 { color: var(--accent-purple); text-shadow: 0 0 3px var(--accent-purple); }
 .more-help h4 { color: var(--text-medium); }
+
 
 .service-card p.service-description {
     color: var(--text-medium);
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     font-style: italic;
 }
 
 .service-card ul {
-    list-style: none; /* Remove default bullets */
-    margin-bottom: 20px;
+    list-style: none;
+    margin-bottom: 25px;
     padding-left: 5px;
+    flex-grow: 1; /* Allow list to grow and push buttons down */
 }
 
 .service-card li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     position: relative;
-    padding-left: 20px; /* Space for pseudo-element bullet */
+    padding-left: 25px;
+    color: var(--text-light);
 }
 
-.service-card li::before { /* Custom bullet */
-    content: '▹'; /* Or use '▸', '✓' */
+.service-card li::before {
+    content: ''; /* Use background image or pseudo-elements for icons */
     position: absolute;
     left: 0;
-    top: 0px; /* Adjust vertical alignment */
-    font-weight: bold;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: currentColor; /* Inherit color */
+    opacity: 0.7;
 }
-.accent-green li::before { color: var(--accent-green); }
-.accent-blue li::before { color: var(--accent-blue); }
-.accent-purple li::before { color: var(--accent-purple); }
+.accent-green li::before { color: var(--accent-green); box-shadow: 0 0 3px var(--accent-green); }
+.accent-blue li::before { color: var(--accent-blue); box-shadow: 0 0 3px var(--accent-blue); }
+.accent-purple li::before { color: var(--accent-purple); box-shadow: 0 0 3px var(--accent-purple); }
 .more-help li::before { color: var(--text-medium); }
 
 
 .service-card ul ul {
-    margin-top: 8px;
-    margin-bottom: 8px;
-    padding-left: 15px; /* Indent nested lists */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
 }
 .service-card ul ul li::before{
-    content: '-'; /* Different bullet for sub-items */
-    top: -2px;
+    content: '-';
+    background-color: transparent; /* Remove dot for sub-items */
+    box-shadow: none;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    opacity: 1;
+    top: -1px;
+    left: 5px;
 }
 
-.note {
-    margin-top: 30px;
-    padding: 15px;
-    background-color: rgba(0, 174, 255, 0.1); /* Faint blue background */
-    border-left: 4px solid var(--accent-blue);
+.note, .note-small {
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-left: 4px solid var(--text-medium);
     border-radius: 6px;
     color: var(--text-medium);
-    font-size: 0.95em;
+    font-size: 0.9em;
+    margin-top: 15px;
 }
-.note strong {
-    color: var(--accent-blue);
-}
+.note strong { color: var(--accent-blue); }
+.note-small { font-size: 0.85em; margin-top: 20px; margin-bottom: 10px; }
 
 
-/* === Fancier CTA Buttons === */
+/* === Payment & CTA Buttons === */
+.payment-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically by default */
+    gap: 15px; /* Space between buttons */
+    margin-top: auto; /* Push buttons to bottom of flex card */
+    padding-top: 20px; /* Space above buttons */
+}
+
+/* Specific layout for Basic Plan buttons */
+.stripe-basic-steps, .paypal-basic-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Pill Shape for ALL CTA buttons */
 .cta-button {
-    display: inline-flex; /* Use flex for icon alignment */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Space between icon and text */
-    width: 100%; /* Full width within card */
-    padding: 14px 25px;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #fff;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 20px; /* Slightly smaller padding */
+    font-size: 1em; /* Slightly smaller font */
+    font-weight: 500; /* Medium weight */
+    color: var(--text-dark); /* Dark text on light buttons */
     border: none;
-    border-radius: 8px;
+    border-radius: var(--pill-radius); /* Pill shape */
     cursor: pointer;
     text-align: center;
-    margin-top: 15px;
     transition: all 0.3s ease;
-    background-size: 200% auto; /* For gradient transition */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-size: 200% auto;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    text-decoration: none; /* Remove underline from potential links */
 }
 
 .btn-icon {
     display: inline-block;
-    line-height: 0; /* Prevent extra space */
+    line-height: 0;
+    filter: brightness(0.8); /* Slightly dim icons */
 }
 
-.btn-icon svg {
-    vertical-align: middle; /* Align icon nicely with text */
+.cta-button:hover .btn-icon {
+    filter: brightness(1);
 }
 
-/* Specific Button Colors/Gradients */
-.speed-cta { background-image: linear-gradient(to right, var(--accent-green) 0%, #2ecc71 51%, var(--accent-green) 100%);} /* Green gradient */
-.recurring-cta { background-image: linear-gradient(to right, var(--accent-purple) 0%, #a55eea 51%, var(--accent-purple) 100%); } /* Purple gradient */
-.help-cta { background-image: linear-gradient(to right, #555 0%, #777 51%, #555 100%); } /* Gray gradient */
-.ai-cta { background-image: linear-gradient(to right, var(--accent-blue) 0%, #3498db 51%, var(--accent-blue) 100%); } /* Blue gradient */
+
+/* Specific Button Colors (Gradients) */
+.stripe-btn { background-image: linear-gradient(to right, var(--accent-blue) 0%, var(--accent-purple) 51%, var(--accent-blue) 100%); color: #fff; }
+.paypal-btn { background-image: linear-gradient(to right, #ffcc00 0%, #ffb300 51%, #ffcc00 100%); color: #1e1e1e;} /* PayPal Gold/Yellow */
+.help-cta { background-image: linear-gradient(to right, #666 0%, #888 51%, #666 100%); color: var(--text-light); }
+.ai-cta { background-image: linear-gradient(to right, var(--accent-purple) 0%, var(--accent-green) 51%, var(--accent-purple) 100%); color: #fff; }
 
 .cta-button:hover {
-    background-position: right center; /* Change gradient direction */
+    background-position: right center;
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-    color: #fff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+    filter: brightness(1.1); /* Slightly brighten on hover */
 }
 
 .cta-button:active {
      transform: translateY(0px);
-     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+     filter: brightness(1);
+}
+
+/* Styling for PayPal rendered buttons */
+/* We can't style the inside, but we can style the container */
+#paypal-button-container-P-1PJ72593841360548M7ULKEA,
+#paypal-button-container-P-2YC50469N17428923M7ULRGY {
+    width: 100%;
+    min-height: 50px; /* Ensure space is allocated */
+    margin-top: 10px; /* Consistent spacing */
+}
+.paypal-basic-steps #paypal-button-container-P-2YC50469N17428923M7ULRGY {
+    margin-top: 0; /* No extra top margin inside the box */
 }
 
 
 /* === AI Optimization Form Section === */
 #ai-optimization {
-    background-color: #333; /* Match card background */
-    padding: 30px;
-    border-radius: 12px;
+    background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent */
+    padding: 35px;
+    border-radius: 15px;
     border-top: 4px solid var(--accent-purple);
+    margin-top: 40px; /* Add some space above */
 }
 
-#ai-optimization h2 {
-    color: var(--accent-purple); /* Match border */
-}
+#ai-optimization h2 { color: var(--accent-purple); text-shadow: 0 0 3px var(--accent-purple); }
+#ai-optimization .description { text-align: center; color: var(--text-medium); margin-bottom: 25px; }
+#ai-optimization .coming-soon { text-align: center; font-weight: bold; color: var(--accent-green); margin-bottom: 20px; font-size: 1.2em; }
 
-#ai-optimization .description {
-    text-align: center;
-    color: var(--text-medium);
-    margin-bottom: 25px;
-}
+#interest-form h3 { text-align: center; margin-bottom: 30px; color: var(--text-light); font-weight: 500; font-size: 1.3em; }
 
-#ai-optimization .coming-soon {
-    text-align: center;
-    font-weight: bold;
-    color: var(--accent-green);
-    margin-bottom: 15px;
-    font-size: 1.2em;
-}
+.form-group { margin-bottom: 25px; }
 
-#interest-form h3 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: var(--text-light);
-    font-weight: 500;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: var(--text-medium);
-    font-size: 0.95em;
-}
+label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-medium); font-size: 0.95em; }
 
 input[type="text"],
 input[type="email"] {
     width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #555;
-    border-radius: 6px;
+    padding: 14px 18px; /* More padding */
+    border: 1px solid var(--border-color);
+    border-radius: var(--pill-radius); /* Pill shape */
     font-size: 1em;
-    background-color: #444; /* Dark input background */
+    background-color: #444;
     color: var(--text-light);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
 }
 
 input[type="text"]::placeholder,
-input[type="email"]::placeholder {
-    color: #888; /* Lighter placeholder text */
-}
-
+input[type="email"]::placeholder { color: #888; }
 
 input:focus {
-    border-color: var(--accent-purple); /* Purple border on focus */
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(191, 0, 255, 0.2); /* Purple glow */
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 4px rgba(204, 0, 255, 0.2); /* Purple glow */
 }
 
-#ai-optimization .ai-cta { /* Style AI button specifically if needed, otherwise general styles apply */
-    margin-top: 10px; /* Adjust spacing if needed */
-}
+#ai-optimization .ai-cta { margin-top: 15px; }
 
 
 /* === Footer === */
 footer {
     text-align: center;
-    margin-top: 50px;
-    padding-top: 25px;
-    border-top: 1px solid #555;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
 }
 
 .response-time {
     font-weight: bold;
     color: var(--accent-green);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 2px var(--accent-green);
 }
 
 .privacy-note {
@@ -333,24 +364,51 @@ footer {
     color: var(--text-medium);
 }
 
-/* === Responsive Adjustments === */
+
+/* === Responsive Adjustments (Desktop Layout) === */
 @media (min-width: 768px) {
     .services-grid {
-        grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens and up */
+        grid-template-columns: repeat(2, 1fr); /* Default 2 columns */
     }
 
-    .cta-button {
-         width: auto; /* Allow buttons to size naturally on wider screens */
-         padding: 14px 35px; /* Adjust padding */
+    /* Spanning rules for 1-2-1-1 layout */
+    .full-width-s1,
+    .full-width-s3,
+    .full-width-s4 {
+        grid-column: 1 / -1; /* Make these span both columns */
+        max-width: 600px; /* Optional: Limit width of single items */
+        margin-left: auto; /* Center the single items */
+        margin-right: auto;
     }
 
-    /* Keep form button full width for emphasis */
-     #interest-form .ai-cta {
-        width: 100%;
+     /* Adjust payment buttons layout on wider screens */
+     .payment-buttons {
+        /* Keep stacked for now, easier for multiple options */
+         /* Or uncomment below for side-by-side */
+        /* flex-direction: row;
+        flex-wrap: wrap; */
      }
-     /* Ensure service buttons are full width within their cards */
-     .service-card .cta-button {
-         width: 100%;
+      .payment-buttons .cta-button {
+         /* flex-grow: 1; */ /* Allow buttons to grow if side-by-side */
      }
+     /* Adjust Stripe/PayPal boxes on Basic Plan */
+     .stripe-basic-steps, .paypal-basic-steps {
+         /* Consider side-by-side on very wide screens if needed */
+     }
+
+     /* Allow non-payment CTA buttons to size naturally */
+      .more-help .help-cta, #ai-optimization .ai-cta {
+          width: auto;
+          padding-left: 35px;
+          padding-right: 35px;
+      }
+}
+
+@media (min-width: 1024px) {
+    body { font-size: 17px; } /* Slightly larger base font on large screens */
+    .container { padding: 35px 50px; }
+    header h1 { font-size: 3em; }
+    h2 { font-size: 2.6em; }
+    .service-card h4 { font-size: 1.7em; }
 }
 
