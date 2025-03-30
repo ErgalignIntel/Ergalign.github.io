@@ -14,13 +14,12 @@
     --pill-radius: 50px;
     --glow-opacity: 0.4;
 
-    /* === ADDED: Metallic Gradient Attempts for Buttons === */
-    /* These add silvery/gray hints to the accent gradients */
+    /* === Metallic Gradient Attempts for Buttons === */
     --grad-metal-stripe: linear-gradient(to right, #6cb0f0 0%, var(--accent-blue) 20%, var(--accent-purple) 70%, #e0a0ff 90%, #f0f0f0 100%);
     --grad-metal-paypal: linear-gradient(to right, #fff0a0 0%, #ffda63 20%, #ffb300 60%, #ffcc00 80%, #fff8d0 100%);
     --grad-metal-help: linear-gradient(to right, #aaa 0%, #777 50%, #aaa 100%);
     --grad-metal-ai: linear-gradient(to right, #e0a0ff 0%, var(--accent-purple) 20%, var(--accent-green) 70%, #a0ffda 90%, #f0f0f0 100%);
-    --grad-metal-consult: linear-gradient(to right, #a0dfff 0%, var(--accent-blue) 20%, var(--accent-green) 70%, #a0ffda 90%, #f0f0f0 100%); /* Example for new button */
+    --grad-metal-consult: linear-gradient(to right, #a0dfff 0%, var(--accent-blue) 20%, var(--accent-green) 70%, #a0ffda 90%, #f0f0f0 100%);
 }
 
 /* === Basic Reset & Defaults === */
@@ -49,15 +48,14 @@ body {
 .container {
     max-width: 1000px;
     margin: 30px auto;
-    /* RESTORED: Original dark background gradient */
     background: linear-gradient(145deg, rgba(35, 35, 43, 0.95), rgba(43, 43, 51, 0.90));
-    backdrop-filter: blur(8px); /* Kept blur */
+    backdrop-filter: blur(8px);
     padding: 30px 40px;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     border: 1px solid var(--border-color);
-    border-top: 6px solid var(--accent-blue); /* Kept original top border */
-    color: var(--text-light); /* RESTORED: Default light text */
+    border-top: 6px solid var(--accent-blue);
+    color: var(--text-light);
 }
 
 /* === Header === */
@@ -65,28 +63,66 @@ header {
     text-align: center;
     padding-bottom: 30px;
     margin-bottom: 40px;
-    border-bottom: 1px solid var(--border-color); /* Original border */
+    border-bottom: 1px solid var(--border-color);
 }
 
 .header-image {
     display: block;
-    max-width: 100%;
+    max-width: 100%; /* Adjusted from previous suggestion */
     height: auto;
     margin: 0 auto 30px;
-    border-radius: 15px;
+    border-radius: 15px; /* Kept user's value */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
+/* --- Original H1 Style - Commented Out --- */
+/*
 header h1 {
-    color: var(--text-light); /* RESTORED: Light text */
+    color: var(--text-light);
     margin-bottom: 10px;
     font-size: 3em;
     font-weight: 700;
-    text-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-blue); /* Original glow */
+    text-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-blue);
+}
+*/
+
+/* === ADDED: New style for H1 with Neon Metallic effect === */
+/* === Make sure to add class="h1-neon-metallic" to your H1 tag in HTML === */
+.h1-neon-metallic {
+    /* Replicated styles from original header h1 */
+    font-family: var(--font-primary);
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center; /* Inherited from header, but good to be explicit */
+    margin-bottom: 10px;
+
+    /* Metallic Gradient Fill using Neon Purple from variables */
+    background: linear-gradient(
+        140deg,
+        #e0a0ff 20%,       /* Lighter highlight (from existing button gradient) */
+        var(--accent-purple) 50%, /* Main neon purple variable */
+        #a000cc 80%        /* Darker vibrant shade derived from accent */
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback */
+
+    /* Neon Glow Effect using accent purple */
+    text-shadow:
+        0 0 5px var(--accent-purple),  /* Inner glow */
+        0 0 10px var(--accent-purple), /* Main glow */
+        0 0 20px #e0a0ff,        /* Lighter halo */
+        0 0 30px #a000cc;        /* Darker outer edge */
+
+    /* Optional: Subtle edge */
+    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.1);
+    display: block; /* Ensure block display */
 }
 
+
 .tagline {
-    color: var(--text-medium); /* RESTORED: Light medium gray */
+    color: var(--text-medium);
     font-size: 1.3em;
     font-weight: 400;
 }
@@ -98,11 +134,11 @@ section {
 }
 
 section:not(:last-child) {
-     border-bottom: 1px solid var(--border-color); /* Original border */
+     border-bottom: 1px solid var(--border-color);
 }
 
 h2 {
-    color: var(--text-light); /* RESTORED: Light text */
+    color: var(--text-light);
     margin-bottom: 40px;
     font-size: 2.6em;
     font-weight: 700;
@@ -111,15 +147,15 @@ h2 {
     align-items: center;
     justify-content: center;
     gap: 15px;
-    /* text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5); */ /* Removed light edge shadow */
 }
 
-/* Keep original icon/glow effects */
 h2 .icon { display: inline-block; }
 #speed-services h2 { text-shadow: 0 0 8px var(--accent-green); }
 #ai-optimization h2 { text-shadow: 0 0 8px var(--accent-purple); }
+#call-agent h2 { color: var(--accent-blue); text-shadow: 0 0 8px var(--accent-blue); } /* Added call agent H2 color/glow */
 #speed-services h2 .icon { filter: drop-shadow(0 0 5px var(--accent-green)); }
 #ai-optimization h2 .icon { filter: drop-shadow(0 0 5px var(--accent-purple)); }
+#call-agent h2 .icon { filter: drop-shadow(0 0 5px var(--accent-blue)); } /* Added call agent icon glow */
 
 
 /* === Speed Services Grid & Cards === */
@@ -130,12 +166,12 @@ h2 .icon { display: inline-block; }
 }
 
 .service-card {
-    background-color: var(--bg-card-opaque); /* Keep opaque dark background */
+    background-color: var(--bg-card-opaque);
     border-radius: 18px;
     padding: 35px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     border: 1px solid var(--border-color);
-    border-left: 8px solid; /* Keep accent border */
+    border-left: 8px solid;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -147,7 +183,6 @@ h2 .icon { display: inline-block; }
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
 }
 
-/* Keep accent colors & glows for card borders */
 .service-card.accent-green { border-left-color: var(--accent-green); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 255, 170, 0.1); }
 .service-card.accent-blue { border-left-color: var(--accent-blue); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 204, 255, 0.1); }
 .service-card.accent-purple { border-left-color: var(--accent-purple); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(204, 0, 255, 0.1); }
@@ -162,18 +197,14 @@ h2 .icon { display: inline-block; }
     gap: 12px;
     min-height: 50px;
     /* Color assigned below */
-    /* === ADDED: Subtle text shadow for metallic edge effect === */
-    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), /* Top-left highlight */
-                 -1px -1px 0px rgba(0, 0, 0, 0.3); /* Bottom-right shadow */
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3);
 }
 
-/* Keep original coloring & glows */
 .accent-green h4 { color: var(--accent-green); text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--accent-green); }
 .accent-blue h4 { color: var(--accent-blue); text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--accent-blue); }
 .accent-purple h4 { color: var(--accent-purple); text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--accent-purple); }
-.more-help h4 { color: var(--text-medium); text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3); } /* Add effect here too */
+.more-help h4 { color: var(--text-medium); text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3); }
 
-/* Keep original list styles */
 .service-card p.service-description { color: var(--text-medium); margin-bottom: 20px; font-style: italic; }
 .service-card ul { list-style: none; margin-bottom: 30px; padding-left: 5px; flex-grow: 1; }
 .service-card li { margin-bottom: 12px; position: relative; padding-left: 28px; color: var(--text-light); }
@@ -187,7 +218,6 @@ h2 .icon { display: inline-block; }
 .service-card ul ul li::before{ content: '-'; background-color: transparent; box-shadow: none; width: auto; height: auto; border-radius: 0; opacity: 0.8; top: 0px; left: 5px; }
 .service-card ul ul li:hover::before { transform: none; opacity: 1; }
 
-/* Keep original note styles */
 .note, .note-small { padding: 12px 18px; background-color: rgba(0, 0, 0, 0.25); border-left: 5px solid var(--text-medium); border-radius: 8px; color: var(--text-medium); font-size: 0.9em; margin-top: 15px; }
 .note strong { color: var(--accent-blue); }
 .note-small { font-size: 0.85em; margin-top: 20px; margin-bottom: 10px; }
@@ -206,19 +236,16 @@ h2 .icon { display: inline-block; }
     text-decoration: none;
     position: relative;
     overflow: hidden;
-    /* === MODIFIED: Default text shadow for buttons === */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
 }
 .btn-icon { display: inline-block; line-height: 0; filter: brightness(1); }
 
-/* === MODIFIED: Use Metallic Gradient Variables for Buttons === */
 .stripe-btn { background-image: var(--grad-metal-stripe); color: #fff; }
-.paypal-btn { background-image: var(--grad-metal-paypal); color: var(--text-dark); text-shadow: none; /* Remove shadow for light button */ }
+.paypal-btn { background-image: var(--grad-metal-paypal); color: var(--text-dark); text-shadow: none; }
 .help-cta { background-image: var(--grad-metal-help); color: var(--text-light); }
 .ai-cta { background-image: var(--grad-metal-ai); color: #fff; }
-/* Style for new button added further down */
+/* Style for new consultation button is added below */
 
-/* Keep original hover effect */
 .cta-button:hover {
     background-position: right center;
     transform: translateY(-3px);
@@ -228,7 +255,6 @@ h2 .icon { display: inline-block; }
 .cta-button:active { transform: translateY(0px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); filter: brightness(1); }
 
 
-/* Keep original PayPal styles */
 #paypal-button-container-P-1PJ72593841360548M7ULKEA,
 #paypal-button-container-P-2YC50469N17428923M7ULRGY { width: 100%; min-height: 50px; margin-top: 10px; }
 .paypal-basic-steps #paypal-button-container-P-2YC50469N17428923M7ULRGY { margin-top: 0; }
@@ -236,14 +262,13 @@ h2 .icon { display: inline-block; }
 
 /* === AI Optimization Form Section === */
 #ai-optimization {
-    background-color: var(--bg-card-opaque); /* Keep opaque */
+    background-color: var(--bg-card-opaque);
     padding: 40px; border-radius: 18px;
-    border-left: 8px solid var(--accent-purple); /* Keep consistency */
+    border-left: 8px solid var(--accent-purple);
      margin-top: 40px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(204, 0, 255, 0.1);
     color: var(--text-light);
 }
-/* Keep internal styles as they were */
 #ai-optimization h2 { color: var(--accent-purple); text-shadow: 0 0 8px var(--accent-purple); }
 #ai-optimization .description { text-align: center; color: var(--text-medium); margin-bottom: 30px; }
 #ai-optimization .coming-soon { text-align: center; font-weight: bold; color: var(--accent-green); text-shadow: 0 0 5px var(--accent-green); margin-bottom: 25px; font-size: 1.3em; }
@@ -261,20 +286,15 @@ input:focus { border-color: var(--accent-purple); box-shadow: 0 0 0 4px rgba(204
     margin-top: 40px;
     padding: 35px;
     text-align: center;
-    background-color: var(--bg-card-opaque); /* Use opaque card background */
+    background-color: var(--bg-card-opaque);
     border-radius: 18px;
     border: 1px solid var(--border-color);
-    border-left: 8px solid var(--accent-blue); /* Use Blue accent */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 204, 255, 0.1); /* Blue glow */
-    color: var(--text-light); /* Light text inside */
+    border-left: 8px solid var(--accent-blue);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 204, 255, 0.1);
+    color: var(--text-light);
 }
 
-#call-agent h2 {
-    color: var(--accent-blue); /* Use accent color */
-    text-shadow: 0 0 8px var(--accent-blue); /* Add glow */
-    /* Ensure icon style if added */
-}
-#call-agent h2 .icon { filter: drop-shadow(0 0 5px var(--accent-blue)); }
+/* #call-agent h2 defined above with other H2s */
 
 #call-agent h3 {
     color: var(--text-light);
@@ -297,27 +317,23 @@ input:focus { border-color: var(--accent-purple); box-shadow: 0 0 0 4px rgba(204
 
 /* Style for the new consultation button */
 #call-agent .consultation-button {
-    /* Inherits .cta-button styles */
-    background-image: var(--grad-metal-consult); /* Apply metallic gradient */
-    color: #fff; /* Ensure light text */
-    width: auto; /* Allow button to size naturally */
+    background-image: var(--grad-metal-consult);
+    color: #fff;
+    width: auto; /* Overrides default width: 100% */
     padding-left: 30px; padding-right: 30px;
 }
-/* Hover effect is inherited via .cta-button:hover */
 
 
 /* === Footer === */
 footer {
     text-align: center; margin-top: 70px; padding-top: 35px;
-    border-top: 1px solid var(--border-color); /* Original border */
+    border-top: 1px solid var(--border-color);
 }
-/* RESTORED Footer text colors */
 .response-time { font-weight: bold; color: var(--accent-green); margin-bottom: 15px; text-shadow: 0 0 4px var(--accent-green); }
 .privacy-note { font-size: 0.9em; color: var(--text-medium); }
 
 
 /* === Responsive Adjustments (Desktop Layout) === */
-/* Kept original responsive rules */
 @media (min-width: 768px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .full-width-s1, .full-width-s3, .full-width-s4 { grid-column: 1 / -1; max-width: 650px; margin-left: auto; margin-right: auto; }
@@ -327,7 +343,8 @@ footer {
 @media (min-width: 1024px) {
     body { font-size: 17px; }
     .container { padding: 40px 60px; }
-    header h1 { font-size: 3.2em; }
+    /* Adjust H1 size slightly for desktop if needed */
+    /* .h1-neon-metallic { font-size: 3.2em; } */
     h2 { font-size: 2.8em; }
     .service-card h4 { font-size: 1.8em; }
     .payment-buttons { flex-direction: row; flex-wrap: wrap; }
