@@ -2,56 +2,62 @@
 
 ## Overview
 
-This project contains the HTML, CSS, and JavaScript code for a simple, mobile-first landing page for "ErgAlign Intel Home Office and Business Solutions". The page presents two core offerings and includes a header image:
+This project contains the HTML, CSS, and JavaScript code for a visually updated, mobile-first landing page for "ErgAlign Intel Home Office and Business Solutions". The page features a modern dark theme with neon green, lightning blue, and piercing purple accents. It presents several core offerings:
 
-1.  **Cloudflare Speed Optimization Service:** Details two pricing plans (Basic and Premium) and includes a Call to Action (CTA) button.
-2.  **Upcoming AI-Powered Google Optimization:** Describes a future service and provides a simple form for users to express interest and sign up for early access.
+1.  **Speed Optimization Services:** Includes multiple options:
+    * Speed Check ($9.99)
+    * One-Time Speed Boost ($79)
+    * Premium Ongoing Plan ($99/month)
+    * Custom Help Inquiry
+2.  **Upcoming AI-Powered Google Optimization:** Describes a future service and provides a styled form for users to express interest and sign up for early access.
 
-The design follows principles of simplicity, minimalism, and mobile-first responsiveness.
+The design uses a dark background, vibrant accent colors, CSS variables, a responsive grid layout for services on larger screens, and enhanced call-to-action buttons with icons and gradients.
 
 ## Features
 
-* **Header Image:** Includes a relevant visual at the top of the page.
-* **Minimalist Design:** Focuses on essential information to improve clarity and conversion.
-* **Mobile-First Layout:** Designed to look and function well on small screens (like iPhones) using a single-column layout.
-* **Clear Calls to Action (CTAs):** Prominent buttons ("Optimize Your Site Now", "Be the First to Access AI Optimization") encourage user interaction.
-* **Direct Email Integration:** CTAs are configured to open the user's default email client with pre-filled information directed to `ergalign@outlook.com`.
-* **Simple Structure:** Easy-to-understand HTML structure, straightforward CSS for styling, and minimal JavaScript for interaction.
-* **Basic Interest Form:** Collects Name, Email, and optional Business Name for the upcoming AI service waitlist.
-* **Privacy Note:** Includes a brief statement about data privacy.
+* **Modern Dark Theme:** Uses a dark gray base with neon green, lightning blue, and piercing purple accents.
+* **Header Image:** Includes the primary visual at the top.
+* **Responsive Layout:** Mobile-first single column, transitioning to a two-column grid for service cards on wider screens.
+* **Enhanced CTAs:** Buttons feature icons, gradients, and improved hover effects.
+* **Styled Form:** The AI interest form is styled to match the dark theme with accent colors on focus.
+* **Direct Email Integration:** All CTAs are configured to open the user's default email client with pre-filled information (subject and body indicating the specific service) directed to `ergalign@outlook.com`.
+* **Clear Service Structure:** Clearly lists all available one-time, recurring, and upcoming services.
+* **Privacy & Response Time:** Includes notes on privacy and expected email response time.
 
 ## Files Included
 
 * `index.html`: The main structure and content of the landing page.
-* `style.css`: Contains all the styling rules for the page's appearance and layout.
-* `script.js`: Handles the interactive elements, specifically the logic for the CTA buttons and the interest form submission via `mailto:` links.
-* `image.png`: The header image displayed on the page. **(Must be present in the same folder)**
+* `style.css`: Contains all the styling rules, including the dark theme, layout, responsive design, and button/form styling using CSS variables.
+* `script.js`: Handles the interactive elements (button clicks and form submission) via `mailto:` links.
+* `IMG_4855.jpeg`: The header image displayed on the page. **(Must be present in the same folder)**
 
 ## How to Use
 
-1.  Ensure all four files (`index.html`, `style.css`, `script.js`, `image.png`) are in the same directory.
+1.  Ensure all four files (`index.html`, `style.css`, `script.js`, `IMG_4855.jpeg`) are in the same directory.
 2.  Open the `index.html` file in any modern web browser (like Chrome, Firefox, Safari, Edge).
 
-The landing page will be displayed with the header image, and the buttons/form will function as described.
+The landing page will be displayed with the new dark theme and layout, and all buttons/forms should function as described.
 
 ## How the CTAs Work
 
-Instead of linking to separate pages or complex backend systems, the CTAs in this version use `mailto:` links.
+CTAs use `mailto:` links to open the user's default email application with pre-filled information.
 
-* **"Optimize Your Site Now" Button:** When clicked, it opens the user's default email client with a pre-composed email addressed to `ergalign@outlook.com`. The email prompts the user to specify which Cloudflare plan they are interested in.
-* **"Be the First to Access AI Optimization" Form:** When submitted, it gathers the Name, Email, and Business Name from the form fields. It then opens the user's default email client with a pre-composed email containing this information, addressed to `ergalign@outlook.com`.
+* **Service Buttons:** Clicking a service button (Speed Check, Boost, Premium, Help) opens an email draft with a subject line clearly indicating the specific service requested.
+* **AI Interest Form:** Submitting the form gathers the entered details and opens an email draft with the subject "Early Access Interest: AI-Powered Google Optimization" and the user's information in the body.
 
-**Note:** The user must have a default email client configured on their device for the `mailto:` links to function correctly. They will also need to manually click "Send" in their email client after reviewing the pre-filled message.
+**Note:** The user must have a default email client configured for `mailto:` links to work. They need to manually click "Send" in their email client.
 
 ## Customization
 
-* **Recipient Email Address:** To change the email address where the CTA information is sent, modify the `mailto:ergalign@outlook.com` parts within the `script.js` file.
-* **Header Image:** Replace `image.png` with your desired image file (ensure the `src` attribute in `index.html` matches the new filename).
-* **Content & Pricing:** All text, descriptions, benefits, and pricing details can be edited directly within the `index.html` file.
-* **Styling:** Colors, fonts, spacing, and layout can be adjusted by modifying the rules in the `style.css` file.
+* **Recipient Email Address:** Change the `userEmail` variable at the top of `script.js`.
+* **Color Scheme:** Modify the CSS variables (e.g., `--bg-dark`, `--accent-green`, etc.) at the top of `style.css`.
+* **Header Image:** Replace `IMG_4855.jpeg` and update the `src` attribute in `index.html`.
+* **Content & Pricing:** Edit text, descriptions, pricing, and features directly within `index.html`.
+* **Styling:** Further adjust layout, fonts, spacing, etc., in `style.css`.
 
 ## Technologies Used
 
 * HTML5
-* CSS3
+* CSS3 (including CSS Variables, Flexbox, Grid)
 * JavaScript (ES6)
+* Inline SVG (for icons)
