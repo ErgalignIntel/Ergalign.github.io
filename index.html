@@ -8,12 +8,140 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Start: Added CSS for Neon Metallic Effect & Readability --- */
+        /* (Ideally, move these styles to your style.css file) */
+
+        body {
+            background-color: #333333; /* Dark gray background */
+            font-family: 'Roboto', sans-serif; /* Matching the Google Font import */
+            color: #CCCCCC; /* Default light gray text for readability */
+            margin: 0; /* Remove default body margin */
+        }
+
+        .neon-metallic-text {
+            /* Font Styling for H1 */
+            font-size: 3rem;    /* Adjust size as needed */
+            font-weight: 700;   /* Bold weight from Roboto */
+            text-align: center;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem; /* Reduced space below H1 */
+            margin-top: 1rem; /* Add some space above H1 */
+
+            /* Metallic Gradient Fill (Neon Purple Hues) */
+            background: linear-gradient(
+                140deg,
+                #DA70D6 20%, /* Lighter Orchid */
+                #BF00FF 50%, /* Main Neon Purple */
+                #8A2BE2 80%  /* Darker BlueViolet */
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+
+            /* Neon Glow Effect */
+            text-shadow:
+                0 0 4px #BF00FF,
+                0 0 8px #BF00FF,
+                0 0 15px #DA70D6,
+                0 0 20px #8A2BE2;
+
+            /* Optional: Subtle edge */
+            -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.1);
+            display: block;
+        }
+
+        /* Adjust tagline style for contrast */
+        .tagline {
+             color: #E0E0E0;
+             text-align: center;
+             font-size: 1.2rem;
+             font-weight: 400; /* Regular weight */
+             margin-top: 0;
+        }
+
+        /* Adjust section headers (H2) for contrast */
+        section h2 {
+            color: #F0F0F0;
+            border-bottom: 1px solid #555;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem; /* Add space above section headers */
+            font-weight: 700; /* Bold */
+        }
+        section h2 .icon { /* Ensure icons in H2 are visible */
+            display: inline-block; /* Or filter if they are images */
+        }
+
+
+        /* Adjust section sub-headers (H3) */
+         section h3 {
+            color: #E8E8E8; /* Slightly less bright than H2 */
+            font-weight: 500; /* Medium weight */
+         }
+
+        /* Adjust section sub-headers (H4 in cards) - assuming cards have lighter backgrounds */
+         .service-card h4 {
+             color: #1a1a1a; /* Dark color for readability on potential light card BG */
+             font-weight: 700;
+         }
+
+
+        /* General paragraph and list item colors */
+        main p, main li, .service-description, .note-small, .note, footer p {
+            color: #CCCCCC; /* Default light gray for most text */
+            line-height: 1.6; /* Improve readability */
+        }
+
+        /* Ensure text inside cards is readable */
+        /* IMPORTANT: Adjust these based on your ACTUAL card background colors in style.css */
+        .service-card p,
+        .service-card li,
+        .service-card .service-description,
+        .service-card .note-small {
+            color: #333333; /* Dark text - ASSUMES cards have light backgrounds */
+            /* If cards have DARK backgrounds, use something like color: #DDDDDD; */
+        }
+         /* Style payment steps text inside cards */
+         .stripe-basic-steps p.note-small,
+         .paypal-basic-steps p.note-small {
+            color: #444; /* Slightly darker for emphasis maybe */
+            font-weight: 500;
+         }
+
+
+        /* Adjust link colors for visibility */
+        a {
+            color: #87CEEB; /* Sky blue */
+        }
+        a:hover {
+            color: #ADD8E6; /* Lighter blue */
+        }
+
+        /* Ensure header image doesn't break layout excessively */
+        .header-image {
+            max-width: 150px; /* Limit image size */
+            height: auto;
+            display: block;
+            margin: 1rem auto; /* Center image */
+            border-radius: 50%; /* Make it circular maybe */
+        }
+
+        /* Ensure button text is readable */
+        .cta-button {
+            color: #FFFFFF; /* White text on colored buttons */
+            /* Add other button styles if needed, may conflict with style.css */
+        }
+        /* --- End: Added CSS --- */
+
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
             <img src="IMG_4855.jpeg" alt="ErgAlign Intel Website and AI Optimization" class="header-image">
-            <h1>ErgAlign Intel</h1>
+            <h1 class="neon-metallic-text">ErgAlign Intel</h1>
             <p class="tagline">Supercharging Websites & Business Profiles</p>
         </header>
 
@@ -203,7 +331,12 @@
               }
            } catch (error) { console.error("Failed to render PayPal button for Premium Plan:", error); }
       }
-      renderPayPalButtons(); // Call function to render buttons
+      // Ensure the DOM is ready before rendering buttons, especially if script is in <head>
+      if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', renderPayPalButtons);
+      } else {
+          renderPayPalButtons(); // DOMContentLoaded has already fired
+      }
     </script>
 
     <script src="script.js"></script>
