@@ -1,17 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const userEmail = "ergalign@outlook.com"; // Define your email here
 
-    // --- Cloudflare Service CTA ---
-    const optimizeBtn = document.getElementById('optimize-btn');
-    if (optimizeBtn) {
-        optimizeBtn.addEventListener('click', () => {
-            const subject = "Interest in Cloudflare Speed Optimization Service";
-            const body = "Hello ErgAlign Intel,\n\nI am interested in your Cloudflare Speed Optimization service. \n\nPlease specify which plan you are interested in:\n[ ] Basic Plan ($49 setup + $29/month)\n[ ] Premium Plan ($99/month)\n\nPlease provide details on how to proceed.\n\nThanks,\n[Your Name]";
-            const mailtoLink = `mailto:ergalign@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // --- NEW Speed Optimization Service Buttons ---
+    const speedButtons = document.querySelectorAll('.speed-cta, .help-cta'); // Select all new service buttons
+
+    speedButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Get subject and body from the button's data attributes
+            const subject = button.getAttribute('data-subject') || "Website Service Inquiry"; // Fallback subject
+            let body = button.getAttribute('data-body') || "Please provide more details about your services."; // Fallback body
+
+            // Add the 24-hour response note to the body
+            body += "\n\n---\nWe aim to respond within 24 hours.";
+
+            // Construct mailto link
+            const mailtoLink = `mailto:${userEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
             // Open the user's default email client
             window.location.href = mailtoLink;
+
+            // Optional: Provide feedback
+            const originalText = button.textContent;
+            button.textContent = 'Check Your Email App!';
+             setTimeout(() => {
+                button.textContent = originalText;
+            }, 3000);
         });
-    }
+    });
 
     // --- AI Optimization Interest Form ---
     const interestForm = document.getElementById('interest-form');
@@ -30,9 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (business) {
                 body += `\nBusiness Name: ${business}`;
             }
-            body += "\n\nPlease keep me updated on the launch and special pricing!\n\nThanks,";
+            body += "\n\nPlease keep me updated on the launch and special pricing!";
+            // Add the 24-hour response note
+             body += "\n\n---\nWe aim to respond within 24 hours.";
 
-            const mailtoLink = `mailto:ergalign@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            const mailtoLink = `mailto:${userEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
             // Open the user's default email client
             window.location.href = mailtoLink;
@@ -40,9 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Optional: Provide feedback to the user
             const submitButton = interestForm.querySelector('button[type="submit"]');
             if (submitButton) {
-                submitButton.textContent = 'Check Your Email App!';
-                setTimeout(() => {
-                    submitButton.textContent = 'Be the First to Access AI Optimization';
+                 const originalText = submitButton.textContent;
+                 submitButton.textContent = 'Check Your Email App!';
+                 setTimeout(() => {
+                    submitButton.textContent = originalText;
                     // Optionally clear the form
                     // interestForm.reset();
                 }, 3000); // Reset button text after 3 seconds
