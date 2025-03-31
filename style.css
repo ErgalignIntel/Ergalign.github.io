@@ -1,36 +1,31 @@
 /* === Root Variables (Color Palette & Fonts) === */
 :root {
     /* --- Base Colors (Keeping dark theme) --- */
-    --bg-dark: #16161a;          /* Darker Gray */
-    --bg-card-opaque: #23232b;   /* Opaque Card Background */
-    --text-light: #f1f1f1;       /* Off-white */
-    --text-medium: #a0a0a0;      /* Lighter Medium Gray */
+    --bg-dark: #121420;          /* Darker Gray - Updated per recommendations */
+    --bg-card-opaque: #1B1F3B;   /* Opaque Card Background - Updated per recommendations */
+    --text-light: #F8F9FA;       /* Off-white - Updated per recommendations */
+    --text-medium: #ADB5BD;      /* Lighter Medium Gray - Updated per recommendations */
     --text-dark: #111;           /* Near Black */
     --border-color: #3a3a3a;      /* Darker border */
 
-    /* --- Updated Accent Colors (Based on new image: https://freeimage.host/i/3Akl6bI) --- */
-    --accent-blue: #40C4FF;      /* Primary Blue from image (Material Light Blue A200) */
-    --accent-purple: #E040FB;    /* Primary Purple/Pink from image (Material Purple A200) */
-    --accent-orange: #FFAB00;    /* Accent Orange/Yellow from image (Material Amber A400) */
-
-    /* --- Deprecated Colors (Replaced or mapped to new ones) --- */
-    /* --accent-green: #00ffaa;     -- Replaced by --accent-blue or --accent-orange */
-    /* --accent-hover: #ffd700;     -- Replaced by --accent-orange */
-    /* --accent-cyan will be defined as --accent-blue for consistency */
-    --accent-cyan: var(--accent-blue); /* Call agent card will use the main blue */
+    /* --- Updated Accent Colors (Based on recommendations) --- */
+    --primary-accent: #3A86FF;      /* Primary Blue */
+    --secondary-accent: #8A3FFC;    /* Primary Purple */
+    --highlight: #00D4FF;           /* Highlight color */
 
     /* --- Fonts & Shapes --- */
-    --font-primary: 'Roboto', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
     --pill-radius: 50px;
-    --glow-opacity: 0.4; /* Unused currently? */
+    --card-radius: 18px;
+    --glow-opacity: 0.4;
 
     /* === Updated Metallic Gradient Attempts for Buttons === */
-    /* Note: These use the new accent colors */
-    --grad-metal-stripe: linear-gradient(to right, #80d8ff 0%, var(--accent-blue) 30%, var(--accent-purple) 70%, #ea80fc 90%, #f5f5f5 100%);
+    --grad-metal-stripe: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
     --grad-metal-paypal: linear-gradient(to right, #fff0a0 0%, #ffda63 20%, #ffb300 60%, #ffcc00 80%, #fff8d0 100%); /* Keep PayPal colors */
     --grad-metal-help: linear-gradient(to right, #aaa 0%, #777 50%, #aaa 100%); /* Keep neutral */
-    --grad-metal-ai: linear-gradient(to right, #ea80fc 0%, var(--accent-purple) 30%, var(--accent-blue) 70%, #80d8ff 90%, #f5f5f5 100%); /* Purple -> Blue */
-    --grad-metal-consult: linear-gradient(to right, #80d8ff 0%, var(--accent-blue) 30%, var(--accent-purple) 70%, #ea80fc 90%, #f5f5f5 100%); /* Blue -> Purple */
+    --grad-metal-ai: linear-gradient(135deg, var(--secondary-accent), var(--primary-accent)); /* Purple -> Blue */
+    --grad-metal-consult: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent)); /* Blue -> Purple */
 }
 
 /* === Basic Reset & Defaults === */
@@ -42,30 +37,113 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed navbar */
 }
 
 body {
-    font-family: var(--font-primary);
+    font-family: var(--font-body);
     line-height: 1.7;
-    color: var(--text-light); /* Light text default */
-    background-color: var(--bg-dark); /* Keep dark background */
+    color: var(--text-light);
+    background-color: var(--bg-dark);
     /* Subtle noise texture */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%232a2a2a' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-    padding: 15px;
+    padding: 0;
     font-size: 16px;
+}
+
+/* === Navigation Bar === */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(18, 20, 32, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(58, 58, 58, 0.5);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    padding: 10px 0;
+}
+
+.container-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-light);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.nav-logo {
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.navbar-nav li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.navbar-nav li a:hover {
+    color: var(--primary-accent);
+}
+
+.navbar-nav li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-accent);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav li a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 /* === Container === */
 .container {
     max-width: 1000px;
-    margin: 30px auto;
-    background: linear-gradient(145deg, rgba(35, 35, 43, 0.95), rgba(43, 43, 51, 0.90));
+    margin: 100px auto 30px; /* Added top margin to account for fixed navbar */
+    background: linear-gradient(145deg, rgba(27, 31, 59, 0.95), rgba(35, 39, 67, 0.90));
     backdrop-filter: blur(8px);
     padding: 30px 40px;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     border: 1px solid var(--border-color);
-    border-top: 6px solid var(--accent-blue); /* Use new blue for top border */
+    border-top: 6px solid var(--primary-accent);
     color: var(--text-light);
 }
 
@@ -87,43 +165,66 @@ header {
 }
 
 /* === H1 Neon Metallic Style === */
-/* REMINDER: Add class="h1-neon-metallic" to your H1 tag in HTML */
 .h1-neon-metallic {
-    font-family: var(--font-primary);
+    font-family: var(--font-heading);
     font-size: 3em;
     font-weight: 700;
     text-align: center;
     margin-bottom: 10px;
 
-    /* Metallic Gradient Fill using New Purple/Pink */
+    /* Metallic Gradient Fill */
     background: linear-gradient(
         140deg,
-        #f780ff 20%,        /* Lighter highlight derived from new purple */
-        var(--accent-purple) 50%, /* Main new purple variable */
-        #a000c0 80%         /* Darker vibrant shade derived from new purple */
+        #f780ff 20%,
+        var(--secondary-accent) 50%,
+        #a000c0 80%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent; /* Fallback */
 
-    /* Neon Glow Effect using New Purple/Pink */
+    /* Neon Glow Effect */
     text-shadow:
-        0 0 5px var(--accent-purple),  /* Inner glow */
-        0 0 10px var(--accent-purple), /* Main glow */
-        0 0 20px #f780ff,        /* Lighter halo */
-        0 0 30px #a000c0;        /* Darker outer edge */
+        0 0 5px var(--secondary-accent),
+        0 0 10px var(--secondary-accent),
+        0 0 20px #f780ff,
+        0 0 30px #a000c0;
 
     /* Optional: Subtle edge */
     -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.1);
     display: block; /* Ensure block display */
 }
 
-
 .tagline {
     color: var(--text-medium);
     font-size: 1.3em;
     font-weight: 400;
+    font-family: var(--font-heading);
+}
+
+/* === Hero Section === */
+.hero-section {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 20px;
+    background: linear-gradient(145deg, rgba(27, 31, 59, 0.5), rgba(35, 39, 67, 0.3));
+    border-radius: var(--card-radius);
+    border: 1px solid var(--border-color);
+}
+
+.hero-headline {
+    font-family: var(--font-heading);
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+
+.hero-subheadline {
+    font-family: var(--font-body);
+    font-size: 1.3em;
+    color: var(--primary-accent);
 }
 
 /* === Sections === */
@@ -147,29 +248,37 @@ h2 {
     align-items: center;
     justify-content: center;
     gap: 15px;
+    font-family: var(--font-heading);
 }
-h2 .icon { display: inline-block; }
 
-/* Section-Specific H2 Styling (Using New Colors) */
-#speed-services h2 { text-shadow: 0 0 8px var(--accent-blue); } /* Changed from green to blue */
-#ai-optimization h2 { text-shadow: 0 0 8px var(--accent-purple); } /* Uses new purple */
-/* Note: Call Agent H2 is now inside a card, styled below */
+h2 .icon { 
+    display: inline-block;
+    color: var(--primary-accent);
+}
 
-#speed-services h2 .icon { filter: drop-shadow(0 0 5px var(--accent-blue)); } /* Changed from green to blue */
-#ai-optimization h2 .icon { filter: drop-shadow(0 0 5px var(--accent-purple)); } /* Uses new purple */
-/* Note: Call Agent icon is now inside a card, styled below */
+/* Section-Specific H2 Styling */
+#speed-services h2 { text-shadow: 0 0 8px var(--primary-accent); }
+#ai-optimization h2 { text-shadow: 0 0 8px var(--secondary-accent); }
+#testimonials h2 { text-shadow: 0 0 8px var(--highlight); }
+#how-it-works h2 { text-shadow: 0 0 8px var(--primary-accent); }
+#faq h2 { text-shadow: 0 0 8px var(--secondary-accent); }
 
+#speed-services h2 .icon { filter: drop-shadow(0 0 5px var(--primary-accent)); }
+#ai-optimization h2 .icon { filter: drop-shadow(0 0 5px var(--secondary-accent)); }
+#testimonials h2 .icon { filter: drop-shadow(0 0 5px var(--highlight)); }
+#how-it-works h2 .icon { filter: drop-shadow(0 0 5px var(--primary-accent)); }
+#faq h2 .icon { filter: drop-shadow(0 0 5px var(--secondary-accent)); }
 
 /* === Speed Services Grid & Cards === */
 .services-grid {
     display: grid;
     gap: 35px;
-    grid-template-columns: 1fr; /* Default mobile: single column */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 .service-card {
     background-color: var(--bg-card-opaque);
-    border-radius: 18px;
+    border-radius: var(--card-radius);
     padding: 35px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     border: 1px solid var(--border-color);
@@ -177,7 +286,9 @@ h2 .icon { display: inline-block; }
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    color: var(--text-light); /* Ensure light text inside */
+    color: var(--text-light);
+    position: relative;
+    overflow: hidden;
 }
 
 .service-card:hover {
@@ -185,19 +296,42 @@ h2 .icon { display: inline-block; }
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
 }
 
-/* Service Card Accent Colors (Using New Palette) */
-/* Note: .accent-green cards are now effectively blue-accented */
-.service-card.accent-green,
-.service-card.accent-blue,
-.service-card.accent-cyan { /* Apply blue style */
-    border-left-color: var(--accent-blue);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(64, 196, 255, 0.1); /* Blue glow */
+/* Featured Card */
+.featured-card {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(138, 63, 252, 0.3);
+    z-index: 2;
 }
-.service-card.accent-purple { /* Apply purple style */
-    border-left-color: var(--accent-purple);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(224, 64, 251, 0.1); /* Purple glow */
+
+.featured-card:hover {
+    transform: translateY(-8px) scale(1.07);
 }
-.service-card.more-help { border-left-color: var(--text-medium); } /* Keep neutral */
+
+.featured-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--secondary-accent);
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-bottom-left-radius: 10px;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Service Card Accent Colors */
+.service-card.accent-blue { 
+    border-left-color: var(--primary-accent);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(58, 134, 255, 0.1);
+}
+
+.service-card.accent-purple { 
+    border-left-color: var(--secondary-accent);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(138, 63, 252, 0.1);
+}
+
+.service-card.more-help { border-left-color: var(--text-medium); }
 
 /* Service Card Heading Styles */
 .service-card h4 {
@@ -209,153 +343,589 @@ h2 .icon { display: inline-block; }
     gap: 12px;
     min-height: 50px;
     text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3);
+    font-family: var(--font-heading);
 }
 
-/* Apply correct heading colors and glows based on new accent palette */
-.accent-green h4,
-.accent-blue h4,
-.accent-cyan h4 { /* Blue accent headings */
-    color: var(--accent-blue);
-    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--accent-blue);
+/* Apply correct heading colors and glows */
+.accent-blue h4 {
+    color: var(--primary-accent);
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--primary-accent);
 }
-.accent-purple h4 { /* Purple accent headings */
-    color: var(--accent-purple);
-    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--accent-purple);
+
+.accent-purple h4 {
+    color: var(--secondary-accent);
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--secondary-accent);
 }
-.more-help h4 { color: var(--text-medium); text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3); } /* Keep neutral */
+
+.more-help h4 { 
+    color: var(--text-medium); 
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3); 
+}
 
 /* Service Card List Item Styles */
-.service-card p.service-description { color: var(--text-medium); margin-bottom: 20px; font-style: italic; }
-.service-card ul { list-style: none; margin-bottom: 30px; padding-left: 5px; flex-grow: 1; }
-.service-card li { margin-bottom: 12px; position: relative; padding-left: 28px; color: var(--text-light); }
-.service-card li::before { content: ''; position: absolute; left: 0; top: 7px; width: 10px; height: 10px; border-radius: 3px; background-color: currentColor; opacity: 0.8; transition: all 0.3s ease; }
-.service-card li:hover::before { transform: scale(1.3); opacity: 1; box-shadow: 0 0 5px currentColor; }
+.service-card p.service-description { 
+    color: var(--text-medium); 
+    margin-bottom: 20px; 
+    font-style: italic; 
+}
 
-/* Apply correct list bullet colors based on new accent palette */
-.accent-green li::before,
-.accent-blue li::before,
-.accent-cyan li::before { color: var(--accent-blue); }
-.accent-purple li::before { color: var(--accent-purple); }
+.service-card ul { 
+    list-style: none; 
+    margin-bottom: 30px; 
+    padding-left: 5px; 
+    flex-grow: 1; 
+}
+
+.service-card li { 
+    margin-bottom: 12px; 
+    position: relative; 
+    padding-left: 28px; 
+    color: var(--text-light); 
+}
+
+.service-card li::before { 
+    content: ''; 
+    position: absolute; 
+    left: 0; 
+    top: 7px; 
+    width: 10px; 
+    height: 10px; 
+    border-radius: 3px; 
+    background-color: currentColor; 
+    opacity: 0.8; 
+    transition: all 0.3s ease; 
+}
+
+.service-card li:hover::before { 
+    transform: scale(1.3); 
+    opacity: 1; 
+    box-shadow: 0 0 5px currentColor; 
+}
+
+/* Apply correct list bullet colors */
+.accent-blue li::before { color: var(--primary-accent); }
+.accent-purple li::before { color: var(--secondary-accent); }
 .more-help li::before { color: var(--text-medium); }
 
-.service-card ul ul { margin-top: 10px; margin-bottom: 10px; padding-left: 20px; }
-.service-card ul ul li::before{ content: '-'; background-color: transparent; box-shadow: none; width: auto; height: auto; border-radius: 0; opacity: 0.8; top: 0px; left: 5px; }
-.service-card ul ul li:hover::before { transform: none; opacity: 1; }
+.service-card ul ul { 
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+    padding-left: 20px; 
+}
 
-.note, .note-small { padding: 12px 18px; background-color: rgba(0, 0, 0, 0.25); border-left: 5px solid var(--text-medium); border-radius: 8px; color: var(--text-medium); font-size: 0.9em; margin-top: 15px; }
-.note strong { color: var(--accent-blue); } /* Use new blue */
-.note-small { font-size: 0.85em; margin-top: 20px; margin-bottom: 10px; }
+.service-card ul ul li::before{ 
+    content: '-'; 
+    background-color: transparent; 
+    box-shadow: none; 
+    width: auto; 
+    height: auto; 
+    border-radius: 0; 
+    opacity: 0.8; 
+    top: 0px; 
+    left: 5px; 
+}
 
+.service-card ul ul li:hover::before { 
+    transform: none; 
+    opacity: 1; 
+}
+
+.note, .note-small { 
+    padding: 12px 18px; 
+    background-color: rgba(0, 0, 0, 0.25); 
+    border-left: 5px solid var(--text-medium); 
+    border-radius: 8px; 
+    color: var(--text-medium); 
+    font-size: 0.9em; 
+    margin-top: 15px; 
+}
+
+.note strong { color: var(--primary-accent); }
+.note-small { 
+    font-size: 0.85em; 
+    margin-top: 20px; 
+    margin-bottom: 10px; 
+}
 
 /* === Payment & CTA Buttons === */
-.payment-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: auto; padding-top: 25px; }
-.stripe-basic-steps, .paypal-basic-steps { display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 10px; background-color: rgba(0, 0, 0, 0.1); }
+.payment-buttons { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    margin-top: auto; 
+    padding-top: 25px; 
+}
+
+.stripe-basic-steps, .paypal-basic-steps { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+    border: 1px solid var(--border-color); 
+    padding: 15px; 
+    border-radius: 8px; 
+    margin-top: 10px; 
+    background-color: rgba(0, 0, 0, 0.1); 
+}
 
 .cta-button {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    width: 100%; padding: 14px 25px; font-size: 1.05em; font-weight: 500;
-    border: none; border-radius: var(--pill-radius); cursor: pointer; text-align: center;
-    transition: all 0.35s ease; background-size: 300% auto;
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px;
+    width: 100%; 
+    padding: 14px 25px; 
+    font-size: 1.05em; 
+    font-weight: 600;
+    border: none; 
+    border-radius: var(--pill-radius); 
+    cursor: pointer; 
+    text-align: center;
+    transition: all 0.35s ease; 
+    background-size: 300% auto;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     text-decoration: none;
     position: relative;
     overflow: hidden;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
-.btn-icon { display: inline-block; line-height: 0; filter: brightness(1); }
-
-/* Apply new gradients */
-.stripe-btn { background-image: var(--grad-metal-stripe); color: #fff; }
-.paypal-btn { background-image: var(--grad-metal-paypal); color: var(--text-dark); text-shadow: none; }
-.help-cta { background-image: var(--grad-metal-help); color: var(--text-light); }
-.ai-cta { background-image: var(--grad-metal-ai); color: #fff; }
-.consultation-button { background-image: var(--grad-metal-consult); color: #fff; } /* Style for consultation button */
-
 
 .cta-button:hover {
-    background-position: right center;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7), 0 0 10px var(--accent-orange); /* Use new orange for hover glow */
-    filter: brightness(1.15);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
-.cta-button:active { transform: translateY(0px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); filter: brightness(1); }
 
+.btn-icon { 
+    display: inline-block; 
+    line-height: 0; 
+    filter: brightness(1); 
+}
 
-#paypal-button-container-P-1PJ72593841360548M7ULKEA,
-#paypal-button-container-P-2YC50469N17428923M7ULRGY { width: 100%; min-height: 50px; margin-top: 10px; }
-.paypal-basic-steps #paypal-button-container-P-2YC50469N17428923M7ULRGY { margin-top: 0; }
+/* Apply new gradients */
+.stripe-btn { 
+    background-image: var(--grad-metal-stripe); 
+    color: #fff; 
+}
 
+.paypal-btn { 
+    background-image: var(--grad-metal-paypal); 
+    color: var(--text-dark); 
+    text-shadow: none; 
+}
 
-/* === AI Optimization Form Section === */
-#ai-optimization {
+.help-cta { 
+    background-image: var(--grad-metal-help); 
+    color: var(--text-light); 
+}
+
+.consultation-button { 
+    background-image: var(--grad-metal-consult); 
+    color: var(--text-light); 
+}
+
+.ai-cta { 
+    background-image: var(--grad-metal-ai); 
+    color: var(--text-light); 
+}
+
+/* === Testimonials Section === */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.testimonial {
     background-color: var(--bg-card-opaque);
-    padding: 40px; border-radius: 18px;
-    border-left: 8px solid var(--accent-purple); /* Uses new purple */
-     margin-top: 40px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(224, 64, 251, 0.1); /* Uses new purple glow */
+    border-radius: var(--card-radius);
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+}
+
+.testimonial-content {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.testimonial-content p {
+    font-style: italic;
+    color: var(--text-light);
+    line-height: 1.6;
+    font-size: 1.05em;
+}
+
+.testimonial-content p::before,
+.testimonial-content p::after {
+    content: '"';
+    color: var(--primary-accent);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5em;
+}
+
+.testimonial-author h4 {
+    font-size: 1.1em;
+    margin: 0;
+    color: var(--text-light);
+    font-family: var(--font-heading);
+}
+
+.testimonial-author p {
+    font-size: 0.9em;
+    color: var(--text-medium);
+    margin: 0;
+}
+
+/* === AI Optimization Section === */
+#ai-optimization {
+    text-align: center;
+}
+
+.coming-soon {
+    font-size: 1.5em;
+    color: var(--secondary-accent);
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-family: var(--font-heading);
+}
+
+.description {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 1.1em;
+}
+
+#interest-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: var(--bg-card-opaque);
+    padding: 30px;
+    border-radius: var(--card-radius);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+}
+
+#interest-form h3 {
+    margin-bottom: 20px;
+    color: var(--secondary-accent);
+    font-family: var(--font-heading);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
     color: var(--text-light);
 }
-#ai-optimization h2 { color: var(--accent-purple); text-shadow: 0 0 8px var(--accent-purple); } /* Uses new purple */
-#ai-optimization .description { text-align: center; color: var(--text-medium); margin-bottom: 30px; }
-#ai-optimization .coming-soon { text-align: center; font-weight: bold; color: var(--accent-blue); text-shadow: 0 0 5px var(--accent-blue); margin-bottom: 25px; font-size: 1.3em; } /* Changed from green to blue */
-#interest-form h3 { text-align: center; margin-bottom: 35px; color: var(--text-light); font-weight: 500; font-size: 1.4em; }
-.form-group { margin-bottom: 28px; }
-label { display: block; margin-bottom: 10px; font-weight: 500; color: var(--text-medium); font-size: 1em; }
-input[type="text"], input[type="email"] { width: 100%; padding: 15px 20px; border: 1px solid var(--border-color); border-radius: var(--pill-radius); font-size: 1em; background-color: rgba(30, 30, 30, 0.8); color: var(--text-light); transition: border-color 0.3s ease, box-shadow 0.3s ease; outline: none; }
-input[type="text"]::placeholder, input[type="email"]::placeholder { color: #777; }
-input:focus { border-color: var(--accent-purple); box-shadow: 0 0 0 4px rgba(224, 64, 251, 0.25), inset 0 0 10px rgba(224, 64, 251, 0.1); } /* Uses new purple focus */
-#ai-optimization .ai-cta { margin-top: 20px; }
 
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--text-light);
+    font-family: var(--font-body);
+}
 
-/* === REMOVED: Styling for Automated Call Agent Section (#call-agent) === */
-/* This section is now removed as the content is inside a service card */
+.form-group input:focus {
+    outline: none;
+    border-color: var(--secondary-accent);
+    box-shadow: 0 0 0 2px rgba(138, 63, 252, 0.3);
+}
 
+/* === How It Works Section === */
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.process-step {
+    text-align: center;
+    padding: 25px;
+    background-color: var(--bg-card-opaque);
+    border-radius: var(--card-radius);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    font-family: var(--font-heading);
+}
+
+.process-step h3 {
+    margin-bottom: 15px;
+    color: var(--primary-accent);
+    font-family: var(--font-heading);
+}
+
+.process-step p {
+    color: var(--text-medium);
+}
+
+/* === FAQ Section === */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    background-color: var(--bg-card-opaque);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+}
+
+.faq-question {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.faq-question h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: var(--text-light);
+    font-family: var(--font-heading);
+}
+
+.faq-question i {
+    color: var(--primary-accent);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 20px 20px;
+    max-height: 500px;
+}
+
+.faq-answer p {
+    color: var(--text-medium);
+    margin: 0;
+}
 
 /* === Footer === */
 footer {
-    text-align: center; margin-top: 70px; padding-top: 35px;
+    margin-top: 60px;
+    padding-top: 40px;
     border-top: 1px solid var(--border-color);
 }
-/* Changed response time color from green to blue */
-.response-time { font-weight: bold; color: var(--accent-blue); margin-bottom: 15px; text-shadow: 0 0 4px var(--accent-blue); }
-.privacy-note { font-size: 0.9em; color: var(--text-medium); }
 
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
 
-/* === Responsive Adjustments (Desktop Layout) === */
-@media (min-width: 768px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr); /* Set 2 columns */
+.footer-info h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--text-light);
+    font-family: var(--font-heading);
+}
+
+.footer-info p {
+    color: var(--text-medium);
+    margin-bottom: 10px;
+}
+
+.footer-links h4 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: var(--text-light);
+    font-family: var(--font-heading);
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--text-medium);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-accent);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(58, 58, 58, 0.5);
+}
+
+.response-time, .privacy-note, .copyright {
+    color: var(--text-medium);
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+/* === Responsive Design === */
+@media (max-width: 992px) {
+    .container {
+        margin: 80px 20px 30px;
+        padding: 25px;
     }
-
-    /* Make first and last cards span full width for 1-2-2-1 layout */
-    .services-grid .service-card:first-child,
-    .services-grid .service-card:last-child {
-        grid-column: 1 / -1; /* Span across both columns */
-        max-width: 650px; /* Optional: constrain width if desired */
-        margin-left: auto;
-        margin-right: auto;
+    
+    h2 {
+        font-size: 2.2em;
     }
-
-    /* REMOVED: Old full-width class rules */
-    /* .full-width-s1, .full-width-s3, .full-width-s4 { grid-column: 1 / -1; max-width: 650px; margin-left: auto; margin-right: auto; } */
-
-    /* Adjust button widths */
-    .more-help .help-cta, #ai-optimization .ai-cta, .consultation-button {
-        width: auto; /* Allow button to size to content */
-        padding-left: 40px;
-        padding-right: 40px;
+    
+    .h1-neon-metallic {
+        font-size: 2.5em;
     }
 }
 
-@media (min-width: 1024px) {
-    body { font-size: 17px; }
-    .container { padding: 40px 60px; }
-    /* Adjust H1 size slightly for desktop if needed */
-    /* .h1-neon-metallic { font-size: 3.2em; } */
-    h2 { font-size: 2.8em; }
-    .service-card h4 { font-size: 1.8em; } /* Keep consistent */
-    .payment-buttons { flex-direction: row; flex-wrap: wrap; }
-    .payment-buttons .cta-button, .payment-buttons > div { flex: 1 1 45%; } /* Allow buttons/containers to share space */
-    .stripe-basic-steps, .paypal-basic-steps { flex-direction: row; align-items: center; }
-    .stripe-basic-steps .cta-button, .paypal-basic-steps > div { flex-grow: 1; }
+@media (max-width: 768px) {
+    .navbar-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(18, 20, 32, 0.95);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .navbar-nav.active {
+        display: flex;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-card {
+        transform: scale(1);
+    }
+    
+    .featured-card:hover {
+        transform: translateY(-8px) scale(1.02);
+    }
+    
+    h2 {
+        font-size: 1.8em;
+    }
+    
+    .h1-neon-metallic {
+        font-size: 2.2em;
+    }
+    
+    .hero-headline {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .service-card {
+        padding: 25px;
+    }
+    
+    .service-card h4 {
+        font-size: 1.5em;
+    }
+    
+    h2 {
+        font-size: 1.6em;
+    }
+    
+    .h1-neon-metallic {
+        font-size: 2em;
+    }
+    
+    .hero-headline {
+        font-size: 1.6em;
+    }
+    
+    .hero-subheadline {
+        font-size: 1.1em;
+    }
 }
