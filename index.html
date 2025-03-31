@@ -12,28 +12,28 @@
     <style>
         /* Keep only the background color rule */
         body {
-            background-color: #333333; /* Dark gray background */
-            /* Removed font-family, color, and margin rules from here */
+            background-color: #333333; /* Dark gray background - Will be kept */
+            /* Font-family, color, margin etc. should be defined in style.css */
         }
-        /* All other rules from the previous 'Added CSS' block have been removed */
-
+        /* NOTE: All other styling, including grid layout and accent colors,
+           should be handled in style.css.
+           The CSS will need updating for the 1-2-2 layout and new color scheme. */
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="IMG_4855.jpeg" alt="ErgAlign Intel Website and AI Optimization" class="header-image">
+            <img src="https://freeimage.host/i/3Akl6bI" alt="ErgAlign Intel Performance Analytics and Optimization" class="header-image">
             <h1 >ErgAlign Intel</h1>
             <p class="tagline">Supercharging Websites & Business Profiles</p>
         </header>
 
+        <h2 style="text-align: center; margin: 2em 1em; color: #eee;"> Don't Let Poor Website Performance Undermine Your Success. Optimize for Speed, Rankings, and Professionalism.
+        </h2>
+
         <main>
             <section id="speed-services">
-                 <h2><span class="icon">🚀</span> Speed Optimization Services</h2>
-                <div class="services-grid">
-
-                    <div class="service-card accent-green full-width-s1">
-                        <h4>✅ Speed Check – $9.99</h4>
+                 <h2><span class="icon">🚀</span> Speed Optimization & Automation Services</h2> <div class="services-grid"> <div class="service-card accent-green"> <h4>✅ Speed Check – $9.99</h4>
                         <p class="service-description">Find Out Why Your Site is Slow</p>
                         <ul>
                             <li>Instant speed report (mobile & desktop).</li>
@@ -78,7 +78,7 @@
                          </div>
                     </div>
 
-                     <div class="service-card accent-purple">
+                    <div class="service-card accent-purple">
                         <h4>💎 Premium Plan – $99/month</h4>
                          <p class="service-description">Full-Service Ongoing Optimization</p>
                         <ul>
@@ -98,8 +98,7 @@
                          </div>
                     </div>
 
-                    <div class="service-card accent-green full-width-s3">
-                        <h4>⚡ One-Time Speed Boost – $139</h4>
+                    <div class="service-card accent-green"> <h4>⚡ One-Time Speed Boost – $139</h4>
                          <p class="service-description">Let Us Make Your Site Blazing Fast</p>
                         <ul>
                              <li><strong>Cloudflare Optimizations:</strong> Caching, Image Resizing, Security Tweaks (SSL, DDoS).</li>
@@ -116,8 +115,15 @@
                          </div>
                     </div>
 
-                    <div class="service-card more-help full-width-s4">
-                        <h4>📩 Need More Help?</h4>
+                    <div class="service-card accent-cyan" id="call-agent-card"> <h4><span class="icon">🤖</span> Automated Call Agent</h4> <p class="service-description">
+                            Your Custom Automated Call Agent Developer: I build intelligent 24/7 virtual secretaries handling calls, messages, routing, and lead qualification. Ensure you capture every lead professionally. Let's create your tailored solution.
+                        </p>
+                        <a href="mailto:ergalign@outlook.com?subject=Inquiry%20about%20Automated%20Call%20Agent&body=Hello%20ErgAlign%20Intel%2C%0A%0AI%20am%20interested%20in%20learning%20more%20about%20the%20Automated%20Call%20Agent%20service%20for%20my%20business.%0A%0ACould%20you%20please%20provide%20details%20on%20functionality%20and%20discuss%20custom%20pricing%20options%3F%0A%0AThank%20you%2C%0A%5BPlease%20add%20your%20name%20and%20business%20details%20here%5D" class="cta-button consultation-button">
+                            <span class="btn-icon">📞</span> Request Consultation
+                        </a>
+                    </div>
+
+                    <div class="service-card more-help"> <h4>📩 Need More Help?</h4>
                         <p>We Handle the Tricky Stuff (Custom Quote)</p>
                         <ul>
                             <li>Faster host migration?</li>
@@ -165,19 +171,6 @@
                 </form>
             </section>
 
-            <section id="call-agent" class="content-section call-agent-section">
-                <h2><span class="icon">🤖</span> Automated Call Agent Service</h2>
-                 <h3>Never Miss a Customer Call</h3>
-                <p>
-                    [**Description of Call Agent Service Here.** Explain its function – perhaps 24/7 availability, professional greetings, call routing, message taking, basic lead qualification, etc. Focus on the benefits: capture every lead, save valuable time, provide consistent customer service, enhance professionalism.]
-                </p>
-                <p>
-                    Tailored plans are available to perfectly match your business volume and requirements. Let's discuss how this service can become your most reliable team member.
-                </p>
-                 <a href="mailto:ergalign@outlook.com?subject=Inquiry%20about%20Automated%20Call%20Agent&body=Hello%20ErgAlign%20Intel%2C%0A%0AI%20am%20interested%20in%20learning%20more%20about%20the%20Automated%20Call%20Agent%20service%20for%20my%20business.%0A%0ACould%20you%20please%20provide%20details%20on%20functionality%20and%20discuss%20custom%20pricing%20options%3F%0A%0AThank%20you%2C%0A%5BPlease%20add%20your%20name%20and%20business%20details%20here%5D" class="cta-button consultation-button">
-                    <span class="btn-icon">📞</span> Request Consultation
-                </a>
-            </section>
             </main>
 
         <footer>
