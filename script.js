@@ -58,15 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Stripe & PayPal Link Buttons ---
     const paymentButtons = document.querySelectorAll('button[data-link]');
-    console.log("Found Payment Link Buttons:", paymentButtons.length, paymentButtons);
-
-    paymentButtons.forEach((button, index) => {
+    
+    paymentButtons.forEach(button => {
         const link = button.getAttribute('data-link');
         if (link) {
-            console.log(`Attaching listener to button ${index} for link: ${link}`);
             button.addEventListener('click', (event) => {
                 event.preventDefault();
-                console.log(`Payment Button ${index} clicked! Opening link: ${link}`);
                 window.open(link, '_blank');
 
                 // Visual feedback
@@ -75,19 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
                    button.style.opacity = '1';
                 }, 1500);
             });
-        } else {
-            console.warn(`Button ${index} found without data-link:`, button);
         }
     });
 
     // --- Need More Help Button (Mailto) ---
     const helpButton = document.querySelector('.help-cta');
-    console.log("Found Help Button:", helpButton);
-
+    
     if (helpButton) {
-        console.log("Attaching listener to Help Button");
         helpButton.addEventListener('click', () => {
-            console.log("Help Button Clicked!");
             const subject = "Complex Issue Inquiry / Custom Quote Request";
             let body = "Hello ErgAlign Intel,\n\nI have a more complex website issue or specific need and would like to inquire about a custom quote or further assistance.\n\nPlease contact me.\n\nThanks,";
             body += "\n\n---\nWe aim to respond within 24 business hours.";
@@ -101,18 +93,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 helpButton.innerHTML = originalHTML;
             }, 3000);
         });
-    } else {
-        console.warn("Help CTA button (.help-cta) not found.");
     }
 
     // --- AI Optimization Interest Form (Mailto) ---
     const interestForm = document.getElementById('interest-form');
-    console.log("Found Interest Form:", interestForm);
-
+    
     if (interestForm) {
-        console.log("Attaching listener to Interest Form");
         interestForm.addEventListener('submit', (event) => {
-            console.log("Interest Form Submitted!");
             event.preventDefault();
 
             const name = document.getElementById('interest-name').value;
@@ -139,8 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 3000);
             }
         });
-    } else {
-        console.warn("Interest form (#interest-form) not found.");
     }
 
     // --- Lazy Loading for Images ---
@@ -164,7 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Scroll Animation for Service Cards ---
-    if ('IntersectionObserver' in window) {
+    // Only enable on desktop for better mobile performance
+    if ('IntersectionObserver' in window && window.innerWidth > 768) {
         const animatedElements = document.querySelectorAll('.service-card, .testimonial, .process-step, .faq-item');
         
         const animationObserver = new IntersectionObserver((entries, observer) => {
@@ -182,6 +168,24 @@ document.addEventListener('DOMContentLoaded', () => {
             element.classList.add('pre-animation');
             animationObserver.observe(element);
         });
+    }
+
+    // --- Detect connection speed and adjust loading strategy ---
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (connection) {
+        const connectionType = connection.effectiveType;
+        
+        // For slow connections, further optimize loading
+        if (connectionType === 'slow-2g' || connectionType === '2g' || connectionType === '3g') {
+            // Disable animations completely
+            document.body.classList.add('reduce-motion');
+            
+            // Defer loading of non-critical images
+            const deferImages = document.querySelectorAll('img:not([loading="eager"])');
+            deferImages.forEach(img => {
+                img.setAttribute('loading', 'lazy');
+            });
+        }
     }
 
     console.log("script.js finished executing.");

@@ -4,338 +4,402 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ErgAlign Intel - Website Optimization & AI Solutions</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="ErgAlign Intel provides website speed optimization, AI solutions, and automated call agent services to supercharge your online presence.">
+    
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Critical CSS inline -->
+    <style>
+        :root {
+            --bg-dark: #121420;
+            --bg-card-opaque: #1B1F3B;
+            --text-light: #F8F9FA;
+            --text-medium: #ADB5BD;
+            --primary-accent: #3A86FF;
+            --secondary-accent: #8A3FFC;
+            --border-color: #3a3a3a;
+            --card-radius: 18px;
+        }
+        * {box-sizing: border-box; margin: 0; padding: 0;}
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+            padding: 0;
+            font-size: 16px;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(18, 20, 32, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(58, 58, 58, 0.5);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            padding: 10px 0;
+        }
+        .container-nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 100px auto 30px;
+            background: linear-gradient(145deg, rgba(27, 31, 59, 0.95), rgba(35, 39, 67, 0.90));
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border-color);
+            border-top: 6px solid var(--primary-accent);
+            color: var(--text-light);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    
+    <!-- Defer Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <!-- Defer Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
-    <!-- Fixed Navigation Bar -->
-    <nav class="navbar fixed-top">
+    <!-- Navigation -->
+    <nav class="navbar">
         <div class="container-nav">
-            <a class="navbar-brand" href="#">
-                <img src="IMG_4934.jpeg" alt="ErgAlign Logo" class="nav-logo">
-                <span>ErgAlign</span>
+            <a href="#" class="navbar-brand">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'%3E%3Cpath fill='%233A86FF' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7z'/%3E%3C/svg%3E" alt="ErgAlign Logo" class="nav-logo" width="40" height="40">
+                ErgAlign
             </a>
-            <ul class="navbar-nav">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#speed-services">Speed Optimization</a></li>
-                <li><a href="#call-agent-card">Call Agent</a></li>
-                <li><a href="#ai-optimization">AI Solutions</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
             <button class="mobile-menu-toggle">
                 <i class="fas fa-bars"></i>
             </button>
+            <ul class="navbar-nav">
+                <li><a href="#">Services</a></li>
+                <li><a href="#speed-services">Speed Optimization</a></li>
+                <li><a href="#call-agent">Call Agent</a></li>
+                <li><a href="#ai-optimization">AI Solutions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
+    <!-- Main Content -->
     <div class="container">
-        <header id="services">
-            <img src="IMG_4934.jpeg" alt="ErgAlign Intel Performance Analytics and Optimization" class="header-image">
-            <h1 class="h1-neon-metallic">ErgAlign Intel</h1>
+        <!-- Header -->
+        <header>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300' viewBox='0 0 800 300'%3E%3Crect width='800' height='300' fill='%23121420'/%3E%3Cpath d='M400 50 L700 250 L100 250 Z' fill='%233A86FF' opacity='0.3'/%3E%3Ccircle cx='400' cy='150' r='100' fill='%238A3FFC' opacity='0.3'/%3E%3Ctext x='400' y='160' font-family='Arial' font-size='40' fill='%23F8F9FA' text-anchor='middle'%3EErgAlign Intel%3C/text%3E%3C/svg%3E" alt="ErgAlign Intel Performance Analytics and Optimization" class="header-image" width="800" height="300">
+            <span class="h1-neon-metallic">ErgAlign Intel</span>
             <p class="tagline">Supercharging Websites & Business Profiles</p>
         </header>
 
-        <div class="hero-section">
-            <h2 class="hero-headline">Don't Let Poor Website Performance Undermine Your Success</h2>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-headline">Don't Let Poor Website Performance Undermine Your Success</h1>
             <p class="hero-subheadline">Optimize for Speed, Rankings, and Professionalism</p>
-        </div>
+        </section>
 
-        <main>
-            <section id="speed-services">
-                <h2><i class="fas fa-rocket icon"></i> Speed Optimization & Automation Services</h2>
-                <div class="services-grid">
-                    <div class="service-card accent-blue">
-                        <h4><i class="fas fa-check-circle"></i> Speed Check – $9.99</h4>
-                        <p class="service-description">Find Out Why Your Site is Slow</p>
-                        <ul>
-                            <li>Instant speed report (mobile & desktop).</li>
-                            <li>Top 3 fixes for today.</li>
-                            <li>Bonus: Free Cloudflare basics guide.</li>
-                        </ul>
-                        <div class="payment-buttons">
-                            <button class="cta-button stripe-btn" data-link="https://buy.stripe.com/7sI9AG5q05J99xe9AA">
-                                <i class="fas fa-credit-card btn-icon"></i> Pay with Card
-                            </button>
-                            <button class="cta-button paypal-btn" data-link="https://www.paypal.com/ncp/payment/WRXHVQY5WFXRQ">
-                                <i class="fab fa-paypal btn-icon"></i> Pay with PayPal
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="service-card accent-blue">
-                        <h4><i class="fas fa-cogs"></i> Basic Plan – $49 Setup + $29/month</h4>
-                        <p class="service-description">Essential Speed & Monitoring</p>
-                        <ul>
-                            <li>Cloudflare CDN Caching Setup</li>
-                            <li>Basic Security Enhancements</li>
-                            <li>Ongoing Monitoring</li>
-                            <li>Email Support</li>
-                        </ul>
-                        <p class="note-small">Choose your preferred payment method:</p>
-                        <div class="payment-buttons">
-                            <div class="stripe-basic-steps">
-                                <p class="note-small">Stripe (2 Steps):</p>
-                                <button class="cta-button stripe-btn" data-link="https://buy.stripe.com/5kA14abOo7Rh7p6003">
-                                    <i class="fas fa-credit-card btn-icon"></i> 1. Pay $49 Setup Fee
-                                </button>
-                                <button class="cta-button stripe-btn" data-link="https://buy.stripe.com/00g28ebOo4F56l2dQU">
-                                    <i class="fas fa-sync-alt btn-icon"></i> 2. Start $29/mo Subscription
-                                </button>
-                            </div>
-                            <div class="paypal-basic-steps">
-                                <p class="note-small">PayPal (1 Step):</p>
-                                <div id="paypal-button-container-P-2YC50469N17428923M7ULRGY"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="service-card accent-purple featured-card">
-                        <div class="featured-badge">Most Popular</div>
-                        <h4><i class="fas fa-gem"></i> Premium Plan – $99/month</h4>
-                        <p class="service-description">Full-Service Ongoing Optimization</p>
-                        <ul>
-                            <li>Advanced performance monitoring.</li>
-                            <li>Proactive issue alerts.</li>
-                            <li>Detailed monthly reports.</li>
-                            <li>Priority email support.</li>
-                            <li>Includes full optimization setup.</li>
-                        </ul>
-                        <p class="note-small">Choose your preferred payment method:</p>
-                        <div class="payment-buttons">
-                            <button class="cta-button stripe-btn" data-link="https://buy.stripe.com/4gwdQWcSsb3t5gY002">
-                                <i class="fas fa-credit-card btn-icon"></i> Subscribe via Stripe
-                            </button>
-                            <div id="paypal-button-container-P-1PJ72593841360548M7ULKEA"></div>
-                        </div>
-                    </div>
-
-                    <div class="service-card accent-blue">
-                        <h4><i class="fas fa-bolt"></i> One-Time Speed Boost – $139</h4>
-                        <p class="service-description">Let Us Make Your Site Blazing Fast</p>
-                        <ul>
-                            <li><strong>Cloudflare Optimizations:</strong> Caching, Image Resizing, Security Tweaks (SSL, DDoS).</li>
-                            <li><strong>Beyond Cloudflare:</strong> Image Shrinking, Code/Script Fixes.</li>
-                            <li>1-month support.</li>
-                        </ul>
-                        <div class="payment-buttons">
-                            <button class="cta-button stripe-btn" data-link="https://buy.stripe.com/aEUeV0aKkfjJ4cUfYZ">
-                                <i class="fas fa-credit-card btn-icon"></i> Pay with Card
-                            </button>
-                            <button class="cta-button paypal-btn" data-link="https://www.paypal.com/ncp/payment/5RMYCX8364UXU">
-                                <i class="fab fa-paypal btn-icon"></i> Pay with PayPal
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="service-card accent-blue" id="call-agent-card">
-                        <h4><i class="fas fa-robot icon"></i> Automated Call Agent</h4>
-                        <p class="service-description">
-                            Your Custom Automated Call Agent Developer: I build intelligent 24/7 virtual secretaries handling calls, messages, routing, and lead qualification. Ensure you capture every lead professionally. Let's create your tailored solution.
-                        </p>
-                        <a href="mailto:ergalign@outlook.com?subject=Inquiry%20about%20Automated%20Call%20Agent&body=Hello%20ErgAlign%20Intel%2C%0A%0AI%20am%20interested%20in%20learning%20more%20about%20the%20Automated%20Call%20Agent%20service%20for%20my%20business.%0A%0ACould%20you%20please%20provide%20details%20on%20functionality%20and%20discuss%20custom%20pricing%20options%3F%0A%0AThank%20you%2C%0A%5BPlease%20add%20your%20name%20and%20business%20details%20here%5D" class="cta-button consultation-button">
-                            <i class="fas fa-envelope btn-icon"></i> Request Consultation
-                        </a>
-                    </div>
-
-                    <div class="service-card more-help">
-                        <h4><i class="fas fa-question-circle"></i> Need More Help?</h4>
-                        <p class="service-description">We Handle the Tricky Stuff (Custom Quote)</p>
-                        <ul>
-                            <li>Faster host migration?</li>
-                            <li>Complex caching?</li>
-                            <li>Global audience? (CDN)</li>
-                        </ul>
-                        <button class="cta-button help-cta">
-                            <i class="fas fa-comment-dots btn-icon"></i> Ask Us Anything
+        <!-- Speed Services Section -->
+        <section id="speed-services">
+            <h2><i class="fas fa-bolt icon"></i> Speed Optimization & Automation Services</h2>
+            <div class="services-grid">
+                <!-- Speed Check Card -->
+                <div class="service-card accent-blue">
+                    <h4><i class="fas fa-check-circle"></i> Speed Check – $9.99</h4>
+                    <p class="service-description">Find Out Why Your Site is Slow</p>
+                    <ul>
+                        <li>Instant speed report (mobile & desktop).</li>
+                        <li>Top 3 fixes for today.</li>
+                        <li>Bonus: Free Cloudflare basics guide.</li>
+                    </ul>
+                    <div class="payment-buttons">
+                        <button class="cta-button stripe-btn" data-link="https://buy.stripe.com/test_00g5kO4VC8Uy2pG4gg">
+                            <i class="fas fa-credit-card btn-icon"></i> PAY WITH CARD
+                        </button>
+                        <button class="cta-button paypal-btn" data-link="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XXXXXXXX">
+                            <i class="fab fa-paypal btn-icon"></i> PAY WITH PAYPAL
                         </button>
                     </div>
                 </div>
-                <p class="note"><i class="fas fa-lightbulb"></i> <strong>Note About Cloudflare:</strong> Cloudflare is great, but it can't fix everything alone. We optimize what it misses for true speed.</p>
-            </section>
 
-            <!-- Testimonials Section -->
-            <section id="testimonials">
-                <h2><i class="fas fa-quote-left icon"></i> What Our Clients Say</h2>
-                <div class="testimonials-grid">
-                    <div class="testimonial">
-                        <div class="testimonial-content">
-                            <p>"ErgAlign's speed optimization increased our conversion rate by 23% within the first month. Their expertise made all the difference for our e-commerce site."</p>
+                <!-- Basic Plan Card -->
+                <div class="service-card accent-blue">
+                    <h4><i class="fas fa-cogs"></i> Basic Plan – $49 Setup + $29/month</h4>
+                    <p class="service-description">Essential Speed & Monitoring</p>
+                    <ul>
+                        <li>Cloudflare CDN Caching Setup</li>
+                        <li>Basic Security Enhancements</li>
+                        <li>Ongoing Monitoring</li>
+                        <li>Email Support</li>
+                    </ul>
+                    <div class="payment-buttons">
+                        <p>Choose your preferred payment method:</p>
+                        <div class="stripe-basic-steps">
+                            <p>Stripe (2 Steps):</p>
+                            <button class="cta-button stripe-btn" data-link="https://buy.stripe.com/test_00g5kO4VC8Uy2pG4gg">
+                                <i class="fas fa-credit-card btn-icon"></i> 1. PAY $49 SETUP FEE
+                            </button>
+                            <button class="cta-button stripe-btn" data-link="https://buy.stripe.com/test_00g5kO4VC8Uy2pG4gg">
+                                <i class="fas fa-sync btn-icon"></i> 2. START $29/MO SUBSCRIPTION
+                            </button>
                         </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                            <div>
-                                <h4>John Smith</h4>
-                                <p>CEO, TechRetail</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial">
-                        <div class="testimonial-content">
-                            <p>"Our website load time decreased from 8.2 seconds to just 2.1 seconds after implementing ErgAlign's recommendations. Incredible improvement!"</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                            <div>
-                                <h4>Sarah Johnson</h4>
-                                <p>Marketing Director, CreativeAgency</p>
-                            </div>
+                        <div class="paypal-basic-steps">
+                            <p>PayPal (1 Step):</p>
+                            <button class="cta-button paypal-btn" data-link="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XXXXXXXX">
+                                <i class="fab fa-paypal btn-icon"></i> SUBSCRIBE VIA PAYPAL
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <section id="ai-optimization">
-                <h2><i class="fas fa-magic icon"></i> AI-Powered Google Optimization (Coming Soon!)</h2>
-                <p class="coming-soon">Reserve Your Spot!</p>
-                <p class="description">
-                    Let AI manage your Google Business Profile: posts, responses, ranking alerts. Focus on your business!
-                </p>
-                <form id="interest-form">
-                    <h3>Be the First to Know</h3>
-                    <div class="form-group">
-                        <label for="interest-name">Name:</label>
-                        <input type="text" id="interest-name" name="name" required placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="interest-email">Email:</label>
-                        <input type="email" id="interest-email" name="email" required placeholder="your.email@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="interest-business">Business Name (Optional):</label>
-                        <input type="text" id="interest-business" name="business" placeholder="Your Company">
-                    </div>
-                    <button type="submit" class="cta-button ai-cta">
-                        <i class="fas fa-bell btn-icon"></i> Get Early Access Info
-                    </button>
-                </form>
-            </section>
-
-            <!-- How It Works Section -->
-            <section id="how-it-works">
-                <h2><i class="fas fa-cogs icon"></i> How Our Process Works</h2>
-                <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <h3>Initial Analysis</h3>
-                        <p>We perform a comprehensive audit of your current website performance.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <h3>Custom Strategy</h3>
-                        <p>We develop a tailored optimization plan based on your specific needs.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <h3>Implementation</h3>
-                        <p>Our team executes the optimizations with minimal disruption to your site.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <h3>Ongoing Support</h3>
-                        <p>We monitor performance and make adjustments to maintain optimal speed.</p>
+                <!-- Premium Plan Card -->
+                <div class="service-card accent-purple featured-card">
+                    <div class="featured-badge">Most Popular</div>
+                    <h4><i class="fas fa-gem"></i> Premium Plan – $99/month</h4>
+                    <p class="service-description">Full-Service Ongoing Optimization</p>
+                    <ul>
+                        <li>Advanced performance monitoring.</li>
+                        <li>Proactive issue alerts.</li>
+                        <li>Detailed monthly reports.</li>
+                        <li>Priority email support.</li>
+                        <li>Includes full optimization setup.</li>
+                    </ul>
+                    <div class="payment-buttons">
+                        <p>Choose your preferred payment method:</p>
+                        <button class="cta-button stripe-btn" data-link="https://buy.stripe.com/test_00g5kO4VC8Uy2pG4gg">
+                            <i class="fas fa-credit-card btn-icon"></i> SUBSCRIBE VIA STRIPE
+                        </button>
+                        <button class="cta-button paypal-btn" data-link="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XXXXXXXX">
+                            <i class="fab fa-paypal btn-icon"></i> SUBSCRIBE VIA PAYPAL
+                        </button>
                     </div>
                 </div>
-            </section>
 
-            <!-- FAQ Section -->
-            <section id="faq">
-                <h2><i class="fas fa-question-circle icon"></i> Frequently Asked Questions</h2>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>What makes ErgAlign different from other optimization services?</h3>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Unlike many services that rely solely on generic optimizations, we provide custom solutions tailored to your specific website needs. We go beyond basic caching and compression to address the root causes of performance issues.</p>
-                        </div>
+                <!-- One-Time Speed Boost Card -->
+                <div class="service-card accent-blue">
+                    <h4><i class="fas fa-bolt"></i> One-Time Speed Boost – $139</h4>
+                    <p class="service-description">Let Us Make Your Site Blazing Fast</p>
+                    <ul>
+                        <li>Cloudflare Optimizations: Caching, Image Resizing, Security Tweaks (SSL, DDoS).</li>
+                        <li>Beyond Cloudflare: Image Shrinking, Code/Script Fixes.</li>
+                        <li>1-month support.</li>
+                    </ul>
+                    <div class="payment-buttons">
+                        <button class="cta-button stripe-btn" data-link="https://buy.stripe.com/test_00g5kO4VC8Uy2pG4gg">
+                            <i class="fas fa-credit-card btn-icon"></i> PAY WITH CARD
+                        </button>
+                        <button class="cta-button paypal-btn" data-link="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XXXXXXXX">
+                            <i class="fab fa-paypal btn-icon"></i> PAY WITH PAYPAL
+                        </button>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>How long does it take to see results?</h3>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Most clients see significant improvements within 48-72 hours of our initial optimizations. Our One-Time Speed Boost typically delivers results within a week, while our monthly plans include ongoing optimizations for continuous improvement.</p>
-                        </div>
+                </div>
+
+                <!-- Call Agent Card -->
+                <div class="service-card accent-blue" id="call-agent">
+                    <h4><i class="fas fa-robot"></i> Automated Call Agent</h4>
+                    <p class="service-description">Your Custom Automated Call Agent Developer: I build intelligent 24/7 virtual secretaries handling calls, messages, routing, and lead qualification. Ensure you capture every lead professionally. Let's create your tailored solution.</p>
+                    <div class="payment-buttons">
+                        <a href="mailto:ergalign@outlook.com?subject=Call%20Agent%20Consultation%20Request" class="cta-button consultation-button">
+                            <i class="fas fa-envelope btn-icon"></i> REQUEST CONSULTATION
+                        </a>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Do I need technical knowledge to use your services?</h3>
-                            <i class="fas fa-chevron-down"></i>
+                </div>
+
+                <!-- Need More Help Card -->
+                <div class="service-card more-help">
+                    <h4><i class="fas fa-question-circle"></i> Need More Help?</h4>
+                    <p class="service-description">We Handle the Tricky Stuff (Custom Quote)</p>
+                    <ul>
+                        <li>Faster host migration?</li>
+                        <li>Complex caching?</li>
+                        <li>Global audience? (CDN)</li>
+                    </ul>
+                    <div class="payment-buttons">
+                        <button class="cta-button help-cta">
+                            <i class="fas fa-comment-dots btn-icon"></i> ASK US ANYTHING
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="note">
+                <i class="fas fa-lightbulb"></i> <strong>Note About Cloudflare:</strong> Cloudflare is great, but it can't fix everything alone. We optimize what it misses for true speed.
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials">
+            <h2><i class="fas fa-quote-left icon"></i> What Our Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>ErgAlign's speed optimization increased our conversion rate by 23% within the first month. Their expertise made all the difference for our e-commerce site.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
                         </div>
-                        <div class="faq-answer">
-                            <p>Not at all! We handle all the technical aspects for you. Our service is designed to be hassle-free, allowing you to focus on your business while we take care of the optimization work.</p>
+                        <div>
+                            <h4>John Smith</h4>
+                            <p>CEO, TechRetail</p>
                         </div>
                     </div>
                 </div>
-            </section>
-        </main>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>Our website load time decreased from 8.2 seconds to just 2.1 seconds after implementing ErgAlign's recommendations. Incredible improvement!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <p>Marketing Director, CreativeAgency</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- AI Optimization Section -->
+        <section id="ai-optimization">
+            <h2><i class="fas fa-robot icon"></i> AI-Powered Google Optimization</h2>
+            <p class="coming-soon">(Coming Soon!)</p>
+            <p class="description">Reserve Your Spot!</p>
+            <p class="description">Let AI manage your Google Business Profile: posts, responses, ranking alerts. Focus on your business!</p>
+            <form id="interest-form">
+                <h3>Get Early Access</h3>
+                <div class="form-group">
+                    <label for="interest-name">Your Name</label>
+                    <input type="text" id="interest-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="interest-email">Your Email</label>
+                    <input type="email" id="interest-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="interest-business">Business Name (Optional)</label>
+                    <input type="text" id="interest-business">
+                </div>
+                <button type="submit" class="cta-button ai-cta">
+                    <i class="fas fa-bell btn-icon"></i> NOTIFY ME WHEN AVAILABLE
+                </button>
+            </form>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works">
+            <h2><i class="fas fa-cogs icon"></i> How Our Process Works</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Initial Analysis</h3>
+                    <p>We perform a comprehensive audit of your current website performance.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Custom Strategy</h3>
+                    <p>We develop a tailored optimization plan based on your specific needs.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Implementation</h3>
+                    <p>Our team executes the optimizations with minimal disruption to your site.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Ongoing Support</h3>
+                    <p>We monitor performance and make adjustments to maintain optimal speed.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq">
+            <h2><i class="fas fa-question-circle icon"></i> Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What makes ErgAlign different from other optimization services?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Unlike many services that rely solely on generic optimizations, we provide custom solutions tailored to your specific website needs. We go beyond basic caching and compression to address the root causes of performance issues.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How long does it take to see results?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most clients see significant improvements within 48-72 hours of our initial optimizations. Our One-Time Speed Boost typically delivers results within a week, while our monthly plans include ongoing optimizations for continuous improvement.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need technical knowledge to use your services?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Not at all! We handle all the technical aspects for you. Our service is designed to be hassle-free, allowing you to focus on your business while we take care of the optimization work.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
         <footer id="contact">
             <div class="footer-content">
                 <div class="footer-info">
                     <h3>ErgAlign Intel</h3>
                     <p>Website Optimization & AI Solutions</p>
-                    <p><i class="fas fa-envelope"></i> ergalign@outlook.com</p>
+                    <p>Email: ergalign@outlook.com</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4>Services</h4>
                     <ul>
-                        <li><a href="#services">Services</a></li>
                         <li><a href="#speed-services">Speed Optimization</a></li>
-                        <li><a href="#call-agent-card">Call Agent</a></li>
+                        <li><a href="#call-agent">Automated Call Agent</a></li>
                         <li><a href="#ai-optimization">AI Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#how-it-works">Our Process</a></li>
+                        <li><a href="#testimonials">Client Testimonials</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="response-time">We respond to all inquiries within 24 business hours.</p>
-                <p class="privacy-note">We respect your privacy. Your information will not be shared.</p>
-                <p class="copyright">© 2025 ErgAlign Intel. All rights reserved.</p>
+                <p class="response-time">We aim to respond within 24 business hours.</p>
+                <p class="privacy-note">Your information is kept private and never shared.</p>
+                <p class="copyright">&copy; 2025 ErgAlign Intel. All rights reserved.</p>
             </div>
         </footer>
     </div>
 
-    <script src="https://www.paypal.com/sdk/js?client-id=AeHa1JrgyvBaWmNRnwCt-idgiJwzptHOko0uVXwYQZnUU5b2yZTjh9Gjl6eSm55RJzXZwtmiBpS_UwWD&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
-    <script>
-      function renderPayPalButtons() {
-          // Basic Plan Button ($49+$29/mo)
-          try {
-              if(document.getElementById('paypal-button-container-P-2YC50469N17428923M7ULRGY')) {
-                  paypal.Buttons({
-                      style: { shape: 'pill', color: 'blue', layout: 'vertical', label: 'subscribe' },
-                      createSubscription: function(data, actions) { return actions.subscription.create({ plan_id: 'P-2YC50469N17428923M7ULRGY' }); },
-                      onApprove: function(data, actions) { alert('Basic Plan Subscription Started! ID: ' + data.subscriptionID); }
-                  }).render('#paypal-button-container-P-2YC50469N17428923M7ULRGY');
-              }
-           } catch (error) { console.error("Failed to render PayPal button for Basic Plan:", error); }
-
-          // Premium Plan Button ($99/mo)
-          try {
-              if(document.getElementById('paypal-button-container-P-1PJ72593841360548M7ULKEA')) {
-                  paypal.Buttons({
-                      style: { shape: 'pill', color: 'blue', layout: 'vertical', label: 'subscribe' },
-                      createSubscription: function(data, actions) { return actions.subscription.create({ plan_id: 'P-1PJ72593841360548M7ULKEA' }); },
-                      onApprove: function(data, actions) { alert('Premium Plan Subscription Started! ID: ' + data.subscriptionID); }
-                  }).render('#paypal-button-container-P-1PJ72593841360548M7ULKEA');
-              }
-           } catch (error) { console.error("Failed to render PayPal button for Premium Plan:", error); }
-      }
-      // Ensure the DOM is ready before rendering buttons, especially if script is in <head>
-      if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', renderPayPalButtons);
-      } else {
-          renderPayPalButtons(); // DOMContentLoaded has already fired
-      }
-    </script>
-    <script src="script.js"></script>
+    <!-- Defer JavaScript -->
+    <script src="script.js" defer></script>
 </body>
 </html>

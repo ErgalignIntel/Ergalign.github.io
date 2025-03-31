@@ -86,7 +86,7 @@ body {
 
 .nav-logo {
     height: 40px;
-    width: auto;
+    width: 40px;
     margin-right: 10px;
     border-radius: 8px;
 }
@@ -159,9 +159,12 @@ header {
     display: block;
     max-width: 100%;
     height: auto;
+    width: 100%;
+    max-height: 300px;
     margin: 0 auto 30px;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    object-fit: cover;
 }
 
 /* === H1 Neon Metallic Style === */
@@ -837,6 +840,39 @@ footer {
     font-size: 0.9em;
 }
 
+/* === Mobile Performance Optimizations === */
+
+/* Critical CSS inlining */
+.critical-styles {
+    display: block;
+}
+
+/* Optimize images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Lazy loading for images */
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+}
+
+/* Reduce animation complexity on mobile */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 /* === Responsive Design === */
 @media (max-width: 992px) {
     .container {
@@ -850,6 +886,17 @@ footer {
     
     .h1-neon-metallic {
         font-size: 2.5em;
+    }
+    
+    /* Reduce complexity of animations */
+    .service-card:hover,
+    .testimonial:hover,
+    .process-step:hover {
+        transform: translateY(-5px);
+    }
+    
+    .featured-card:hover {
+        transform: translateY(-5px) scale(1.03);
     }
 }
 
@@ -884,7 +931,7 @@ footer {
     }
     
     .featured-card:hover {
-        transform: translateY(-8px) scale(1.02);
+        transform: translateY(-5px);
     }
     
     h2 {
@@ -898,11 +945,28 @@ footer {
     .hero-headline {
         font-size: 1.8em;
     }
+    
+    /* Simplify shadows and effects for better performance */
+    .service-card,
+    .testimonial,
+    .process-step,
+    .faq-item {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Reduce animation complexity */
+    .service-card:hover,
+    .testimonial:hover,
+    .process-step:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
 }
 
 @media (max-width: 576px) {
     .container {
         padding: 20px 15px;
+        margin-top: 70px;
     }
     
     .service-card {
@@ -927,5 +991,30 @@ footer {
     
     .hero-subheadline {
         font-size: 1.1em;
+    }
+    
+    /* Further simplify effects for mobile performance */
+    .service-card,
+    .testimonial,
+    .process-step,
+    .faq-item {
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Minimal animations for better performance */
+    .service-card:hover,
+    .testimonial:hover,
+    .process-step:hover {
+        transform: none;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Simplify text shadows */
+    h2, .service-card h4 {
+        text-shadow: none;
+    }
+    
+    .h1-neon-metallic {
+        text-shadow: 0 0 5px var(--secondary-accent);
     }
 }
