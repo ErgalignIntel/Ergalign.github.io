@@ -1,25 +1,36 @@
 /* === Root Variables (Color Palette & Fonts) === */
 :root {
+    /* --- Base Colors (Keeping dark theme) --- */
     --bg-dark: #16161a;          /* Darker Gray */
     --bg-card-opaque: #23232b;   /* Opaque Card Background */
     --text-light: #f1f1f1;       /* Off-white */
     --text-medium: #a0a0a0;      /* Lighter Medium Gray */
     --text-dark: #111;           /* Near Black */
-    --accent-green: #00ffaa;     /* Minty/Neon Green */
-    --accent-blue: #00bfff;      /* Deep Sky Blue */
-    --accent-purple: #c43dff;    /* Bright Purple */
-    --accent-hover: #ffd700;     /* Gold/Yellow for hover */
     --border-color: #3a3a3a;      /* Darker border */
+
+    /* --- Updated Accent Colors (Based on new image: https://freeimage.host/i/3Akl6bI) --- */
+    --accent-blue: #40C4FF;      /* Primary Blue from image (Material Light Blue A200) */
+    --accent-purple: #E040FB;    /* Primary Purple/Pink from image (Material Purple A200) */
+    --accent-orange: #FFAB00;    /* Accent Orange/Yellow from image (Material Amber A400) */
+
+    /* --- Deprecated Colors (Replaced or mapped to new ones) --- */
+    /* --accent-green: #00ffaa;     -- Replaced by --accent-blue or --accent-orange */
+    /* --accent-hover: #ffd700;     -- Replaced by --accent-orange */
+    /* --accent-cyan will be defined as --accent-blue for consistency */
+    --accent-cyan: var(--accent-blue); /* Call agent card will use the main blue */
+
+    /* --- Fonts & Shapes --- */
     --font-primary: 'Roboto', sans-serif;
     --pill-radius: 50px;
-    --glow-opacity: 0.4;
+    --glow-opacity: 0.4; /* Unused currently? */
 
-    /* === Metallic Gradient Attempts for Buttons === */
-    --grad-metal-stripe: linear-gradient(to right, #6cb0f0 0%, var(--accent-blue) 20%, var(--accent-purple) 70%, #e0a0ff 90%, #f0f0f0 100%);
-    --grad-metal-paypal: linear-gradient(to right, #fff0a0 0%, #ffda63 20%, #ffb300 60%, #ffcc00 80%, #fff8d0 100%);
-    --grad-metal-help: linear-gradient(to right, #aaa 0%, #777 50%, #aaa 100%);
-    --grad-metal-ai: linear-gradient(to right, #e0a0ff 0%, var(--accent-purple) 20%, var(--accent-green) 70%, #a0ffda 90%, #f0f0f0 100%);
-    --grad-metal-consult: linear-gradient(to right, #a0dfff 0%, var(--accent-blue) 20%, var(--accent-green) 70%, #a0ffda 90%, #f0f0f0 100%);
+    /* === Updated Metallic Gradient Attempts for Buttons === */
+    /* Note: These use the new accent colors */
+    --grad-metal-stripe: linear-gradient(to right, #80d8ff 0%, var(--accent-blue) 30%, var(--accent-purple) 70%, #ea80fc 90%, #f5f5f5 100%);
+    --grad-metal-paypal: linear-gradient(to right, #fff0a0 0%, #ffda63 20%, #ffb300 60%, #ffcc00 80%, #fff8d0 100%); /* Keep PayPal colors */
+    --grad-metal-help: linear-gradient(to right, #aaa 0%, #777 50%, #aaa 100%); /* Keep neutral */
+    --grad-metal-ai: linear-gradient(to right, #ea80fc 0%, var(--accent-purple) 30%, var(--accent-blue) 70%, #80d8ff 90%, #f5f5f5 100%); /* Purple -> Blue */
+    --grad-metal-consult: linear-gradient(to right, #80d8ff 0%, var(--accent-blue) 30%, var(--accent-purple) 70%, #ea80fc 90%, #f5f5f5 100%); /* Blue -> Purple */
 }
 
 /* === Basic Reset & Defaults === */
@@ -37,7 +48,7 @@ body {
     font-family: var(--font-primary);
     line-height: 1.7;
     color: var(--text-light); /* Light text default */
-    background-color: var(--bg-dark);
+    background-color: var(--bg-dark); /* Keep dark background */
     /* Subtle noise texture */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%232a2a2a' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
     padding: 15px;
@@ -54,7 +65,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     border: 1px solid var(--border-color);
-    border-top: 6px solid var(--accent-blue);
+    border-top: 6px solid var(--accent-blue); /* Use new blue for top border */
     color: var(--text-light);
 }
 
@@ -68,52 +79,40 @@ header {
 
 .header-image {
     display: block;
-    max-width: 100%; /* Adjusted from previous suggestion */
+    max-width: 100%;
     height: auto;
     margin: 0 auto 30px;
-    border-radius: 15px; /* Kept user's value */
+    border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* --- Original H1 Style - Commented Out --- */
-/*
-header h1 {
-    color: var(--text-light);
-    margin-bottom: 10px;
-    font-size: 3em;
-    font-weight: 700;
-    text-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-blue);
-}
-*/
-
-/* === ADDED: New style for H1 with Neon Metallic effect === */
-/* === Make sure to add class="h1-neon-metallic" to your H1 tag in HTML === */
+/* === H1 Neon Metallic Style === */
+/* REMINDER: Add class="h1-neon-metallic" to your H1 tag in HTML */
 .h1-neon-metallic {
-    /* Replicated styles from original header h1 */
     font-family: var(--font-primary);
     font-size: 3em;
     font-weight: 700;
-    text-align: center; /* Inherited from header, but good to be explicit */
+    text-align: center;
     margin-bottom: 10px;
 
-    /* Metallic Gradient Fill using Neon Purple from variables */
+    /* Metallic Gradient Fill using New Purple/Pink */
     background: linear-gradient(
         140deg,
-        #e0a0ff 20%,       /* Lighter highlight (from existing button gradient) */
-        var(--accent-purple) 50%, /* Main neon purple variable */
-        #a000cc 80%        /* Darker vibrant shade derived from accent */
+        #f780ff 20%,        /* Lighter highlight derived from new purple */
+        var(--accent-purple) 50%, /* Main new purple variable */
+        #a000c0 80%         /* Darker vibrant shade derived from new purple */
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent; /* Fallback */
 
-    /* Neon Glow Effect using accent purple */
+    /* Neon Glow Effect using New Purple/Pink */
     text-shadow:
         0 0 5px var(--accent-purple),  /* Inner glow */
         0 0 10px var(--accent-purple), /* Main glow */
-        0 0 20px #e0a0ff,        /* Lighter halo */
-        0 0 30px #a000cc;        /* Darker outer edge */
+        0 0 20px #f780ff,        /* Lighter halo */
+        0 0 30px #a000c0;        /* Darker outer edge */
 
     /* Optional: Subtle edge */
     -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.1);
@@ -137,6 +136,7 @@ section:not(:last-child) {
      border-bottom: 1px solid var(--border-color);
 }
 
+/* General H2 Styling */
 h2 {
     color: var(--text-light);
     margin-bottom: 40px;
@@ -148,21 +148,23 @@ h2 {
     justify-content: center;
     gap: 15px;
 }
-
 h2 .icon { display: inline-block; }
-#speed-services h2 { text-shadow: 0 0 8px var(--accent-green); }
-#ai-optimization h2 { text-shadow: 0 0 8px var(--accent-purple); }
-#call-agent h2 { color: var(--accent-blue); text-shadow: 0 0 8px var(--accent-blue); } /* Added call agent H2 color/glow */
-#speed-services h2 .icon { filter: drop-shadow(0 0 5px var(--accent-green)); }
-#ai-optimization h2 .icon { filter: drop-shadow(0 0 5px var(--accent-purple)); }
-#call-agent h2 .icon { filter: drop-shadow(0 0 5px var(--accent-blue)); } /* Added call agent icon glow */
+
+/* Section-Specific H2 Styling (Using New Colors) */
+#speed-services h2 { text-shadow: 0 0 8px var(--accent-blue); } /* Changed from green to blue */
+#ai-optimization h2 { text-shadow: 0 0 8px var(--accent-purple); } /* Uses new purple */
+/* Note: Call Agent H2 is now inside a card, styled below */
+
+#speed-services h2 .icon { filter: drop-shadow(0 0 5px var(--accent-blue)); } /* Changed from green to blue */
+#ai-optimization h2 .icon { filter: drop-shadow(0 0 5px var(--accent-purple)); } /* Uses new purple */
+/* Note: Call Agent icon is now inside a card, styled below */
 
 
 /* === Speed Services Grid & Cards === */
 .services-grid {
     display: grid;
     gap: 35px;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Default mobile: single column */
 }
 
 .service-card {
@@ -171,7 +173,7 @@ h2 .icon { display: inline-block; }
     padding: 35px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     border: 1px solid var(--border-color);
-    border-left: 8px solid;
+    border-left: 8px solid; /* Color set by accent class */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -183,11 +185,21 @@ h2 .icon { display: inline-block; }
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
 }
 
-.service-card.accent-green { border-left-color: var(--accent-green); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 255, 170, 0.1); }
-.service-card.accent-blue { border-left-color: var(--accent-blue); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 204, 255, 0.1); }
-.service-card.accent-purple { border-left-color: var(--accent-purple); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(204, 0, 255, 0.1); }
-.service-card.more-help { border-left-color: var(--text-medium); }
+/* Service Card Accent Colors (Using New Palette) */
+/* Note: .accent-green cards are now effectively blue-accented */
+.service-card.accent-green,
+.service-card.accent-blue,
+.service-card.accent-cyan { /* Apply blue style */
+    border-left-color: var(--accent-blue);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(64, 196, 255, 0.1); /* Blue glow */
+}
+.service-card.accent-purple { /* Apply purple style */
+    border-left-color: var(--accent-purple);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(224, 64, 251, 0.1); /* Purple glow */
+}
+.service-card.more-help { border-left-color: var(--text-medium); } /* Keep neutral */
 
+/* Service Card Heading Styles */
 .service-card h4 {
     font-size: 1.8em;
     margin-bottom: 18px;
@@ -196,30 +208,42 @@ h2 .icon { display: inline-block; }
     align-items: center;
     gap: 12px;
     min-height: 50px;
-    /* Color assigned below */
     text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3);
 }
 
-.accent-green h4 { color: var(--accent-green); text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--accent-green); }
-.accent-blue h4 { color: var(--accent-blue); text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--accent-blue); }
-.accent-purple h4 { color: var(--accent-purple); text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--accent-purple); }
-.more-help h4 { color: var(--text-medium); text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3); }
+/* Apply correct heading colors and glows based on new accent palette */
+.accent-green h4,
+.accent-blue h4,
+.accent-cyan h4 { /* Blue accent headings */
+    color: var(--accent-blue);
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--accent-blue);
+}
+.accent-purple h4 { /* Purple accent headings */
+    color: var(--accent-purple);
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--accent-purple);
+}
+.more-help h4 { color: var(--text-medium); text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3); } /* Keep neutral */
 
+/* Service Card List Item Styles */
 .service-card p.service-description { color: var(--text-medium); margin-bottom: 20px; font-style: italic; }
 .service-card ul { list-style: none; margin-bottom: 30px; padding-left: 5px; flex-grow: 1; }
 .service-card li { margin-bottom: 12px; position: relative; padding-left: 28px; color: var(--text-light); }
 .service-card li::before { content: ''; position: absolute; left: 0; top: 7px; width: 10px; height: 10px; border-radius: 3px; background-color: currentColor; opacity: 0.8; transition: all 0.3s ease; }
 .service-card li:hover::before { transform: scale(1.3); opacity: 1; box-shadow: 0 0 5px currentColor; }
-.accent-green li::before { color: var(--accent-green); }
-.accent-blue li::before { color: var(--accent-blue); }
+
+/* Apply correct list bullet colors based on new accent palette */
+.accent-green li::before,
+.accent-blue li::before,
+.accent-cyan li::before { color: var(--accent-blue); }
 .accent-purple li::before { color: var(--accent-purple); }
 .more-help li::before { color: var(--text-medium); }
+
 .service-card ul ul { margin-top: 10px; margin-bottom: 10px; padding-left: 20px; }
 .service-card ul ul li::before{ content: '-'; background-color: transparent; box-shadow: none; width: auto; height: auto; border-radius: 0; opacity: 0.8; top: 0px; left: 5px; }
 .service-card ul ul li:hover::before { transform: none; opacity: 1; }
 
 .note, .note-small { padding: 12px 18px; background-color: rgba(0, 0, 0, 0.25); border-left: 5px solid var(--text-medium); border-radius: 8px; color: var(--text-medium); font-size: 0.9em; margin-top: 15px; }
-.note strong { color: var(--accent-blue); }
+.note strong { color: var(--accent-blue); } /* Use new blue */
 .note-small { font-size: 0.85em; margin-top: 20px; margin-bottom: 10px; }
 
 
@@ -240,16 +264,18 @@ h2 .icon { display: inline-block; }
 }
 .btn-icon { display: inline-block; line-height: 0; filter: brightness(1); }
 
+/* Apply new gradients */
 .stripe-btn { background-image: var(--grad-metal-stripe); color: #fff; }
 .paypal-btn { background-image: var(--grad-metal-paypal); color: var(--text-dark); text-shadow: none; }
 .help-cta { background-image: var(--grad-metal-help); color: var(--text-light); }
 .ai-cta { background-image: var(--grad-metal-ai); color: #fff; }
-/* Style for new consultation button is added below */
+.consultation-button { background-image: var(--grad-metal-consult); color: #fff; } /* Style for consultation button */
+
 
 .cta-button:hover {
     background-position: right center;
     transform: translateY(-3px);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7), 0 0 10px var(--accent-hover);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7), 0 0 10px var(--accent-orange); /* Use new orange for hover glow */
     filter: brightness(1.15);
 }
 .cta-button:active { transform: translateY(0px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); filter: brightness(1); }
@@ -264,64 +290,25 @@ h2 .icon { display: inline-block; }
 #ai-optimization {
     background-color: var(--bg-card-opaque);
     padding: 40px; border-radius: 18px;
-    border-left: 8px solid var(--accent-purple);
+    border-left: 8px solid var(--accent-purple); /* Uses new purple */
      margin-top: 40px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(204, 0, 255, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(224, 64, 251, 0.1); /* Uses new purple glow */
     color: var(--text-light);
 }
-#ai-optimization h2 { color: var(--accent-purple); text-shadow: 0 0 8px var(--accent-purple); }
+#ai-optimization h2 { color: var(--accent-purple); text-shadow: 0 0 8px var(--accent-purple); } /* Uses new purple */
 #ai-optimization .description { text-align: center; color: var(--text-medium); margin-bottom: 30px; }
-#ai-optimization .coming-soon { text-align: center; font-weight: bold; color: var(--accent-green); text-shadow: 0 0 5px var(--accent-green); margin-bottom: 25px; font-size: 1.3em; }
+#ai-optimization .coming-soon { text-align: center; font-weight: bold; color: var(--accent-blue); text-shadow: 0 0 5px var(--accent-blue); margin-bottom: 25px; font-size: 1.3em; } /* Changed from green to blue */
 #interest-form h3 { text-align: center; margin-bottom: 35px; color: var(--text-light); font-weight: 500; font-size: 1.4em; }
 .form-group { margin-bottom: 28px; }
 label { display: block; margin-bottom: 10px; font-weight: 500; color: var(--text-medium); font-size: 1em; }
 input[type="text"], input[type="email"] { width: 100%; padding: 15px 20px; border: 1px solid var(--border-color); border-radius: var(--pill-radius); font-size: 1em; background-color: rgba(30, 30, 30, 0.8); color: var(--text-light); transition: border-color 0.3s ease, box-shadow 0.3s ease; outline: none; }
 input[type="text"]::placeholder, input[type="email"]::placeholder { color: #777; }
-input:focus { border-color: var(--accent-purple); box-shadow: 0 0 0 4px rgba(204, 0, 255, 0.25), inset 0 0 10px rgba(204, 0, 255, 0.1); }
+input:focus { border-color: var(--accent-purple); box-shadow: 0 0 0 4px rgba(224, 64, 251, 0.25), inset 0 0 10px rgba(224, 64, 251, 0.1); } /* Uses new purple focus */
 #ai-optimization .ai-cta { margin-top: 20px; }
 
 
-/* === ADDED SECTION: Styling for Automated Call Agent Section === */
-#call-agent {
-    margin-top: 40px;
-    padding: 35px;
-    text-align: center;
-    background-color: var(--bg-card-opaque);
-    border-radius: 18px;
-    border: 1px solid var(--border-color);
-    border-left: 8px solid var(--accent-blue);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 204, 255, 0.1);
-    color: var(--text-light);
-}
-
-/* #call-agent h2 defined above with other H2s */
-
-#call-agent h3 {
-    color: var(--text-light);
-    margin-bottom: 15px;
-    font-size: 1.4em;
-    font-weight: 500;
-}
-
-#call-agent p {
-    color: var(--text-medium);
-    line-height: 1.7;
-    margin-bottom: 15px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-#call-agent p:last-of-type {
-    margin-bottom: 25px;
-}
-
-/* Style for the new consultation button */
-#call-agent .consultation-button {
-    background-image: var(--grad-metal-consult);
-    color: #fff;
-    width: auto; /* Overrides default width: 100% */
-    padding-left: 30px; padding-right: 30px;
-}
+/* === REMOVED: Styling for Automated Call Agent Section (#call-agent) === */
+/* This section is now removed as the content is inside a service card */
 
 
 /* === Footer === */
@@ -329,15 +316,35 @@ footer {
     text-align: center; margin-top: 70px; padding-top: 35px;
     border-top: 1px solid var(--border-color);
 }
-.response-time { font-weight: bold; color: var(--accent-green); margin-bottom: 15px; text-shadow: 0 0 4px var(--accent-green); }
+/* Changed response time color from green to blue */
+.response-time { font-weight: bold; color: var(--accent-blue); margin-bottom: 15px; text-shadow: 0 0 4px var(--accent-blue); }
 .privacy-note { font-size: 0.9em; color: var(--text-medium); }
 
 
 /* === Responsive Adjustments (Desktop Layout) === */
 @media (min-width: 768px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-    .full-width-s1, .full-width-s3, .full-width-s4 { grid-column: 1 / -1; max-width: 650px; margin-left: auto; margin-right: auto; }
-    .more-help .help-cta, #ai-optimization .ai-cta, #call-agent .consultation-button { width: auto; padding-left: 40px; padding-right: 40px; }
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* Set 2 columns */
+    }
+
+    /* Make first and last cards span full width for 1-2-2-1 layout */
+    .services-grid .service-card:first-child,
+    .services-grid .service-card:last-child {
+        grid-column: 1 / -1; /* Span across both columns */
+        max-width: 650px; /* Optional: constrain width if desired */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* REMOVED: Old full-width class rules */
+    /* .full-width-s1, .full-width-s3, .full-width-s4 { grid-column: 1 / -1; max-width: 650px; margin-left: auto; margin-right: auto; } */
+
+    /* Adjust button widths */
+    .more-help .help-cta, #ai-optimization .ai-cta, .consultation-button {
+        width: auto; /* Allow button to size to content */
+        padding-left: 40px;
+        padding-right: 40px;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -346,10 +353,9 @@ footer {
     /* Adjust H1 size slightly for desktop if needed */
     /* .h1-neon-metallic { font-size: 3.2em; } */
     h2 { font-size: 2.8em; }
-    .service-card h4 { font-size: 1.8em; }
+    .service-card h4 { font-size: 1.8em; } /* Keep consistent */
     .payment-buttons { flex-direction: row; flex-wrap: wrap; }
-    .payment-buttons .cta-button, .payment-buttons > div { flex: 1 1 45%; }
+    .payment-buttons .cta-button, .payment-buttons > div { flex: 1 1 45%; } /* Allow buttons/containers to share space */
     .stripe-basic-steps, .paypal-basic-steps { flex-direction: row; align-items: center; }
     .stripe-basic-steps .cta-button, .paypal-basic-steps > div { flex-grow: 1; }
 }
-
