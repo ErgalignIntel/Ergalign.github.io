@@ -5,27 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ErgAlign Intel - Website Optimization & AI Solutions</title>
     <meta name="description" content="ErgAlign Intel provides website speed optimization, AI solutions, and automated call agent services to supercharge your online presence.">
-    
-    <!-- Preconnect to external domains -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    
-    <!-- Critical CSS inline -->
+
     <style>
         :root {
-            --bg-dark: #121420;
-            --bg-card-opaque: #1B1F3B;
-            --text-light: #F8F9FA;
-            --text-medium: #ADB5BD;
-            --primary-accent: #3A86FF;
-            --secondary-accent: #8A3FFC;
+            /* --- Base Colors (Dashboard Theme) --- */
+            --bg-dark: #1E1E1E;          /* Dark Gray (Dashboard Background) */
+            --bg-card-opaque: #2D2D2D;   /* Charcoal Gray (Dashboard Card Background) */
+            --text-light: #F8F9FA;       /* Off-white */
+            --text-medium: #BDBDBD;      /* Medium Gray (Dashboard Secondary Text) */
+            --primary-accent: #00BCD4;      /* Cyan/Teal Blue (Dashboard Accent) */
+            /* --secondary-accent: #8A3FFC; */ /* Purple - Keep definition if needed elsewhere, else remove */
             --border-color: #3a3a3a;
-            --card-radius: 18px;
+            --card-radius: 12px;
         }
         * {box-sizing: border-box; margin: 0; padding: 0;}
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Open Sans', sans-serif; /* Define fallback later */
             line-height: 1.7;
             color: var(--text-light);
             background-color: var(--bg-dark);
@@ -37,10 +36,10 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(18, 20, 32, 0.95);
+            background: rgba(45, 45, 45, 0.9); /* Use updated color */
             backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(58, 58, 58, 0.5);
+            border-bottom: 1px solid var(--border-color);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
             padding: 10px 0;
         }
@@ -52,48 +51,50 @@
             align-items: center;
             padding: 0 20px;
         }
-        .container {
+        .container { /* Style updated to be transparent via external CSS */
             max-width: 1000px;
             margin: 100px auto 30px;
-            background: linear-gradient(145deg, rgba(27, 31, 59, 0.95), rgba(35, 39, 67, 0.90));
-            padding: 30px 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--border-color);
-            border-top: 6px solid var(--primary-accent);
+            /* Background/border/shadow removed here, handled by external CSS */
+            padding: 0 15px; /* Adjusted padding */
             color: var(--text-light);
         }
         img {
             max-width: 100%;
             height: auto;
         }
+        /* Minimal card style for critical path if needed */
+        .hero-section, .service-card, .testimonial, .process-step, .faq-item, #interest-form, header.content-card {
+             background-color: var(--bg-card-opaque);
+             border-radius: var(--card-radius);
+             border: 1px solid var(--border-color);
+             border-top: 3px solid var(--primary-accent);
+             margin-bottom: 30px; /* Basic spacing */
+             padding: 25px; /* Basic padding */
+        }
+
     </style>
-    
-    <!-- Defer non-critical CSS -->
+
     <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="style.css"></noscript>
-    
-    <!-- Defer Font Awesome -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
-    
-    <!-- Defer Google Fonts -->
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container-nav">
             <a href="#" class="navbar-brand">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'%3E%3Cpath fill='%233A86FF' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7z'/%3E%3C/svg%3E" alt="ErgAlign Logo" class="nav-logo" width="40" height="40">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'%3E%3Cpath fill='%2300BCD4' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7z'/%3E%3C/svg%3E" alt="ErgAlign Logo" class="nav-logo" width="40" height="40">
                 ErgAlign
             </a>
             <button class="mobile-menu-toggle">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="navbar-nav">
-                <li><a href="#">Services</a></li>
+                <li><a href="#speed-services">Services</a></li>
                 <li><a href="#speed-services">Speed Optimization</a></li>
                 <li><a href="#call-agent">Call Agent</a></li>
                 <li><a href="#ai-optimization">AI Solutions</a></li>
@@ -102,27 +103,21 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <div class="container">
-        <!-- Header -->
-        <header>
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300' viewBox='0 0 800 300'%3E%3Crect width='800' height='300' fill='%23121420'/%3E%3Cpath d='M400 50 L700 250 L100 250 Z' fill='%233A86FF' opacity='0.3'/%3E%3Ccircle cx='400' cy='150' r='100' fill='%238A3FFC' opacity='0.3'/%3E%3Ctext x='400' y='160' font-family='Arial' font-size='40' fill='%23F8F9FA' text-anchor='middle'%3EErgAlign Intel%3C/text%3E%3C/svg%3E" alt="ErgAlign Intel Performance Analytics and Optimization" class="header-image" width="800" height="300">
-            <span class="h1-neon-metallic">ErgAlign Intel</span>
-            <p class="tagline">Supercharging Websites & Business Profiles</p>
+        <header class="content-card">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300' viewBox='0 0 800 300'%3E%3Crect width='800' height='300' fill='%231E1E1E'/%3E%3C!-- Placeholder shapes using new accent --%3E%3Cpath d='M400 50 L700 250 L100 250 Z' fill='%2300BCD4' opacity='0.2'/%3E%3Ccircle cx='400' cy='150' r='100' fill='%232D2D2D' opacity='0.5'/%3E%3Ctext x='400' y='160' font-family='Montserrat, sans-serif' font-size='40' fill='%23F8F9FA' text-anchor='middle'%3EErgAlign Intel%3C/text%3E%3C/svg%3E" alt="ErgAlign Intel Optimization Dashboard Concept" class="header-image" width="800" height="300">
+            <span class="h1-neon-metallic">ErgAlign Intel</span> <p class="tagline">Supercharging Websites & Business Profiles</p>
         </header>
 
-        <!-- Hero Section -->
         <section class="hero-section">
             <h1 class="hero-headline">Don't Let Poor Website Performance Undermine Your Success</h1>
             <p class="hero-subheadline">Optimize for Speed, Rankings, and Professionalism</p>
         </section>
 
-        <!-- Speed Services Section -->
         <section id="speed-services">
             <h2><i class="fas fa-bolt icon"></i> Speed Optimization & Automation Services</h2>
             <div class="services-grid">
-                <!-- Speed Check Card -->
-                <div class="service-card accent-blue">
+                <div class="service-card">
                     <h4><i class="fas fa-check-circle"></i> Speed Check – $9.99</h4>
                     <p class="service-description">Find Out Why Your Site is Slow</p>
                     <ul>
@@ -140,8 +135,7 @@
                     </div>
                 </div>
 
-                <!-- Basic Plan Card -->
-                <div class="service-card accent-blue">
+                <div class="service-card">
                     <h4><i class="fas fa-cogs"></i> Basic Plan – $49 Setup + $29/month</h4>
                     <p class="service-description">Essential Speed & Monitoring</p>
                     <ul>
@@ -170,8 +164,7 @@
                     </div>
                 </div>
 
-                <!-- Premium Plan Card -->
-                <div class="service-card accent-purple featured-card">
+                <div class="service-card featured-card">
                     <div class="featured-badge">Most Popular</div>
                     <h4><i class="fas fa-gem"></i> Premium Plan – $99/month</h4>
                     <p class="service-description">Full-Service Ongoing Optimization</p>
@@ -193,8 +186,7 @@
                     </div>
                 </div>
 
-                <!-- One-Time Speed Boost Card -->
-                <div class="service-card accent-blue">
+                <div class="service-card">
                     <h4><i class="fas fa-bolt"></i> One-Time Speed Boost – $139</h4>
                     <p class="service-description">Let Us Make Your Site Blazing Fast</p>
                     <ul>
@@ -212,8 +204,7 @@
                     </div>
                 </div>
 
-                <!-- Call Agent Card -->
-                <div class="service-card accent-blue" id="call-agent">
+                <div class="service-card" id="call-agent">
                     <h4><i class="fas fa-robot"></i> Automated Call Agent</h4>
                     <p class="service-description">Your Custom Automated Call Agent Developer: I build intelligent 24/7 virtual secretaries handling calls, messages, routing, and lead qualification. Ensure you capture every lead professionally. Let's create your tailored solution.</p>
                     <div class="payment-buttons">
@@ -223,7 +214,6 @@
                     </div>
                 </div>
 
-                <!-- Need More Help Card -->
                 <div class="service-card more-help">
                     <h4><i class="fas fa-question-circle"></i> Need More Help?</h4>
                     <p class="service-description">We Handle the Tricky Stuff (Custom Quote)</p>
@@ -239,12 +229,10 @@
                     </div>
                 </div>
             </div>
-            <div class="note">
-                <i class="fas fa-lightbulb"></i> <strong>Note About Cloudflare:</strong> Cloudflare is great, but it can't fix everything alone. We optimize what it misses for true speed.
+            <div class="note"> <i class="fas fa-lightbulb"></i> <strong>Note About Cloudflare:</strong> Cloudflare is great, but it can't fix everything alone. We optimize what it misses for true speed.
             </div>
         </section>
 
-        <!-- Testimonials Section -->
         <section id="testimonials">
             <h2><i class="fas fa-quote-left icon"></i> What Our Clients Say</h2>
             <div class="testimonials-grid">
@@ -276,17 +264,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
         </section>
 
-        <!-- AI Optimization Section -->
         <section id="ai-optimization">
             <h2><i class="fas fa-robot icon"></i> AI-Powered Google Optimization</h2>
             <p class="coming-soon">(Coming Soon!)</p>
             <p class="description">Reserve Your Spot!</p>
             <p class="description">Let AI manage your Google Business Profile: posts, responses, ranking alerts. Focus on your business!</p>
-            <form id="interest-form">
-                <h3>Get Early Access</h3>
+            <form id="interest-form"> <h3>Get Early Access</h3>
                 <div class="form-group">
                     <label for="interest-name">Your Name</label>
                     <input type="text" id="interest-name" required>
@@ -305,39 +291,32 @@
             </form>
         </section>
 
-        <!-- How It Works Section -->
         <section id="how-it-works">
             <h2><i class="fas fa-cogs icon"></i> How Our Process Works</h2>
             <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
+                <div class="process-step"> <div class="step-number">1</div>
                     <h3>Initial Analysis</h3>
                     <p>We perform a comprehensive audit of your current website performance.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
+                <div class="process-step"> <div class="step-number">2</div>
                     <h3>Custom Strategy</h3>
                     <p>We develop a tailored optimization plan based on your specific needs.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
+                <div class="process-step"> <div class="step-number">3</div>
                     <h3>Implementation</h3>
                     <p>Our team executes the optimizations with minimal disruption to your site.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
+                <div class="process-step"> <div class="step-number">4</div>
                     <h3>Ongoing Support</h3>
                     <p>We monitor performance and make adjustments to maintain optimal speed.</p>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
         <section id="faq">
             <h2><i class="fas fa-question-circle icon"></i> Frequently Asked Questions</h2>
             <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
+                <div class="faq-item"> <div class="faq-question">
                         <h3>What makes ErgAlign different from other optimization services?</h3>
                         <i class="fas fa-chevron-down"></i>
                     </div>
@@ -345,8 +324,7 @@
                         <p>Unlike many services that rely solely on generic optimizations, we provide custom solutions tailored to your specific website needs. We go beyond basic caching and compression to address the root causes of performance issues.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
+                <div class="faq-item"> <div class="faq-question">
                         <h3>How long does it take to see results?</h3>
                         <i class="fas fa-chevron-down"></i>
                     </div>
@@ -354,8 +332,7 @@
                         <p>Most clients see significant improvements within 48-72 hours of our initial optimizations. Our One-Time Speed Boost typically delivers results within a week, while our monthly plans include ongoing optimizations for continuous improvement.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
+                <div class="faq-item"> <div class="faq-question">
                         <h3>Do I need technical knowledge to use your services?</h3>
                         <i class="fas fa-chevron-down"></i>
                     </div>
@@ -363,10 +340,9 @@
                         <p>Not at all! We handle all the technical aspects for you. Our service is designed to be hassle-free, allowing you to focus on your business while we take care of the optimization work.</p>
                     </div>
                 </div>
-            </div>
+                </div>
         </section>
 
-        <!-- Footer -->
         <footer id="contact">
             <div class="footer-content">
                 <div class="footer-info">
@@ -394,12 +370,8 @@
             <div class="footer-bottom">
                 <p class="response-time">We aim to respond within 24 business hours.</p>
                 <p class="privacy-note">Your information is kept private and never shared.</p>
-                <p class="copyright">&copy; 2025 ErgAlign Intel. All rights reserved.</p>
-            </div>
+                <p class="copyright">&copy; 2025 ErgAlign Intel. All rights reserved.</p> </div>
         </footer>
-    </div>
-
-    <!-- Defer JavaScript -->
-    <script src="script.js" defer></script>
+    </div> <script src="script.js" defer></script>
 </body>
 </html>
