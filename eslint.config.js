@@ -17,8 +17,7 @@ export default [
     },
     rules: {
       // You can customize rules here later if needed.
-      // For example, to just warn about unused variables instead of causing an error:
-      // "no-unused-vars": "warn"
+      "no-unused-vars": "warn" // Treat unused variables as warnings, not errors
     }
   }
 ];
