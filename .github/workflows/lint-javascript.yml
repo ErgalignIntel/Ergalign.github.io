@@ -28,17 +28,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          # The 'cache: 'npm'' line that was previously here has been removed
+          # The 'cache: 'npm'' line was removed from here
 
-      # Step 3: Install ESLint globally (needed since likely not in package.json)
-      - name: Install ESLint
-        run: npm install -g eslint # Installs ESLint globally
+      # Step 3: Install ESLint and required config packages globally
+      - name: Install ESLint and config packages
+        # Installs the main eslint tool, plus the @eslint/js and globals packages needed by eslint.config.js
+        run: npm install -g eslint @eslint/js globals
 
       # Step 4: Run the JavaScript checker tool (ESLint)
       - name: Run ESLint
         # 'npx eslint .' tells it to run ESLint on all files in the project.
         # '--ext .js' tells it to only check files ending in .js
-        # NOTE: This might still fail if ESLint needs specific configuration
-        #       or if it finds actual errors in your script.js file.
+        # NOTE: This relies on the eslint.config.js file being present and correct.
         run: npx eslint . --ext .js
-
