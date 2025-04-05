@@ -1,14 +1,14 @@
-/* === Root Variables (Color Palette & Fonts) - UPDATED FOR NEW TARGET === */
+/* === Root Variables (Color Palette & Fonts) - UPDATED FOR "User Settings" Target === */
 :root {
-    /* --- Base Colors (New Dashboard Theme) --- */
-    --bg-dark: #1E1E1E;          /* Dark Gray Background */
-    --bg-card-opaque: #2D2D2D;   /* Charcoal Gray Card Background */
+    /* --- Base Colors (User Settings Theme) --- */
+    --bg-dark: #1A1F3A;          /* Dark Blue/Indigo Page Background */
+    --bg-card-opaque: #1E1E1E;   /* Near Black/Very Dark Grey for Cards/Inputs */
     --text-light: #F8F9FA;       /* Off-white */
-    --text-medium: #BDBDBD;      /* Medium Gray */
+    --text-medium: #BDBDBD;      /* Medium Gray (Used for labels now) */
     --text-dark: #111;           /* Near Black */
-    --border-color: #444444;      /* Slightly lighter dark border */
+    --border-color: #444444;      /* Keep or adjust if needed */
 
-    /* --- Updated Accent Colors (New Dashboard Theme) --- */
+    /* --- Accent Colors (User Settings Theme) --- */
     --primary-accent: #3A86FF;      /* Bright Blue (Primary Solid Accent) */
     --grad-cyan: #00BCD4;          /* Cyan/Teal for Gradient */
     --grad-blue: #3A86FF;          /* Blue for Gradient */
@@ -21,7 +21,7 @@
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Open Sans', sans-serif;
     --pill-radius: 50px;
-    --card-radius: 12px;
+    --card-radius: 12px; /* Keep or adjust */
     --glow-opacity: 0.4;
 
     /* === Button Colors (Aligned with New Theme) === */
@@ -30,7 +30,7 @@
     --grad-metal-paypal: linear-gradient(to right, #fff0a0 0%, #ffda63 20%, #ffb300 60%, #ffcc00 80%, #fff8d0 100%); /* Keep PayPal */
     --btn-bg-help: #555;
     --btn-text-help: var(--text-light);
-    --btn-bg-inactive: var(--bg-card-opaque); /* Charcoal for inactive buttons */
+    --btn-bg-inactive: var(--bg-card-opaque); /* Use new card bg for inactive */
     --btn-border-inactive: var(--border-color);
     --btn-text-inactive: var(--text-medium);
 }
@@ -44,486 +44,148 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Account for fixed navbar */
+    scroll-padding-top: 80px;
 }
 
 body {
     font-family: var(--font-body);
     line-height: 1.7;
     color: var(--text-light);
-    background-color: var(--bg-dark);
+    background-color: var(--bg-dark); /* Use NEW Dark Blue/Indigo background */
     padding: 0;
     font-size: 16px;
 }
 
 /* === Navigation Bar === */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(45, 45, 45, 0.9); /* Charcoal base with blur */
-    backdrop-filter: blur(10px);
-    z-index: 1000;
+    position: fixed; top: 0; left: 0; width: 100%;
+    background: rgba(26, 31, 58, 0.85); /* Darker semi-transparent blue, adjust opacity */
+    backdrop-filter: blur(10px); z-index: 1000;
     border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-    padding: 10px 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); padding: 10px 0;
 }
+/* ... rest of navbar styles ... */
+.container-nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+.navbar-brand { display: flex; align-items: center; text-decoration: none; color: var(--text-light); font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; }
+.nav-logo { height: 40px; width: 40px; margin-right: 10px; border-radius: 8px; }
+.navbar-nav { display: flex; list-style: none; gap: 25px; }
+.navbar-nav li a { color: var(--text-light); text-decoration: none; font-weight: 500; transition: color 0.3s ease; position: relative; }
+.navbar-nav li a:hover { color: var(--primary-accent); }
+.navbar-nav li a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--primary-accent); transition: width 0.3s ease; }
+.navbar-nav li a:hover::after { width: 100%; }
+.mobile-menu-toggle { display: none; background: none; border: none; color: var(--text-light); font-size: 1.5rem; cursor: pointer; }
 
-.container-nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--text-light);
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.5rem;
-}
-
-.nav-logo {
-    height: 40px;
-    width: 40px;
-    margin-right: 10px;
-    border-radius: 8px;
-}
-
-.navbar-nav {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
-.navbar-nav li a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    position: relative;
-}
-
-.navbar-nav li a:hover {
-    color: var(--primary-accent); /* Hover with Blue */
-}
-
-.navbar-nav li a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--primary-accent); /* Underline with Blue */
-    transition: width 0.3s ease;
-}
-
-.navbar-nav li a:hover::after {
-    width: 100%;
-}
-
-.mobile-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-light);
-    font-size: 1.5rem;
-    cursor: pointer;
-}
 
 /* === Container === */
 .container {
-    max-width: 1000px;
-    margin: 100px auto 30px;
-    padding: 0 15px;
-    background: transparent;
-    backdrop-filter: none;
-    border: none;
-    box-shadow: none;
+    max-width: 1000px; margin: 100px auto 30px; padding: 0 15px;
+    background: transparent; /* Keep container transparent */
     color: var(--text-light);
 }
 
 /* === Header - Apply Gradient Background === */
-header.content-card { /* Target header specifically if it has this class */
-    text-align: center;
-    padding: 40px 30px; /* Adjust padding */
-    margin-bottom: 40px;
+header.content-card {
+    text-align: center; padding: 40px 30px; margin-bottom: 40px;
     border-radius: var(--card-radius);
     background: var(--header-gradient); /* Apply the gradient */
-    border: none; /* Remove other borders if gradient is enough */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    color: var(--text-light); /* Ensure text is light on gradient */
+    border: none; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    color: var(--text-light);
 }
+header.content-card .header-image { max-height: 250px; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
-header.content-card .header-image {
-    /* Style header image if needed */
-     max-height: 250px; /* Example */
-     border-radius: 10px;
-     margin-bottom: 25px;
-     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
 
 /* === H1 Simplified Style === */
 .h1-neon-metallic {
-    font-family: var(--font-heading);
-    font-size: 3em;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 10px;
-    color: var(--text-light);
-    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Subtle shadow on gradient */
-    display: block;
-    background: none;
-    -webkit-background-clip: unset;
-    background-clip: unset;
-    -webkit-text-fill-color: unset;
-    -webkit-text-stroke: unset;
+    font-family: var(--font-heading); font-size: 3em; font-weight: 700; text-align: center;
+    margin-bottom: 10px; color: var(--text-light);
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); display: block;
+    background: none; -webkit-background-clip: unset; background-clip: unset;
+    -webkit-text-fill-color: unset; -webkit-text-stroke: unset;
 }
+.tagline { color: var(--text-light); opacity: 0.9; font-size: 1.3em; font-weight: 400; font-family: var(--font-heading); }
 
-.tagline {
-    color: var(--text-light); /* Ensure tagline is light on gradient */
-    opacity: 0.9;
-    font-size: 1.3em;
-    font-weight: 400;
-    font-family: var(--font-heading);
-}
-
-/* === Hero Section (Standard Card Style) === */
+/* === Hero Section (Use NEW Card Style) === */
 .hero-section {
-    text-align: center;
-    margin-bottom: 60px;
-    padding: 35px;
-    background-color: var(--bg-card-opaque); /* Charcoal card bg */
+    text-align: center; margin-bottom: 60px; padding: 35px;
+    background-color: var(--bg-card-opaque); /* Use NEW Near Black/Dark Grey */
     border-radius: var(--card-radius);
     border: 1px solid var(--border-color);
-    /* border-top: 3px solid var(--primary-accent); */ /* Optional: Remove top border if desired */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
-
-.hero-headline {
-    font-family: var(--font-heading);
-    font-size: 2.2em;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: var(--text-light);
-}
-
-.hero-subheadline {
-    font-family: var(--font-body);
-    font-size: 1.3em;
-    color: var(--primary-accent); /* Blue accent */
-}
+.hero-headline { font-family: var(--font-heading); font-size: 2.2em; font-weight: 700; margin-bottom: 15px; color: var(--text-light); }
+.hero-subheadline { font-family: var(--font-body); font-size: 1.3em; color: var(--primary-accent); /* Blue accent */ }
 
 /* === Sections === */
-section {
-    margin-bottom: 60px;
-    padding-bottom: 50px;
-}
-
-section:not(:last-child):not(.hero-section) { /* Avoid double border below hero if sections follow */
-     border-bottom: 1px solid var(--border-color);
-}
+section { margin-bottom: 60px; padding-bottom: 50px; }
+section:not(:last-child):not(.hero-section) { border-bottom: 1px solid var(--border-color); }
 
 /* General H2 Styling */
-h2 {
-    color: var(--text-light);
-    margin-bottom: 40px;
-    font-size: 2.6em;
-    font-weight: 700;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    font-family: var(--font-heading);
-}
-
-h2 .icon {
-    display: inline-block;
-    color: var(--primary-accent); /* Blue icons */
-}
+h2 { color: var(--text-light); margin-bottom: 40px; font-size: 2.6em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; gap: 15px; font-family: var(--font-heading); }
+h2 .icon { display: inline-block; color: var(--primary-accent); /* Blue icons */ }
 
 /* Section-Specific H2 Styling - Use Blue shadow */
-#speed-services h2,
-#ai-optimization h2,
-#testimonials h2,
-#how-it-works h2,
-#faq h2 {
-    text-shadow: 0 0 6px rgba(58, 134, 255, 0.2); /* Subtle Blue shadow */
-}
+#speed-services h2, #ai-optimization h2, #testimonials h2, #how-it-works h2, #faq h2 { text-shadow: 0 0 6px rgba(58, 134, 255, 0.2); /* Subtle Blue shadow */ }
+#speed-services h2 .icon, #ai-optimization h2 .icon, #testimonials h2 .icon, #how-it-works h2 .icon, #faq h2 .icon { filter: drop-shadow(0 0 4px var(--primary-accent)); /* Blue drop shadow */ }
 
-#speed-services h2 .icon,
-#ai-optimization h2 .icon,
-#testimonials h2 .icon,
-#how-it-works h2 .icon,
-#faq h2 .icon {
-    filter: drop-shadow(0 0 4px var(--primary-accent)); /* Blue drop shadow */
-}
-
-/* === Base Card Styling (Apply to multiple sections) === */
+/* === Base Card Styling (Use NEW Card Style) === */
 .service-card, .testimonial, .process-step, .faq-item, #interest-form {
-    background-color: var(--bg-card-opaque); /* Charcoal card bg */
-    border-radius: var(--card-radius);
-    padding: 35px;
+    background-color: var(--bg-card-opaque); /* Use NEW Near Black/Dark Grey */
+    border-radius: var(--card-radius); padding: 35px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--border-color);
-    /* border-top: 3px solid var(--primary-accent); */ /* Optional top border */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex; /* Added for consistency if needed */
-    flex-direction: column; /* Added for consistency if needed */
-    position: relative; /* Added for consistency */
-    overflow: hidden; /* Added for consistency */
-    color: var(--text-light);
-     margin-bottom: 30px; /* Ensure cards have bottom margin */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex;
+    flex-direction: column; position: relative; overflow: hidden;
+    color: var(--text-light); margin-bottom: 30px;
 }
+.service-card:hover, .testimonial:hover, .process-step:hover, .faq-item:hover, #interest-form:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); }
 
-.service-card:hover, .testimonial:hover, .process-step:hover, .faq-item:hover, #interest-form:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
 
 /* === Speed Services Grid === */
-.services-grid {
-    display: grid;
-    gap: 35px;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-}
+.services-grid { display: grid; gap: 35px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
 
 /* Featured Card Specifics */
-.featured-card {
-    /* Optional: Add distinctive style like border or shadow */
-     border-color: var(--primary-accent); /* Example: Blue border */
-     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(58, 134, 255, 0.2); /* Blue glow */
-     transform: scale(1.02); /* Slight scale */
-     z-index: 2;
-}
-.featured-card:hover{
-    transform: translateY(-5px) scale(1.02); /* Keep scale on hover */
-}
-
-.featured-badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: var(--primary-accent); /* Blue badge */
-    color: white;
-    padding: 8px 15px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border-bottom-left-radius: 10px;
-    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.3);
-}
+.featured-card { border-color: var(--primary-accent); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(58, 134, 255, 0.2); transform: scale(1.02); z-index: 2; }
+.featured-card:hover{ transform: translateY(-5px) scale(1.02); }
+.featured-badge { position: absolute; top: 0; right: 0; background: var(--primary-accent); color: white; padding: 8px 15px; font-size: 0.85rem; font-weight: 600; border-bottom-left-radius: 10px; box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.3); }
 
 /* Service Card Heading Styles */
-.service-card h4 {
-    font-size: 1.8em;
-    margin-bottom: 18px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-height: 50px;
-    font-family: var(--font-heading);
-    color: var(--primary-accent); /* Blue card titles */
-    text-shadow: 0 0 5px rgba(58, 134, 255, 0.3); /* Subtle Blue shadow */
-}
-.more-help h4 { /* Override for 'Need More Help?' card */
-    color: var(--text-medium);
-    text-shadow: none;
-}
+.service-card h4 { font-size: 1.8em; margin-bottom: 18px; font-weight: bold; display: flex; align-items: center; gap: 12px; min-height: 50px; font-family: var(--font-heading); color: var(--primary-accent); /* Blue card titles */ text-shadow: 0 0 5px rgba(58, 134, 255, 0.3); }
+.more-help h4 { color: var(--text-medium); text-shadow: none; }
 
 /* Service Card List Item Styles */
-.service-card p.service-description {
-    color: var(--text-medium);
-    margin-bottom: 20px;
-    font-style: italic;
-}
+.service-card p.service-description { color: var(--text-medium); margin-bottom: 20px; font-style: italic; }
+.service-card ul { list-style: none; margin-bottom: 30px; padding-left: 5px; flex-grow: 1; }
+.service-card li { margin-bottom: 12px; position: relative; padding-left: 28px; color: var(--text-light); }
+.service-card li::before { content: ''; position: absolute; left: 0; top: 7px; width: 10px; height: 10px; border-radius: 3px; background-color: var(--primary-accent); /* Blue bullets */ opacity: 0.8; transition: all 0.3s ease; }
+.more-help li::before { background-color: var(--text-medium); }
+.service-card li:hover::before { transform: scale(1.3); opacity: 1; box-shadow: 0 0 5px var(--primary-accent); }
+.more-help li:hover::before { box-shadow: 0 0 5px var(--text-medium); }
+.service-card ul ul { margin-top: 10px; margin-bottom: 10px; padding-left: 20px; }
+.service-card ul ul li::before{ content: '-'; background-color: transparent; box-shadow: none; width: auto; height: auto; border-radius: 0; opacity: 0.8; top: 0px; left: 5px; color: var(--primary-accent); }
+.more-help ul ul li::before{ color: var(--text-medium); }
+.service-card ul ul li:hover::before { transform: none; opacity: 1; }
 
-.service-card ul {
-    list-style: none;
-    margin-bottom: 30px;
-    padding-left: 5px;
-    flex-grow: 1;
-}
-
-.service-card li {
-    margin-bottom: 12px;
-    position: relative;
-    padding-left: 28px;
-    color: var(--text-light);
-}
-
-.service-card li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 7px;
-    width: 10px;
-    height: 10px;
-    border-radius: 3px;
-    background-color: var(--primary-accent); /* Blue bullets */
-    opacity: 0.8;
-    transition: all 0.3s ease;
-}
-.more-help li::before { /* Override for 'Need More Help?' card */
-     background-color: var(--text-medium);
-}
-
-
-.service-card li:hover::before {
-    transform: scale(1.3);
-    opacity: 1;
-    box-shadow: 0 0 5px var(--primary-accent); /* Blue glow on hover */
-}
-.more-help li:hover::before {
-     box-shadow: 0 0 5px var(--text-medium);
-}
-
-
-.service-card ul ul {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-}
-
-.service-card ul ul li::before{
-    content: '-';
-    background-color: transparent;
-    box-shadow: none;
-    width: auto;
-    height: auto;
-    border-radius: 0;
-    opacity: 0.8;
-    top: 0px;
-    left: 5px;
-    color: var(--primary-accent); /* Blue sub-bullets */
-}
-.more-help ul ul li::before{
-     color: var(--text-medium);
-}
-
-.service-card ul ul li:hover::before {
-    transform: none;
-    opacity: 1;
-}
-
-.note, .note-small {
-    padding: 12px 18px;
-    background-color: rgba(0, 0, 0, 0.25);
-    border-left: 5px solid var(--primary-accent); /* Blue border */
-    border-radius: 8px;
-    color: var(--text-medium);
-    font-size: 0.9em;
-    margin-top: 15px;
-}
-/* Ensure note is outside the grid or card if needed */
-#speed-services > .note {
-    margin-left: auto; /* Adjust positioning relative to grid/container */
-    margin-right: auto;
-    max-width: calc(100% - 40px); /* Example alignment */
-}
-
-
+.note, .note-small { padding: 12px 18px; background-color: rgba(0, 0, 0, 0.25); border-left: 5px solid var(--primary-accent); border-radius: 8px; color: var(--text-medium); font-size: 0.9em; margin-top: 15px; }
+#speed-services > .note { margin-left: auto; margin-right: auto; max-width: calc(100% - 40px); /* Example alignment if note is outside grid */ }
 .note strong { color: var(--primary-accent); }
-.note-small {
-    font-size: 0.85em;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
+.note-small { font-size: 0.85em; margin-top: 20px; margin-bottom: 10px; }
+
 
 /* === Payment & CTA Buttons === */
-.payment-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: auto; /* Pushes buttons to bottom of card */
-    padding-top: 25px;
-}
-
-.stripe-basic-steps, .paypal-basic-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border: 1px solid var(--border-color);
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 10px;
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 14px 25px;
-    font-size: 1.05em;
-    font-weight: 600;
-    border: 1px solid transparent; /* Add border for consistent sizing */
-    border-radius: var(--pill-radius);
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.35s ease;
-    background-size: 100% auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-    text-shadow: none;
-    font-family: var(--font-heading);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-    filter: brightness(1.1);
-}
-
-.btn-icon {
-    display: inline-block;
-    line-height: 0;
-    filter: brightness(1);
-}
+.payment-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: auto; padding-top: 25px; }
+.stripe-basic-steps, .paypal-basic-steps { display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 10px; background-color: rgba(0, 0, 0, 0.1); }
+.cta-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px 25px; font-size: 1.05em; font-weight: 600; border: 1px solid transparent; border-radius: var(--pill-radius); cursor: pointer; text-align: center; transition: all 0.35s ease; background-size: 100% auto; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); text-decoration: none; position: relative; overflow: hidden; text-shadow: none; font-family: var(--font-heading); letter-spacing: 0.5px; text-transform: uppercase; }
+.cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); filter: brightness(1.1); }
+.btn-icon { display: inline-block; line-height: 0; filter: brightness(1); }
 
 /* Apply solid backgrounds - Use Blue */
-.stripe-btn,
-.consultation-button,
-.ai-cta {
-    background-image: none;
-    background-color: var(--btn-bg-primary); /* Solid Blue */
-    color: var(--btn-text-primary);
-    border-color: var(--btn-bg-primary);
-}
+.stripe-btn, .consultation-button, .ai-cta { background-image: none; background-color: var(--btn-bg-primary); color: var(--btn-text-primary); border-color: var(--btn-bg-primary); }
+.paypal-btn { background-image: var(--grad-metal-paypal); color: var(--text-dark); border-color: #ffb300; }
+.help-cta { background-image: none; background-color: var(--btn-bg-help); color: var(--btn-text-help); border-color: var(--btn-bg-help); }
 
-.paypal-btn {
-    background-image: var(--grad-metal-paypal);
-    color: var(--text-dark);
-    border-color: #ffb300; /* Match gradient */
-}
-
-.help-cta {
-    background-image: none;
-    background-color: var(--btn-bg-help); /* Solid grey */
-    color: var(--btn-text-help);
-     border-color: var(--btn-bg-help);
-}
 
 /* === Testimonials Section === */
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 /* Uses base card style .testimonial */
 .testimonial-content { margin-bottom: 20px; position: relative; }
 .testimonial-content p { font-style: italic; color: var(--text-light); line-height: 1.6; font-size: 1.05em; }
@@ -542,26 +204,37 @@ h2 .icon {
 /* Uses base card style #interest-form */
 #interest-form h3 { margin-bottom: 20px; color: var(--primary-accent); font-family: var(--font-heading); }
 .form-group { margin-bottom: 20px; text-align: left; }
-.form-group label { display: block; margin-bottom: 5px; color: var(--text-light); }
-.form-group input { width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid var(--border-color); background-color: rgba(0, 0, 0, 0.2); color: var(--text-light); font-family: var(--font-body); }
+.form-group label {
+    display: block; margin-bottom: 8px; /* Increased spacing */
+    color: var(--text-medium); /* Use Medium Grey for labels */
+    font-size: 0.95em; /* Slightly smaller label */
+    font-weight: 500;
+}
+.form-group input {
+    width: 100%; padding: 12px 15px; border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card-opaque); /* Use NEW Card/Input background */
+    color: var(--text-light); font-family: var(--font-body);
+    font-size: 1em; /* Ensure input text size is appropriate */
+}
 .form-group input:focus { outline: none; border-color: var(--primary-accent); box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.3); } /* Blue focus */
 
 
 /* === How It Works Section === */
 .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 40px; }
 /* Uses base card style .process-step */
-.step-number { width: 50px; height: 50px; background: var(--primary-accent); /* Solid Blue */ border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-weight: bold; font-size: 1.5em; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); font-family: var(--font-heading); }
-.process-step h3 { margin-bottom: 15px; color: var(--primary-accent); /* Blue heading */ font-family: var(--font-heading); }
+.step-number { width: 50px; height: 50px; background: var(--primary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-weight: bold; font-size: 1.5em; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); font-family: var(--font-heading); }
+.process-step h3 { margin-bottom: 15px; color: var(--primary-accent); font-family: var(--font-heading); }
 .process-step p { color: var(--text-medium); }
 
 
 /* === FAQ Section === */
-.faq-container { max-width: 800px; margin: 40px auto 0; } /* Added top margin */
+.faq-container { max-width: 800px; margin: 40px auto 0; }
 /* Uses base card style .faq-item */
 .faq-question { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background-color 0.3s ease; }
-.faq-question:hover { background-color: rgba(58, 134, 255, 0.1); /* Subtle Blue hover */ }
+.faq-question:hover { background-color: rgba(58, 134, 255, 0.1); }
 .faq-question h3 { margin: 0; font-size: 1.2em; color: var(--text-light); font-family: var(--font-heading); }
-.faq-question i { color: var(--primary-accent); /* Blue icon */ transition: transform 0.3s ease; }
+.faq-question i { color: var(--primary-accent); transition: transform 0.3s ease; }
 .faq-item.active .faq-question i { transform: rotate(180deg); }
 .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; border-top: 1px solid var(--border-color); }
 .faq-item.active .faq-answer { padding: 20px 20px 20px; max-height: 500px; }
@@ -577,22 +250,30 @@ footer { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border
 .footer-links ul { list-style: none; }
 .footer-links li { margin-bottom: 10px; }
 .footer-links a { color: var(--text-medium); text-decoration: none; transition: color 0.3s ease; }
-.footer-links a:hover { color: var(--primary-accent); /* Blue hover */ }
+.footer-links a:hover { color: var(--primary-accent); }
 .footer-bottom { max-width: 1000px; margin: 0 auto; padding: 30px 15px 20px; text-align: center; border-top: 1px solid var(--border-color); }
 .response-time, .privacy-note, .copyright { color: var(--text-medium); margin-bottom: 10px; font-size: 0.9em; }
 
 
-/* === Mobile Performance & Responsive (Largely unchanged, review if layout issues) === */
-/* ... Keep existing @media rules ... */
-/* Example adjustments within @media rules if needed: */
+/* === Mobile Performance & Responsive (Largely unchanged) === */
+@media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+@media (max-width: 992px) { .container { margin: 80px 20px 30px; padding: 0 10px; } h2 { font-size: 2.2em; } .h1-neon-metallic { font-size: 2.5em; } .service-card:hover, .testimonial:hover, .process-step:hover { transform: translateY(-3px); } }
 @media (max-width: 768px) {
-    header.content-card { padding: 30px 20px; } /* Adjust padding on mobile */
-    .h1-neon-metallic { font-size: 2.2em; }
-    /* Other existing mobile rules */
+    .navbar-nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(26, 31, 58, 0.95); flex-direction: column; padding: 20px; gap: 15px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); } /* Updated mobile menu bg */
+    .navbar-nav.active { display: flex; }
+    .mobile-menu-toggle { display: block; } .services-grid { grid-template-columns: 1fr; }
+    .featured-card { transform: scale(1); } .featured-card:hover { transform: translateY(-3px); }
+    h2 { font-size: 1.8em; } .h1-neon-metallic { font-size: 2.2em; } .hero-headline { font-size: 1.8em; }
+    .service-card, .testimonial, .process-step, .faq-item, .hero-section, #interest-form { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35); }
+    .service-card:hover, .testimonial:hover, .process-step:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); }
+    header.content-card { padding: 30px 20px; }
 }
 @media (max-width: 576px) {
-     header.content-card { padding: 25px 15px; }
-     .h1-neon-metallic { font-size: 2em; }
-    /* Other existing mobile rules */
+    .container { padding: 0 5px; margin: 70px 15px 30px; }
+    .service-card, .testimonial, .process-step, .faq-item, .hero-section, #interest-form { padding: 25px; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); }
+    .service-card h4 { font-size: 1.5em; } h2 { font-size: 1.6em; } .h1-neon-metallic { font-size: 2em; } .hero-headline { font-size: 1.6em; } .hero-subheadline { font-size: 1.1em; }
+    .service-card:hover, .testimonial:hover, .process-step:hover { transform: none; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); }
+    h2, .service-card h4, .h1-neon-metallic { text-shadow: none; }
+    header.content-card { padding: 25px 15px; }
 }
 
