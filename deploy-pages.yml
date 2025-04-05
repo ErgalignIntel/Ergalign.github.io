@@ -1,0 +1,56 @@
+# Name for this set of automated instructions
+name: Deploy to GitHub Pages
+
+# --- When should this run? ---
+on:
+  # Runs on pushes targeting the main branch
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab if needed
+  workflow_dispatch:
+
+# --- Permissions ---
+# Set permissions for the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# --- Deployment Strategy ---
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# --- What jobs should be done? ---
+jobs:
+  # Build job (just prepares the files for deployment)
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        # Configures GitHub Pages to use the correct settings for deployment via Actions
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        # Uploads your entire repository root directory as the website content
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload the current directory (repository root)
+          path: '.'
+      # If you ever needed build steps (like processing CSS/JS), they would go here
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }} # Shows the deployed URL in the workflow logs
+    runs-on: ubuntu-latest
+    needs: build # Important: This job only runs if the 'build' job above succeeds
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        # This action does the actual deployment to the github-pages environment
+        uses: actions/deploy-pages@v4
