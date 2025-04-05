@@ -3,10 +3,8 @@ name: Lint JavaScript Code
 
 # --- When should this run? ---
 on:
-  # Run whenever code is pushed to the 'main' branch
   push:
     branches: [ main ]
-  # Also run if someone suggests changes via a Pull Request to 'main'
   pull_request:
     branches: [ main ]
 
@@ -23,21 +21,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Set up the Node.js environment (JavaScript needs this)
+      # Step 2: Set up the Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          # The 'cache: 'npm'' line was removed from here
+          # Enable caching now that we expect package.json / package-lock.json
+          cache: 'npm'
 
-      # Step 3: Install ESLint and required config packages globally
-      - name: Install ESLint and config packages
-        # Installs the main eslint tool, plus the @eslint/js and globals packages needed by eslint.config.js
-        run: npm install -g eslint @eslint/js globals
+      # Step 3: Install dependencies listed in package.json (including ESLint and helpers)
+      - name: Install dependencies
+        run: npm install # Installs devDependencies into node_modules
 
-      # Step 4: Run the JavaScript checker tool (ESLint)
+      # Step 4: Run ESLint (will use version installed via npm install)
       - name: Run ESLint
-        # 'npx eslint .' tells it to run ESLint on all files in the project.
-        # '--ext .js' tells it to only check files ending in .js
-        # NOTE: This relies on the eslint.config.js file being present and correct.
         run: npx eslint . --ext .js
