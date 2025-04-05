@@ -26,8 +26,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          # Enable caching now that we expect package.json / package-lock.json
-          cache: 'npm'
+          # REMOVED cache: 'npm' from here again
 
       # Step 3: Install dependencies listed in package.json (including ESLint and helpers)
       - name: Install dependencies
