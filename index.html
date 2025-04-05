@@ -12,12 +12,12 @@
 
     <style>
         :root {
-            /* --- Base Colors (New Dashboard Theme) --- */
-            --bg-dark: #1E1E1E;
-            --bg-card-opaque: #2D2D2D;
-            --text-light: #F8F9FA;
-            --text-medium: #BDBDBD;
-            --primary-accent: #3A86FF; /* Bright Blue */
+            /* --- Base Colors (User Settings Theme) --- */
+            --bg-dark: #1A1F3A;          /* Dark Blue/Indigo Page Background */
+            --bg-card-opaque: #1E1E1E;   /* Near Black/Very Dark Grey for Cards/Inputs */
+            --text-light: #F8F9FA;       /* Off-white */
+            --text-medium: #BDBDBD;      /* Medium Gray */
+            --primary-accent: #3A86FF;      /* Bright Blue */
             --grad-cyan: #00BCD4;
             --grad-blue: #3A86FF;
             --grad-purple: #8A3FFC;
@@ -30,13 +30,14 @@
             font-family: 'Open Sans', sans-serif;
             line-height: 1.7;
             color: var(--text-light);
-            background-color: var(--bg-dark);
+            background-color: var(--bg-dark); /* Use NEW Dark Blue BG */
             padding: 0;
             font-size: 16px;
         }
         .navbar {
             position: fixed; top: 0; left: 0; width: 100%;
-            background: rgba(45, 45, 45, 0.9); backdrop-filter: blur(10px);
+            background: rgba(26, 31, 58, 0.85); /* Darker semi-transparent blue */
+            backdrop-filter: blur(10px);
             z-index: 1000; border-bottom: 1px solid var(--border-color);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); padding: 10px 0;
         }
@@ -50,7 +51,8 @@
         img { max-width: 100%; height: auto; }
         /* Minimal card style for critical path */
         .hero-section, .service-card, .testimonial, .process-step, .faq-item, #interest-form {
-             background-color: var(--bg-card-opaque); border-radius: var(--card-radius);
+             background-color: var(--bg-card-opaque); /* Use NEW Near Black BG */
+             border-radius: var(--card-radius);
              border: 1px solid var(--border-color); margin-bottom: 30px; padding: 25px;
         }
         header.content-card { /* Critical style for header */
@@ -213,7 +215,7 @@
                     </div>
                 </div>
             </div>
-             <div class="note">
+            <div class="note">
                 <i class="fas fa-lightbulb"></i> <strong>Note About Cloudflare:</strong> Cloudflare is great, but it can't fix everything alone. We optimize what it misses for true speed.
             </div>
         </section>
