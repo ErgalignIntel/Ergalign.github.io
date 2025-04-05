@@ -1,31 +1,33 @@
 /* === Root Variables (Color Palette & Fonts) === */
 :root {
-    /* --- Base Colors (Keeping dark theme) --- */
-    --bg-dark: #121420;          /* Darker Gray - Updated per recommendations */
-    --bg-card-opaque: #1B1F3B;   /* Opaque Card Background - Updated per recommendations */
-    --text-light: #F8F9FA;       /* Off-white - Updated per recommendations */
-    --text-medium: #ADB5BD;      /* Lighter Medium Gray - Updated per recommendations */
+    /* --- Base Colors (Dashboard Theme) --- */
+    --bg-dark: #1E1E1E;          /* Dark Gray (Dashboard Background) */
+    --bg-card-opaque: #2D2D2D;   /* Charcoal Gray (Dashboard Card Background) */
+    --text-light: #F8F9FA;       /* Off-white */
+    --text-medium: #BDBDBD;      /* Medium Gray (Dashboard Secondary Text) */
     --text-dark: #111;           /* Near Black */
-    --border-color: #3a3a3a;      /* Darker border */
+    --border-color: #3a3a3a;      /* Darker border (Can adjust to #444 if needed) */
 
-    /* --- Updated Accent Colors (Based on recommendations) --- */
-    --primary-accent: #3A86FF;      /* Primary Blue */
-    --secondary-accent: #8A3FFC;    /* Primary Purple */
-    --highlight: #00D4FF;           /* Highlight color */
+    /* --- Updated Accent Colors (Dashboard Theme) --- */
+    --primary-accent: #00BCD4;      /* Cyan/Teal Blue (Dashboard Accent) */
+    /* --secondary-accent: #8A3FFC; */    /* Purple - Retained if needed, but dashboard theme primarily used Cyan */
+    /* --highlight: #00D4FF; */           /* Highlight - Merged with primary-accent */
 
     /* --- Fonts & Shapes --- */
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Open Sans', sans-serif;
     --pill-radius: 50px;
-    --card-radius: 18px;
+    --card-radius: 12px; /* Slightly reduced for a sharper dashboard feel */
     --glow-opacity: 0.4;
 
-    /* === Updated Metallic Gradient Attempts for Buttons === */
-    --grad-metal-stripe: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+    /* === Simplified Gradients/Colors for Buttons (Closer to Dashboard Theme) === */
+    --btn-bg-primary: var(--primary-accent); /* Solid Cyan */
+    --btn-text-primary: #FFFFFF;
     --grad-metal-paypal: linear-gradient(to right, #fff0a0 0%, #ffda63 20%, #ffb300 60%, #ffcc00 80%, #fff8d0 100%); /* Keep PayPal colors */
-    --grad-metal-help: linear-gradient(to right, #aaa 0%, #777 50%, #aaa 100%); /* Keep neutral */
-    --grad-metal-ai: linear-gradient(135deg, var(--secondary-accent), var(--primary-accent)); /* Purple -> Blue */
-    --grad-metal-consult: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent)); /* Blue -> Purple */
+    --btn-bg-help: #555; /* Neutral Dark Grey */
+    --btn-text-help: var(--text-light);
+    /* --grad-metal-ai: linear-gradient(135deg, var(--secondary-accent), var(--primary-accent)); */ /* Use solid primary or secondary if needed */
+    /* --grad-metal-consult: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent)); */ /* Use solid primary */
 }
 
 /* === Basic Reset & Defaults === */
@@ -44,9 +46,8 @@ body {
     font-family: var(--font-body);
     line-height: 1.7;
     color: var(--text-light);
-    background-color: var(--bg-dark);
-    /* Subtle noise texture */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%232a2a2a' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+    background-color: var(--bg-dark); /* Use Dashboard background */
+    /* Removed subtle noise texture for cleaner dashboard look */
     padding: 0;
     font-size: 16px;
 }
@@ -57,10 +58,11 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(18, 20, 32, 0.95);
+    /* Use Card background for slight contrast, or keep darker */
+    background: rgba(45, 45, 45, 0.9); /* Slightly darker charcoal with blur */
     backdrop-filter: blur(10px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(58, 58, 58, 0.5);
+    border-bottom: 1px solid var(--border-color); /* Use defined border color */
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
     padding: 10px 0;
 }
@@ -106,7 +108,7 @@ body {
 }
 
 .navbar-nav li a:hover {
-    color: var(--primary-accent);
+    color: var(--primary-accent); /* Hover with Cyan */
 }
 
 .navbar-nav li a::after {
@@ -116,7 +118,7 @@ body {
     height: 2px;
     bottom: -5px;
     left: 0;
-    background-color: var(--primary-accent);
+    background-color: var(--primary-accent); /* Underline with Cyan */
     transition: width 0.3s ease;
 }
 
@@ -134,25 +136,25 @@ body {
 }
 
 /* === Container === */
+/* Option 1: Keep container for structure but make it invisible */
 .container {
     max-width: 1000px;
-    margin: 100px auto 30px; /* Added top margin to account for fixed navbar */
-    background: linear-gradient(145deg, rgba(27, 31, 59, 0.95), rgba(35, 39, 67, 0.90));
-    backdrop-filter: blur(8px);
-    padding: 30px 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    border: 1px solid var(--border-color);
-    border-top: 6px solid var(--primary-accent);
+    margin: 100px auto 30px; /* Keep margins for spacing */
+    padding: 0 15px; /* Adjust padding if needed, or remove if cards handle it */
+    background: transparent; /* Remove container background */
+    backdrop-filter: none;
+    border: none; /* Remove container border */
+    box-shadow: none; /* Remove container shadow */
     color: var(--text-light);
 }
+/* Option 2: Remove .container styling entirely and apply max-width/margin to sections directly if needed */
 
 /* === Header === */
 header {
     text-align: center;
     padding-bottom: 30px;
     margin-bottom: 40px;
-    border-bottom: 1px solid var(--border-color);
+    /* border-bottom: 1px solid var(--border-color); */ /* Optional: Remove border if sections have cards */
 }
 
 .header-image {
@@ -167,53 +169,43 @@ header {
     object-fit: cover;
 }
 
-/* === H1 Neon Metallic Style === */
-.h1-neon-metallic {
+/* === H1 Simplified Style (Closer to Dashboard) === */
+.h1-neon-metallic { /* Renaming class might be good, e.g., .main-headline */
     font-family: var(--font-heading);
     font-size: 3em;
     font-weight: 700;
     text-align: center;
     margin-bottom: 10px;
-
-    /* Metallic Gradient Fill */
-    background: linear-gradient(
-        140deg,
-        #f780ff 20%,
-        var(--secondary-accent) 50%,
-        #a000c0 80%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent; /* Fallback */
-
-    /* Neon Glow Effect */
-    text-shadow:
-        0 0 5px var(--secondary-accent),
-        0 0 10px var(--secondary-accent),
-        0 0 20px #f780ff,
-        0 0 30px #a000c0;
-
-    /* Optional: Subtle edge */
-    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.1);
-    display: block; /* Ensure block display */
+    color: var(--text-light); /* Solid light color */
+    /* Optional: Subtle shadow with accent color */
+    text-shadow: 0 0 8px rgba(0, 188, 212, 0.3); /* Use Cyan RGBA */
+    display: block;
+    /* Remove gradient and heavy neon effects */
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: unset;
+    -webkit-text-stroke: unset;
 }
 
 .tagline {
-    color: var(--text-medium);
+    color: var(--text-medium); /* Use medium grey */
     font-size: 1.3em;
     font-weight: 400;
     font-family: var(--font-heading);
 }
 
 /* === Hero Section === */
+/* Style as a card or remove background if content moves into cards */
 .hero-section {
     text-align: center;
     margin-bottom: 60px;
-    padding: 20px;
-    background: linear-gradient(145deg, rgba(27, 31, 59, 0.5), rgba(35, 39, 67, 0.3));
+    padding: 35px;
+    background-color: var(--bg-card-opaque); /* Use card background */
     border-radius: var(--card-radius);
     border: 1px solid var(--border-color);
+    border-top: 3px solid var(--primary-accent); /* Add cyan top border like dashboard cards */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Simplified shadow */
 }
 
 .hero-headline {
@@ -227,17 +219,17 @@ header {
 .hero-subheadline {
     font-family: var(--font-body);
     font-size: 1.3em;
-    color: var(--primary-accent);
+    color: var(--primary-accent); /* Use Cyan accent */
 }
 
 /* === Sections === */
 section {
     margin-bottom: 60px;
-    padding-bottom: 50px;
+    padding-bottom: 50px; /* Adjust as needed, might not be needed if using cards */
 }
 
 section:not(:last-child) {
-     border-bottom: 1px solid var(--border-color);
+     border-bottom: 1px solid var(--border-color); /* Keep separation if sections aren't distinct cards */
 }
 
 /* General H2 Styling */
@@ -254,25 +246,29 @@ h2 {
     font-family: var(--font-heading);
 }
 
-h2 .icon { 
+h2 .icon {
     display: inline-block;
-    color: var(--primary-accent);
+    color: var(--primary-accent); /* Use Cyan for icons */
 }
 
-/* Section-Specific H2 Styling */
-#speed-services h2 { text-shadow: 0 0 8px var(--primary-accent); }
-#ai-optimization h2 { text-shadow: 0 0 8px var(--secondary-accent); }
-#testimonials h2 { text-shadow: 0 0 8px var(--highlight); }
-#how-it-works h2 { text-shadow: 0 0 8px var(--primary-accent); }
-#faq h2 { text-shadow: 0 0 8px var(--secondary-accent); }
+/* Section-Specific H2 Styling - Simplify shadows */
+#speed-services h2,
+#ai-optimization h2,
+#testimonials h2,
+#how-it-works h2,
+#faq h2 {
+    text-shadow: 0 0 6px rgba(0, 188, 212, 0.2); /* Subtle Cyan shadow */
+}
 
-#speed-services h2 .icon { filter: drop-shadow(0 0 5px var(--primary-accent)); }
-#ai-optimization h2 .icon { filter: drop-shadow(0 0 5px var(--secondary-accent)); }
-#testimonials h2 .icon { filter: drop-shadow(0 0 5px var(--highlight)); }
-#how-it-works h2 .icon { filter: drop-shadow(0 0 5px var(--primary-accent)); }
-#faq h2 .icon { filter: drop-shadow(0 0 5px var(--secondary-accent)); }
+#speed-services h2 .icon,
+#ai-optimization h2 .icon,
+#testimonials h2 .icon,
+#how-it-works h2 .icon,
+#faq h2 .icon {
+    filter: drop-shadow(0 0 4px var(--primary-accent)); /* Cyan drop shadow */
+}
 
-/* === Speed Services Grid & Cards === */
+/* === Speed Services Grid & Cards (Apply Dashboard Card Style) === */
 .services-grid {
     display: grid;
     gap: 35px;
@@ -280,12 +276,13 @@ h2 .icon {
 }
 
 .service-card {
-    background-color: var(--bg-card-opaque);
+    background-color: var(--bg-card-opaque); /* Use charcoal card bg */
     border-radius: var(--card-radius);
     padding: 35px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Simplified shadow */
     border: 1px solid var(--border-color);
-    border-left: 8px solid; /* Color set by accent class */
+    border-top: 3px solid var(--primary-accent); /* Add Cyan top border */
+    /* border-left: none; */ /* Remove colored left border */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -295,26 +292,27 @@ h2 .icon {
 }
 
 .service-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    transform: translateY(-5px); /* Subtle lift */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 /* Featured Card */
-.featured-card {
-    transform: scale(1.05);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(138, 63, 252, 0.3);
-    z-index: 2;
-}
+/* .featured-card { */
+    /* Adjust styling if needed, maybe slightly brighter border or shadow */
+    /* transform: scale(1.05); */ /* Keep or remove scale */
+    /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 188, 212, 0.2); */ /* Cyan glow */
+    /* z-index: 2; */
+/* } */
 
-.featured-card:hover {
-    transform: translateY(-8px) scale(1.07);
-}
+/* .featured-card:hover { */
+    /* transform: translateY(-8px) scale(1.07); */
+/* } */
 
 .featured-badge {
     position: absolute;
     top: 0;
     right: 0;
-    background: var(--secondary-accent);
+    background: var(--primary-accent); /* Use Cyan */
     color: white;
     padding: 8px 15px;
     font-size: 0.85rem;
@@ -323,18 +321,10 @@ h2 .icon {
     box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Service Card Accent Colors */
-.service-card.accent-blue { 
-    border-left-color: var(--primary-accent);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(58, 134, 255, 0.1);
-}
-
-.service-card.accent-purple { 
-    border-left-color: var(--secondary-accent);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(138, 63, 252, 0.1);
-}
-
-.service-card.more-help { border-left-color: var(--text-medium); }
+/* Remove Service Card Accent Color Classes if not needed */
+/* .service-card.accent-blue { ... } */
+/* .service-card.accent-purple { ... } */
+/* .service-card.more-help { ... } */
 
 /* Service Card Heading Styles */
 .service-card h4 {
@@ -345,151 +335,142 @@ h2 .icon {
     align-items: center;
     gap: 12px;
     min-height: 50px;
-    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3);
     font-family: var(--font-heading);
+    color: var(--primary-accent); /* Use Cyan for card titles */
+    text-shadow: 0 0 5px rgba(0, 188, 212, 0.3); /* Subtle Cyan shadow */
 }
 
-/* Apply correct heading colors and glows */
-.accent-blue h4 {
-    color: var(--primary-accent);
-    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--primary-accent);
-}
-
-.accent-purple h4 {
-    color: var(--secondary-accent);
-    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3), 0 0 6px var(--secondary-accent);
-}
-
-.more-help h4 { 
-    color: var(--text-medium); 
-    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1), -1px -1px 0px rgba(0, 0, 0, 0.3); 
-}
+/* Remove specific color overrides if using general cyan */
+/* .accent-blue h4 { ... } */
+/* .accent-purple h4 { ... } */
+/* .more-help h4 { ... } */
 
 /* Service Card List Item Styles */
-.service-card p.service-description { 
-    color: var(--text-medium); 
-    margin-bottom: 20px; 
-    font-style: italic; 
+.service-card p.service-description {
+    color: var(--text-medium); /* Use medium grey */
+    margin-bottom: 20px;
+    font-style: italic;
 }
 
-.service-card ul { 
-    list-style: none; 
-    margin-bottom: 30px; 
-    padding-left: 5px; 
-    flex-grow: 1; 
+.service-card ul {
+    list-style: none;
+    margin-bottom: 30px;
+    padding-left: 5px;
+    flex-grow: 1;
 }
 
-.service-card li { 
-    margin-bottom: 12px; 
-    position: relative; 
-    padding-left: 28px; 
-    color: var(--text-light); 
+.service-card li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 28px;
+    color: var(--text-light); /* Light text for list items */
 }
 
-.service-card li::before { 
-    content: ''; 
-    position: absolute; 
-    left: 0; 
-    top: 7px; 
-    width: 10px; 
-    height: 10px; 
-    border-radius: 3px; 
-    background-color: currentColor; 
-    opacity: 0.8; 
-    transition: all 0.3s ease; 
+.service-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background-color: var(--primary-accent); /* Use Cyan for bullets */
+    opacity: 0.8;
+    transition: all 0.3s ease;
 }
 
-.service-card li:hover::before { 
-    transform: scale(1.3); 
-    opacity: 1; 
-    box-shadow: 0 0 5px currentColor; 
+.service-card li:hover::before {
+    transform: scale(1.3);
+    opacity: 1;
+    box-shadow: 0 0 5px var(--primary-accent); /* Cyan glow on hover */
 }
 
-/* Apply correct list bullet colors */
-.accent-blue li::before { color: var(--primary-accent); }
-.accent-purple li::before { color: var(--secondary-accent); }
-.more-help li::before { color: var(--text-medium); }
+/* Remove specific bullet color overrides */
+/* .accent-blue li::before { ... } */
+/* .accent-purple li::before { ... } */
+/* .more-help li::before { ... } */
 
-.service-card ul ul { 
-    margin-top: 10px; 
-    margin-bottom: 10px; 
-    padding-left: 20px; 
+.service-card ul ul {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
 }
 
-.service-card ul ul li::before{ 
-    content: '-'; 
-    background-color: transparent; 
-    box-shadow: none; 
-    width: auto; 
-    height: auto; 
-    border-radius: 0; 
-    opacity: 0.8; 
-    top: 0px; 
-    left: 5px; 
+.service-card ul ul li::before{
+    content: '-';
+    background-color: transparent;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    opacity: 0.8;
+    top: 0px;
+    left: 5px;
+    color: var(--primary-accent); /* Ensure sub-bullets also use cyan */
 }
 
-.service-card ul ul li:hover::before { 
-    transform: none; 
-    opacity: 1; 
+.service-card ul ul li:hover::before {
+    transform: none;
+    opacity: 1;
 }
 
-.note, .note-small { 
-    padding: 12px 18px; 
-    background-color: rgba(0, 0, 0, 0.25); 
-    border-left: 5px solid var(--text-medium); 
-    border-radius: 8px; 
-    color: var(--text-medium); 
-    font-size: 0.9em; 
-    margin-top: 15px; 
+.note, .note-small {
+    padding: 12px 18px;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-left: 5px solid var(--primary-accent); /* Use Cyan border */
+    border-radius: 8px;
+    color: var(--text-medium);
+    font-size: 0.9em;
+    margin-top: 15px;
 }
 
-.note strong { color: var(--primary-accent); }
-.note-small { 
-    font-size: 0.85em; 
-    margin-top: 20px; 
-    margin-bottom: 10px; 
+.note strong { color: var(--primary-accent); } /* Keep highlight */
+.note-small {
+    font-size: 0.85em;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-/* === Payment & CTA Buttons === */
-.payment-buttons { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 15px; 
-    margin-top: auto; 
-    padding-top: 25px; 
+/* === Payment & CTA Buttons (Simplify to solid colors) === */
+.payment-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: auto;
+    padding-top: 25px;
 }
 
-.stripe-basic-steps, .paypal-basic-steps { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 10px; 
-    border: 1px solid var(--border-color); 
-    padding: 15px; 
-    border-radius: 8px; 
-    margin-top: 10px; 
-    background-color: rgba(0, 0, 0, 0.1); 
+.stripe-basic-steps, .paypal-basic-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .cta-button {
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
-    width: 100%; 
-    padding: 14px 25px; 
-    font-size: 1.05em; 
+    width: 100%;
+    padding: 14px 25px;
+    font-size: 1.05em;
     font-weight: 600;
-    border: none; 
-    border-radius: var(--pill-radius); 
-    cursor: pointer; 
+    border: none;
+    border-radius: var(--pill-radius);
+    cursor: pointer;
     text-align: center;
-    transition: all 0.35s ease; 
-    background-size: 300% auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: all 0.35s ease;
+    background-size: 100% auto; /* Reset background size */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Simplified shadow */
     text-decoration: none;
     position: relative;
     overflow: hidden;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    text-shadow: none; /* Remove text shadow for cleaner look */
     font-family: var(--font-heading);
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -497,43 +478,38 @@ h2 .icon {
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    filter: brightness(1.1); /* Slight brightness increase on hover */
 }
 
-.btn-icon { 
-    display: inline-block; 
-    line-height: 0; 
-    filter: brightness(1); 
+.btn-icon {
+    display: inline-block;
+    line-height: 0;
+    filter: brightness(1);
 }
 
-/* Apply new gradients */
-.stripe-btn { 
-    background-image: var(--grad-metal-stripe); 
-    color: #fff; 
+/* Apply solid backgrounds */
+.stripe-btn,
+.consultation-button,
+.ai-cta {
+    background-image: none; /* Remove gradient */
+    background-color: var(--btn-bg-primary); /* Use solid Cyan */
+    color: var(--btn-text-primary); /* White text */
 }
 
-.paypal-btn { 
-    background-image: var(--grad-metal-paypal); 
-    color: var(--text-dark); 
-    text-shadow: none; 
+.paypal-btn {
+    background-image: var(--grad-metal-paypal); /* Keep PayPal gradient */
+    color: var(--text-dark);
 }
 
-.help-cta { 
-    background-image: var(--grad-metal-help); 
-    color: var(--text-light); 
+.help-cta {
+    background-image: none; /* Remove gradient */
+    background-color: var(--btn-bg-help); /* Use solid grey */
+    color: var(--btn-text-help);
 }
 
-.consultation-button { 
-    background-image: var(--grad-metal-consult); 
-    color: var(--text-light); 
-}
 
-.ai-cta { 
-    background-image: var(--grad-metal-ai); 
-    color: var(--text-light); 
-}
-
-/* === Testimonials Section === */
+/* === Testimonials Section (Apply Dashboard Card Style) === */
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -541,17 +517,18 @@ h2 .icon {
 }
 
 .testimonial {
-    background-color: var(--bg-card-opaque);
+    background-color: var(--bg-card-opaque); /* Use charcoal card bg */
     border-radius: var(--card-radius);
-    padding: 25px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    padding: 35px; /* Increased padding */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Simplified shadow */
     border: 1px solid var(--border-color);
+    border-top: 3px solid var(--primary-accent); /* Cyan top border */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .testimonial:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .testimonial-content {
@@ -569,7 +546,7 @@ h2 .icon {
 .testimonial-content p::before,
 .testimonial-content p::after {
     content: '"';
-    color: var(--primary-accent);
+    color: var(--primary-accent); /* Cyan quote marks */
     font-size: 1.5em;
     font-weight: bold;
 }
@@ -584,7 +561,7 @@ h2 .icon {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: var(--primary-accent);
+    background-color: var(--primary-accent); /* Cyan avatar bg */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -601,18 +578,26 @@ h2 .icon {
 
 .testimonial-author p {
     font-size: 0.9em;
-    color: var(--text-medium);
+    color: var(--text-medium); /* Medium grey for author title */
     margin: 0;
 }
 
-/* === AI Optimization Section === */
+/* === AI Optimization Section (Apply Dashboard Card Style if needed) === */
 #ai-optimization {
     text-align: center;
+    /* Wrap content in a card if desired */
+    /* background-color: var(--bg-card-opaque); */
+    /* border-radius: var(--card-radius); */
+    /* padding: 35px; */
+    /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); */
+    /* border: 1px solid var(--border-color); */
+    /* border-top: 3px solid var(--primary-accent); */ /* Or use secondary accent if keeping purple distinct for AI */
 }
 
 .coming-soon {
     font-size: 1.5em;
-    color: var(--secondary-accent);
+    color: var(--primary-accent); /* Use Cyan */
+    /* color: var(--secondary-accent); */ /* Or keep Purple */
     margin-bottom: 15px;
     font-weight: 600;
     font-family: var(--font-heading);
@@ -622,21 +607,25 @@ h2 .icon {
     max-width: 700px;
     margin: 0 auto 30px;
     font-size: 1.1em;
+    color: var(--text-medium); /* Medium grey description */
 }
 
 #interest-form {
     max-width: 500px;
     margin: 0 auto;
-    background-color: var(--bg-card-opaque);
+    background-color: var(--bg-card-opaque); /* Card style */
     padding: 30px;
     border-radius: var(--card-radius);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--border-color);
+    /* border-top: 3px solid var(--secondary-accent); */ /* Optional purple top border for AI form */
+    border-top: 3px solid var(--primary-accent); /* Or stick with Cyan */
 }
 
 #interest-form h3 {
     margin-bottom: 20px;
-    color: var(--secondary-accent);
+    color: var(--primary-accent); /* Cyan heading */
+    /* color: var(--secondary-accent); */ /* Or purple */
     font-family: var(--font-heading);
 }
 
@@ -663,11 +652,11 @@ h2 .icon {
 
 .form-group input:focus {
     outline: none;
-    border-color: var(--secondary-accent);
-    box-shadow: 0 0 0 2px rgba(138, 63, 252, 0.3);
+    border-color: var(--primary-accent); /* Cyan focus border */
+    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.3); /* Cyan focus glow */
 }
 
-/* === How It Works Section === */
+/* === How It Works Section (Apply Dashboard Card Style) === */
 .process-steps {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -677,23 +666,25 @@ h2 .icon {
 
 .process-step {
     text-align: center;
-    padding: 25px;
-    background-color: var(--bg-card-opaque);
+    padding: 30px; /* Consistent padding */
+    background-color: var(--bg-card-opaque); /* Card style */
     border-radius: var(--card-radius);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--border-color);
+    border-top: 3px solid var(--primary-accent); /* Cyan top border */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .process-step:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .step-number {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+    background: var(--primary-accent); /* Solid Cyan background */
+    /* background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent)); */ /* Remove gradient */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -708,15 +699,15 @@ h2 .icon {
 
 .process-step h3 {
     margin-bottom: 15px;
-    color: var(--primary-accent);
+    color: var(--primary-accent); /* Cyan heading */
     font-family: var(--font-heading);
 }
 
 .process-step p {
-    color: var(--text-medium);
+    color: var(--text-medium); /* Medium grey text */
 }
 
-/* === FAQ Section === */
+/* === FAQ Section (Apply Dashboard Card Style) === */
 .faq-container {
     max-width: 800px;
     margin: 0 auto;
@@ -724,11 +715,12 @@ h2 .icon {
 
 .faq-item {
     margin-bottom: 20px;
-    background-color: var(--bg-card-opaque);
+    background-color: var(--bg-card-opaque); /* Card style */
     border-radius: var(--card-radius);
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--border-color);
+    /* border-top: 3px solid var(--primary-accent); */ /* Optional top border */
 }
 
 .faq-question {
@@ -741,7 +733,7 @@ h2 .icon {
 }
 
 .faq-question:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 188, 212, 0.1); /* Subtle Cyan hover */
 }
 
 .faq-question h3 {
@@ -752,7 +744,7 @@ h2 .icon {
 }
 
 .faq-question i {
-    color: var(--primary-accent);
+    color: var(--primary-accent); /* Cyan icon */
     transition: transform 0.3s ease;
 }
 
@@ -765,15 +757,16 @@ h2 .icon {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
+    border-top: 1px solid rgba(58, 58, 58, 0.5); /* Separator line */
 }
 
 .faq-item.active .faq-answer {
-    padding: 0 20px 20px;
+    padding: 20px 20px 20px; /* Add top padding when open */
     max-height: 500px;
 }
 
 .faq-answer p {
-    color: var(--text-medium);
+    color: var(--text-medium); /* Medium grey answer */
     margin: 0;
 }
 
@@ -781,14 +774,16 @@ h2 .icon {
 footer {
     margin-top: 60px;
     padding-top: 40px;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color); /* Use defined border color */
 }
 
 .footer-content {
+    max-width: 1000px; /* Match container width */
+    margin: 0 auto 30px;
+    padding: 0 15px; /* Match container padding */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
-    margin-bottom: 30px;
 }
 
 .footer-info h3 {
@@ -825,13 +820,15 @@ footer {
 }
 
 .footer-links a:hover {
-    color: var(--primary-accent);
+    color: var(--primary-accent); /* Cyan hover */
 }
 
 .footer-bottom {
+    max-width: 1000px; /* Match container width */
+    margin: 0 auto;
+    padding: 30px 15px 20px; /* Match container padding + bottom padding */
     text-align: center;
-    padding-top: 30px;
-    border-top: 1px solid rgba(58, 58, 58, 0.5);
+    border-top: 1px solid var(--border-color);
 }
 
 .response-time, .privacy-note, .copyright {
@@ -840,7 +837,7 @@ footer {
     font-size: 0.9em;
 }
 
-/* === Mobile Performance Optimizations === */
+/* === Mobile Performance Optimizations (Keep these) === */
 
 /* Critical CSS inlining */
 .critical-styles {
@@ -873,148 +870,101 @@ img {
     }
 }
 
-/* === Responsive Design === */
+/* === Responsive Design (Adjustments for new theme) === */
 @media (max-width: 992px) {
-    .container {
+    .container { /* Adjust container margins/padding if using Option 1 */
         margin: 80px 20px 30px;
-        padding: 25px;
+        padding: 0 10px;
     }
-    
-    h2 {
-        font-size: 2.2em;
-    }
-    
-    .h1-neon-metallic {
-        font-size: 2.5em;
-    }
-    
-    /* Reduce complexity of animations */
+
+    h2 { font-size: 2.2em; }
+    .h1-neon-metallic { font-size: 2.5em; } /* Adjust simplified H1 */
+
     .service-card:hover,
     .testimonial:hover,
     .process-step:hover {
-        transform: translateY(-5px);
-    }
-    
-    .featured-card:hover {
-        transform: translateY(-5px) scale(1.03);
+        transform: translateY(-3px); /* Slightly less lift */
     }
 }
 
 @media (max-width: 768px) {
     .navbar-nav {
+        /* Keep mobile menu styles */
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(18, 20, 32, 0.95);
+        background: rgba(45, 45, 45, 0.95); /* Match navbar bg */
         flex-direction: column;
         padding: 20px;
         gap: 15px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     }
-    
-    .navbar-nav.active {
-        display: flex;
-    }
-    
-    .mobile-menu-toggle {
-        display: block;
-    }
-    
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .featured-card {
-        transform: scale(1);
-    }
-    
-    .featured-card:hover {
-        transform: translateY(-5px);
-    }
-    
-    h2 {
-        font-size: 1.8em;
-    }
-    
-    .h1-neon-metallic {
-        font-size: 2.2em;
-    }
-    
-    .hero-headline {
-        font-size: 1.8em;
-    }
-    
-    /* Simplify shadows and effects for better performance */
+
+    .navbar-nav.active { display: flex; }
+    .mobile-menu-toggle { display: block; }
+
+    .services-grid { grid-template-columns: 1fr; }
+
+    h2 { font-size: 1.8em; }
+    .h1-neon-metallic { font-size: 2.2em; } /* Adjust simplified H1 */
+    .hero-headline { font-size: 1.8em; }
+
+    /* Simplify shadows */
     .service-card,
     .testimonial,
     .process-step,
-    .faq-item {
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    .faq-item,
+    .hero-section,
+    #interest-form {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
     }
-    
-    /* Reduce animation complexity */
+
     .service-card:hover,
     .testimonial:hover,
     .process-step:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     }
 }
 
 @media (max-width: 576px) {
-    .container {
-        padding: 20px 15px;
-        margin-top: 70px;
+    .container { /* Adjust container margins/padding if using Option 1 */
+        padding: 0 5px;
+        margin: 70px 15px 30px;
     }
-    
-    .service-card {
+
+    .service-card, .testimonial, .process-step, .hero-section, #interest-form, .faq-item {
         padding: 25px;
     }
-    
-    .service-card h4 {
-        font-size: 1.5em;
-    }
-    
-    h2 {
-        font-size: 1.6em;
-    }
-    
-    .h1-neon-metallic {
-        font-size: 2em;
-    }
-    
-    .hero-headline {
-        font-size: 1.6em;
-    }
-    
-    .hero-subheadline {
-        font-size: 1.1em;
-    }
-    
-    /* Further simplify effects for mobile performance */
+
+    .service-card h4 { font-size: 1.5em; }
+    h2 { font-size: 1.6em; }
+    .h1-neon-metallic { font-size: 2em; } /* Adjust simplified H1 */
+    .hero-headline { font-size: 1.6em; }
+    .hero-subheadline { font-size: 1.1em; }
+
+    /* Minimal shadows */
     .service-card,
     .testimonial,
     .process-step,
-    .faq-item {
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    .faq-item,
+    .hero-section,
+    #interest-form {
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
     }
-    
-    /* Minimal animations for better performance */
+
+    /* Minimal animations */
     .service-card:hover,
     .testimonial:hover,
     .process-step:hover {
         transform: none;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
     }
-    
+
     /* Simplify text shadows */
-    h2, .service-card h4 {
+    h2, .service-card h4, .h1-neon-metallic {
         text-shadow: none;
-    }
-    
-    .h1-neon-metallic {
-        text-shadow: 0 0 5px var(--secondary-accent);
     }
 }
