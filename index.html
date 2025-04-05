@@ -12,19 +12,22 @@
 
     <style>
         :root {
-            /* --- Base Colors (Dashboard Theme) --- */
-            --bg-dark: #1E1E1E;          /* Dark Gray (Dashboard Background) */
-            --bg-card-opaque: #2D2D2D;   /* Charcoal Gray (Dashboard Card Background) */
-            --text-light: #F8F9FA;       /* Off-white */
-            --text-medium: #BDBDBD;      /* Medium Gray (Dashboard Secondary Text) */
-            --primary-accent: #00BCD4;      /* Cyan/Teal Blue (Dashboard Accent) */
-            /* --secondary-accent: #8A3FFC; */ /* Purple - Keep definition if needed elsewhere, else remove */
-            --border-color: #3a3a3a;
+            /* --- Base Colors (New Dashboard Theme) --- */
+            --bg-dark: #1E1E1E;
+            --bg-card-opaque: #2D2D2D;
+            --text-light: #F8F9FA;
+            --text-medium: #BDBDBD;
+            --primary-accent: #3A86FF; /* Bright Blue */
+            --grad-cyan: #00BCD4;
+            --grad-blue: #3A86FF;
+            --grad-purple: #8A3FFC;
+            --header-gradient: linear-gradient(135deg, var(--grad-cyan) 0%, var(--grad-blue) 50%, var(--grad-purple) 100%);
+            --border-color: #444444;
             --card-radius: 12px;
         }
         * {box-sizing: border-box; margin: 0; padding: 0;}
         body {
-            font-family: 'Open Sans', sans-serif; /* Define fallback later */
+            font-family: 'Open Sans', sans-serif;
             line-height: 1.7;
             color: var(--text-light);
             background-color: var(--bg-dark);
@@ -32,46 +35,28 @@
             font-size: 16px;
         }
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(45, 45, 45, 0.9); /* Use updated color */
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-            padding: 10px 0;
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(45, 45, 45, 0.9); backdrop-filter: blur(10px);
+            z-index: 1000; border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); padding: 10px 0;
         }
         .container-nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
+            max-width: 1200px; margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center; padding: 0 20px;
         }
-        .container { /* Style updated to be transparent via external CSS */
-            max-width: 1000px;
-            margin: 100px auto 30px;
-            /* Background/border/shadow removed here, handled by external CSS */
-            padding: 0 15px; /* Adjusted padding */
-            color: var(--text-light);
+        .container { /* Transparent container */
+            max-width: 1000px; margin: 100px auto 30px; padding: 0 15px;
         }
-        img {
-            max-width: 100%;
-            height: auto;
+        img { max-width: 100%; height: auto; }
+        /* Minimal card style for critical path */
+        .hero-section, .service-card, .testimonial, .process-step, .faq-item, #interest-form {
+             background-color: var(--bg-card-opaque); border-radius: var(--card-radius);
+             border: 1px solid var(--border-color); margin-bottom: 30px; padding: 25px;
         }
-        /* Minimal card style for critical path if needed */
-        .hero-section, .service-card, .testimonial, .process-step, .faq-item, #interest-form, header.content-card {
-             background-color: var(--bg-card-opaque);
-             border-radius: var(--card-radius);
-             border: 1px solid var(--border-color);
-             border-top: 3px solid var(--primary-accent);
-             margin-bottom: 30px; /* Basic spacing */
-             padding: 25px; /* Basic padding */
+        header.content-card { /* Critical style for header */
+            background: var(--header-gradient); border-radius: var(--card-radius);
+            padding: 30px; margin-bottom: 30px;
         }
-
     </style>
 
     <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
@@ -87,7 +72,7 @@
     <nav class="navbar">
         <div class="container-nav">
             <a href="#" class="navbar-brand">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'%3E%3Cpath fill='%2300BCD4' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7z'/%3E%3C/svg%3E" alt="ErgAlign Logo" class="nav-logo" width="40" height="40">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'%3E%3Cpath fill='%233A86FF' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7z'/%3E%3C/svg%3E" alt="ErgAlign Logo" class="nav-logo" width="40" height="40">
                 ErgAlign
             </a>
             <button class="mobile-menu-toggle">
@@ -105,12 +90,11 @@
 
     <div class="container">
         <header class="content-card">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300' viewBox='0 0 800 300'%3E%3Crect width='800' height='300' fill='%231E1E1E'/%3E%3C!-- Placeholder shapes using new accent --%3E%3Cpath d='M400 50 L700 250 L100 250 Z' fill='%2300BCD4' opacity='0.2'/%3E%3Ccircle cx='400' cy='150' r='100' fill='%232D2D2D' opacity='0.5'/%3E%3Ctext x='400' y='160' font-family='Montserrat, sans-serif' font-size='40' fill='%23F8F9FA' text-anchor='middle'%3EErgAlign Intel%3C/text%3E%3C/svg%3E" alt="ErgAlign Intel Optimization Dashboard Concept" class="header-image" width="800" height="300">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300' viewBox='0 0 800 300'%3E%3Crect width='800' height='300' fill='transparent'/%3E%3C!-- Placeholder shapes using new accents --%3E%3Cpath d='M400 50 L700 250 L100 250 Z' fill='%233A86FF' opacity='0.3'/%3E%3Ccircle cx='400' cy='150' r='100' fill='%238A3FFC' opacity='0.3'/%3E%3Ctext x='400' y='160' font-family='Montserrat, sans-serif' font-size='40' fill='%23F8F9FA' text-anchor='middle'%3EErgAlign Intel%3C/text%3E%3C/svg%3E" alt="ErgAlign Intel Optimization Dashboard Concept" class="header-image" width="800" height="300">
             <span class="h1-neon-metallic">ErgAlign Intel</span> <p class="tagline">Supercharging Websites & Business Profiles</p>
         </header>
 
-        <section class="hero-section">
-            <h1 class="hero-headline">Don't Let Poor Website Performance Undermine Your Success</h1>
+        <section class="hero-section"> <h1 class="hero-headline">Don't Let Poor Website Performance Undermine Your Success</h1>
             <p class="hero-subheadline">Optimize for Speed, Rankings, and Professionalism</p>
         </section>
 
@@ -229,15 +213,15 @@
                     </div>
                 </div>
             </div>
-            <div class="note"> <i class="fas fa-lightbulb"></i> <strong>Note About Cloudflare:</strong> Cloudflare is great, but it can't fix everything alone. We optimize what it misses for true speed.
+             <div class="note">
+                <i class="fas fa-lightbulb"></i> <strong>Note About Cloudflare:</strong> Cloudflare is great, but it can't fix everything alone. We optimize what it misses for true speed.
             </div>
         </section>
 
         <section id="testimonials">
             <h2><i class="fas fa-quote-left icon"></i> What Our Clients Say</h2>
             <div class="testimonials-grid">
-                <div class="testimonial">
-                    <div class="testimonial-content">
+                <div class="testimonial"> <div class="testimonial-content">
                         <p>ErgAlign's speed optimization increased our conversion rate by 23% within the first month. Their expertise made all the difference for our e-commerce site.</p>
                     </div>
                     <div class="testimonial-author">
@@ -250,8 +234,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial">
-                    <div class="testimonial-content">
+                <div class="testimonial"> <div class="testimonial-content">
                         <p>Our website load time decreased from 8.2 seconds to just 2.1 seconds after implementing ErgAlign's recommendations. Incredible improvement!</p>
                     </div>
                     <div class="testimonial-author">
@@ -264,7 +247,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
         </section>
 
         <section id="ai-optimization">
@@ -340,7 +323,7 @@
                         <p>Not at all! We handle all the technical aspects for you. Our service is designed to be hassle-free, allowing you to focus on your business while we take care of the optimization work.</p>
                     </div>
                 </div>
-                </div>
+            </div>
         </section>
 
         <footer id="contact">
@@ -370,7 +353,8 @@
             <div class="footer-bottom">
                 <p class="response-time">We aim to respond within 24 business hours.</p>
                 <p class="privacy-note">Your information is kept private and never shared.</p>
-                <p class="copyright">&copy; 2025 ErgAlign Intel. All rights reserved.</p> </div>
+                <p class="copyright">&copy; 2025 ErgAlign Intel. All rights reserved.</p>
+            </div>
         </footer>
     </div> <script src="script.js" defer></script>
 </body>
